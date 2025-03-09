@@ -1,8 +1,8 @@
 #Tarefas:
--Mini Menu:
+-Mini Menu: ->Luís
     -Opções lidas atravez de input no terminal
     -Escreve os nós e as arestas no ecrã
 
--Leitura e criação do graph
+-Leitura e criação do graph -> Teresa
 
--Aplicar alterações no Graph.h e Dijkstra
+-Aplicar alterações no Graph.h e Dijkstra ->Joana
