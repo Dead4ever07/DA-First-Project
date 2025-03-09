@@ -14,8 +14,8 @@
 /**
  * @brief It fullfills the graph with the information provided.
  * @param[out] g The name of the reservoir.
- * @param[in] Distances The municipality where the reservoir is located.
- * @param[in] Locations The ID of the reservoir.
+ * @param[in] Distances The file name were the edges are stores.
+ * @param[in] Locations The file name were the vertices are stored.
  */
 template <typename T>
 void graphFiller(Graph<T> *g, std::string Distances, std::string Locations);
