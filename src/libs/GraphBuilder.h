@@ -12,7 +12,7 @@
 
 
 /**
- * @brief It fullfills the graph with the information provided.
+ * @brief It fullfils the graph with the information provided.
  * @param[out] g The name of the reservoir.
  * @param[in] Distances The file name were the edges are stores.
  * @param[in] Locations The file name were the vertices are stored.
