@@ -3,6 +3,7 @@
 // TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 #include "../libs/Graph.h"
+#include "libs/GraphBuilder.h"
 
 void dfs(Vertex<int>* source)
 {
@@ -38,6 +39,10 @@ int main() {
     g.addEdge(5, 6, 3);
 
     dfs(g.getVertexSet().front());
+
+
+    graphDistance( "C:\\Users\\teres\\Documents\\2A2S\\DA\\DA-First-Project\\resources\\Distances.csv");
+    graphLocation( "C:\\Users\\teres\\Documents\\2A2S\\DA\\DA-First-Project\\resources\\Locations.csv");
 
     return 0;
 }
