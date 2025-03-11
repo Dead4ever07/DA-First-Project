@@ -18,11 +18,11 @@
  * @param[in] Locations The file name were the vertices are stored.
  */
 
-void graphDistance(Graph<std::string>* g, std::string distances);
+void graphDistance(Graph<int>* g, std::string distances);
 
-void graphLocation(Graph<std::string>* g, std::string locations);
+void graphLocation(Graph<int>* g, std::string locations);
 
-
+void readInput();
 
 
 

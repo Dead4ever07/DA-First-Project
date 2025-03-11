@@ -5,12 +5,13 @@
 #include <sstream>
 
 #include "../libs/Graph.h"
+#include "libs/GraphBuilder.h"
 #include "libs/RouteSearch.h"
 
 int main() {
 
-    Graph<int> g;
-
+    //Graph<int>* g;
+    /*
     g.addVertex(1,"a", "10",false);
     g.addVertex(2,"b", "20",false);
     g.addVertex(3,"c", "30",false);
@@ -33,9 +34,12 @@ int main() {
     int origin = 1;
     int dest = 4;
     driveRoute(&g,origin,dest);
+    */
 
-    graphDistance("../resources/Distances.csv");
-    graphLocation("../resources/Locations.csv");
+    //graphDistance(g, "../resources/Distances.csv");
+    //graphLocation(g, "../resources/Locations.csv");
+
+    readInput();
 
     return 0;
 }

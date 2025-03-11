@@ -3,11 +3,12 @@
 //
 
 #include "../libs/GraphBuilder.h"
+#include "libs/Graph.h"
 #include <sstream>
 #include <fstream>
 
 
-void graphDistance(Graph<std::string>* g, std::string distances){
+void graphDistance(Graph<int>* g, std::string distances){
     std::ifstream inD(distances);
     if (!inD) {
         std::cerr << "Error opening file " << distances << std::endl;
@@ -33,13 +34,13 @@ void graphDistance(Graph<std::string>* g, std::string distances){
 
         std::cout << "l1: " << location1 << "l2: " << location2 << "d: " << driving << "w: " << walking << "c: " << car << "f: " << foot<< std::endl;
 
-        //g->addEdge(location1, location2, car, foot); //perguntar
+        //g->addEdge(location1, location2, car, foot);
 
     }
     inD.close();
 }
 
-void graphLocation(Graph<std::string>* g, std::string locations){
+void graphLocation(Graph<int>* g, std::string locations){
     std::ifstream inL(locations);
     if (!inL) {
         std::cerr << "Error opening file " << locations << std::endl;
@@ -57,17 +58,42 @@ void graphLocation(Graph<std::string>* g, std::string locations){
         getline(iss, code, ',');
         getline(iss, parking, ',');
 
-        int idL = std::stoi(id);
         bool p = 0;
         if (parking == "1") {
             p=1;
         }
 
+        std::cout << "l: " << location << "id: " << id << "c: " << code  << "pk: " << parking << "p: " << p << std::endl;
 
-        std::cout << "l: " << location << "id: " << id << "idl: " << idL << "c: " << code  << "pk: " << parking << "p: " << p << std::endl;
-
-        //g->addVertex(location, idL, code, p); //perguntar
+        //g->addVertex(id, location, code, p);
 
     }
     inL.close();
+}
+
+void readInput() {
+    std::ifstream in("../resources/input.txt");
+    if (!in) {
+        std::cerr << "Error opening input file"<< std::endl;
+        return;
+    }
+    std::string line, mode, source, destination;
+    while (getline(in, line)) {
+        std::istringstream iss(line);
+        std::string m;
+        getline(iss, m, ':');
+        std::cout << m;
+        if (m == "Mode") {
+            getline(iss, mode);
+            std::cout << mode << std::endl;
+        }
+        else if (m == "Source") {
+            getline(iss, source);
+            std::cout << source << std::endl;
+        }
+        else if (m == "Destination") {
+            getline(iss, destination);
+            std::cout << destination << std::endl;
+        }
+    }
 }
