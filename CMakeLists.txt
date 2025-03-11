@@ -15,6 +15,8 @@ set(PROJECT_HEADERS
 )
 set(PROJECT_SOURCES
         src/main/GraphBuilder.cpp
+        src/libs/RouteSearch.h
+        src/main/RouteSearch.cpp
 )
 
 add_executable(Project
