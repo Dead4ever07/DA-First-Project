@@ -41,8 +41,8 @@ int main() {
     dfs(g.getVertexSet().front());
 
 
-    graphDistance( "C:\\Users\\teres\\Documents\\2A2S\\DA\\DA-First-Project\\resources\\Distances.csv");
-    graphLocation( "C:\\Users\\teres\\Documents\\2A2S\\DA\\DA-First-Project\\resources\\Locations.csv");
+    graphDistance("../resources/Distances.csv");
+    graphLocation("../resources/Locations.csv");
 
     return 0;
 }
