@@ -17,17 +17,19 @@ Menu::Menu() {
 void Menu::init() {
     std::cout << HIDE_CURSOR;
     tc_echo_off();
-    initscr();
+
 }
 
 
 void Menu::run() {
-    clear_screen();
+
     ACTIONS Pressed = NONE;
     while (Pressed != ACTIONS::EXIT)
         {
+
             clear_screen();
             print_menu();
+            std::cout<<"Hello\n";
             get_input(Pressed);
             processKey(Pressed);
     }
@@ -37,56 +39,46 @@ void Menu::run() {
 
 void Menu::get_input(ACTIONS& Pressed) {
     int c = getchar();
+    std::cout<<c<<"\n";
     switch (c) {
-        case(27):
-            c = getchar();
-            switch (c) {
-                case(91):
-                    c = getchar();
-                    switch(c) {
-                        case(65):
-                            Pressed = UP;
-                            break;
-                        case(66):
-                            Pressed = DOWN;
-                            break;
-                        default:
-                            Pressed = NONE;
-                            break;
-                    }
-                    break;
-                default:
-                    Pressed = NONE;
-                    break;
-            }
-            break;
-        case(13):
+        case(ENTR):
             Pressed = ENTER;
-        break;
+            std::cout<<"Hello\n";
+            break;
         case(81):
         case(113):
             Pressed = EXIT;
-        break;
-        default: Pressed = NONE;
-    }
+            break;
+        default:
+        if (TRAIL_CHR) {
+            c = getchar();
+            switch(c) {
+                case(ARROW_UP):
+                    Pressed = UP;
+                    return;
+                case(ARROW_DOWN):
+                    Pressed = DOWN;
+                    return;
+                default:
+                    Pressed = NONE;
+                    return;
+                }
+            }
+            Pressed = NONE;
+       }
+
 }
 
 
 void Menu::print_menu() {
     int index = 0;
-    int x = 0, y = 0;
-    tc_get_cols_rows(&x,&y);
-    x = x/2 - LINE_SIZE/2;
-    y = y/2 - menus[current_menu].size()/2 - 1;
-    move_cursor(x+((LINE_SIZE-titles[current_menu].size())/2),y-2);
-    std::cout<<TC_BOLD<<titles[current_menu]<<TC_NRM;
+    std::cout<<TC_BOLD<<titles[current_menu]<<'\n'<<TC_NRM;
     for (auto p : menus[current_menu]) {
-        move_cursor(x,y+index);
         if (index == selected_line) std::cout<<TC_BOLD<<TC_BLUE;
         if (p != *(--menus[current_menu].end())) {
-            std::cout<<index+1<<". "<<p;
+            std::cout<<index+1<<". "<<p<<'\n';
         }else {
-            std::cout<<0<<". "<<p;
+            std::cout<<0<<". "<<p<<'\n';
         }
         if (index == selected_line) std::cout<<TC_NRM;
         index++;
@@ -95,23 +87,44 @@ void Menu::print_menu() {
 
 
 void Menu::processKey(ACTIONS &Pressed) {
+    switch (current_menu) {
+        case(0):
+            processMenu1(Pressed);
+            break;
+        case(1):
+           // processMenu2(Pressed);
+            break;
+        case(2):
+            //processMenu3(Pressed);
+            break;
+        case(3):
+            //processMenu4(Pressed);
+            break;
+        default:
+            break;
+    }
+}
+
+void Menu::processMenu1(ACTIONS &Pressed) {
     switch (Pressed) {
         case(UP):
             selected_line--;
-            if (selected_line<0) {
-                selected_line = menus[current_menu].size()-1;
-            }
-            break;
+        if (selected_line<0) {
+            selected_line = menus[current_menu].size()-1;
+        }
+        break;
         case(DOWN):
             selected_line = (selected_line+1)%menus[current_menu].size();
-            break;
+        break;
         case(ENTER):
             if (selected_line == menus[current_menu].size()-1) Pressed = EXIT;
             else {
                 titles[current_menu+1] = menus[current_menu][selected_line];
                 current_menu ++;
+                selected_line = 0;
             }
         default:
             break;
     }
 }
+

@@ -2,25 +2,11 @@
 //Inspired by Gregg Ink(https://gitlab.com/greggink/youtube_episode_control_terminal)
 //
 
-#include <stdio.h>
-#include <sys/ioctl.h>
-#include <termios.h>
 #include <unistd.h>
-#include <ncurses.h>
+
 
 #ifndef TC_H
 #define TC_H
-
-/*
-void clearScreen() {
-#ifdef __unix__
-    system("clear");
-#else
-    // assume windows
-    system("cls");
-#endif
-}
-*/
 
 #define HIDE_CURSOR "\033[?25l"
 
@@ -34,7 +20,6 @@ void clearScreen() {
 #define TC_CYN "\x1B[0;36m"
 #define TC_WHT "\x1B[0;37m"
 
-
 #define TC_BG_NRM "\x1B[40m"
 #define TC_BG_RED " \x1B[41m"
 #define TC_BG_GRN "\x1B[42m"
@@ -45,26 +30,24 @@ void clearScreen() {
 #define TC_BG_WHT "\x1B[47m"
 
 
+
+
+
+
 #define clear_screen() write(1, "\033[H\033[2J\033[3J", 11)
-#define tc_enter_alt_screen() puts("\033[?1049h\033[H")
-#define move_cursor(x,y) printf("\033[%d;%dH", y, x);
 
-//Return the columns and rows of the terminal
-void tc_get_cols_rows(int *cols, int *rows);
+#ifdef __unix__
+#include <sys/ioctl.h>
+#include <termios.h>
 
-
-void tc_get_cols_rows(int *cols, int *rows){
-
-    struct winsize size;
-    ioctl(1, TIOCGWINSZ, &size);
-    *cols = size.ws_col;
-    *rows = size.ws_row;
-
-}
+#define TRAIL_CHR (c == 27 && getchar()==91)
+#define ARROW_UP 65
+#define ARROW_DOWN 66
+#define ENTR 10
 void tc_echo_off(){
     struct termios term;
     tcgetattr(1, &term);
-    term.c_lflag &= ~ECHO;
+    term.c_lflag &= ~(ICANON|ECHO);
     tcsetattr(1, TCSANOW, &term);
 }
 void tc_echo_on(){
@@ -73,4 +56,32 @@ void tc_echo_on(){
     term.c_lflag |= ECHO;
     tcsetattr(1, TCSANOW, &term);
 }
+#else
+#include<conio.h>
+
+
+#define getchar _getch
+#define TRAIL_CHR(c) c==224
+#define ARROW_UP 72
+#define ARROW_DOWN 80
+#define ENTR 13
+
+
+
+void tc_echo_off() {
+    HANDLE hStdin = GetStdHandle(STD_INPUT_HANDLE);
+    DWORD mode;
+    GetConsoleMode(hStdin, &mode);
+    mode &= ~ENABLE_ECHO_INPUT;  // Disable echo
+    SetConsoleMode(hStdin, mode);
+}
+
+void tc_echo_on() {
+    HANDLE hStdin = GetStdHandle(STD_INPUT_HANDLE);
+    DWORD mode;
+    GetConsoleMode(hStdin, &mode);
+    mode |= ENABLE_ECHO_INPUT;  // Enable echo
+    SetConsoleMode(hStdin, mode);
+}
+#endif
 #endif //TC_H

@@ -7,6 +7,8 @@
 #include <map>
 #include <vector>
 
+#include "Graph.h"
+
 #define LINE_SIZE 20
 
 
@@ -21,6 +23,10 @@ private:
     void get_input(ACTIONS& Pressed);
     void print_menu();
     void processKey(ACTIONS &Pressed);
+    void processMenu1(ACTIONS &Pressed);
+    void processMenu2(ACTIONS &Pressed);
+    void processMenu3(ACTIONS &Pressed);
+    void processMenu4(ACTIONS &Pressed);
     std::pmr::vector<std::string> mainOptions =
         {"Large Data Set"
         ,"Small Data Set"
@@ -35,6 +41,8 @@ private:
         };
     std::map<int, std::pmr::vector<std::string>> menus;
     std::map<int, std::string> titles = {{0, "Choose Your Data Set"}};
+
+    Graph<int>* g;
 
     int current_menu = 0;
     int selected_line = 0;

@@ -14,9 +14,11 @@ set(PROJECT_HEADERS
         src/libs/MutablePriorityQueue.h
         src/libs/Menu.h
         src/libs/tc.h
+        src/libs/RouteSearch.h
 )
 set(PROJECT_SOURCES
         src/main/GraphBuilder.cpp
+        src/main/RouteSearch.cpp
         src/main/Menu.cpp
 )
 
