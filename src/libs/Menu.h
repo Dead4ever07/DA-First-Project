@@ -27,7 +27,7 @@ private:
     void processMenu2(ACTIONS &Pressed);
     void processMenu3(ACTIONS &Pressed);//Not implemented
     void processMenu4(ACTIONS &Pressed);//Not implemented;
-    void getUserInput();
+    void getUserInput(std::string);
     void processArrowInMenu(const ACTIONS & Pressed);
     std::pmr::vector<std::string> mainOptions =
         {"Large Data Set"
@@ -44,18 +44,10 @@ private:
         };
     std::pmr::vector<std::string> thirdOptions =
         {
-
-        };
-    std::pmr::vector<std::string> FourthOptions =
-        {"Find Distance Between Two Places"
-        ,"Execute Input.txt"
-        , "Show Vertices"
-        ,"Return"
-        ,"Quit(Q)"
         };
     std::map<int, std::pmr::vector<std::string>> menus;
     std::map<int, std::string> titles = {{0, "Choose Your Data Set"}};
-    std::vector<int> argument_vector;
+    std::map<std::string,int> argument_map;
 
     Graph<int>* g;
 
@@ -63,6 +55,7 @@ private:
     int selected_line = 0;
 };
 
+void to_int(const char c, int&n);
 
 
 

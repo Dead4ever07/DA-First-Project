@@ -146,33 +146,6 @@ void Menu::processMenu2(ACTIONS & Pressed) {
             break;
     }
 }
-
-void Menu::processMenu3(ACTIONS &Pressed) {
-    switch (Pressed) {
-        case(ENTER):
-            switch (selected_line) {
-                case(0):
-                    int t;
-                std::cin>>t;
-                argument_vector.push_back(t);
-                std::cout<<t<<'\n';
-                tc_echo_off();
-                getchar();
-                break;
-                case 1:
-                    Pressed = EXIT;
-                break;
-            }
-        default:
-            processArrowInMenu(Pressed);
-            break;
-
-    }
-}
-
-
-
-
 void Menu::processArrowInMenu(const ACTIONS & Pressed) {
     switch (Pressed) {
         case(UP):
@@ -189,24 +162,33 @@ void Menu::processArrowInMenu(const ACTIONS & Pressed) {
     }
 }
 
-
-
-void Menu::getUserInput() {
+/**
+ * @brief Simple function that reads the user input, allowing the user to see what it is typing in the process
+ * @param Attribute Sentence to be printed
+ */
+void Menu::getUserInput(std::string Attribute) {
     clear_screen();
     std::cout<<TC_BOLD<<titles[current_menu]<<TC_NRM<<'\n';
-    std::cout<<"Departure ID:";
+    std::cout<<Attribute;
     tc_echo_on();
+    char c = 0;
     int t = 0;
-    std::cin>>t;
-    argument_vector.push_back(t);
-    clear_screen();
-    std::cout<<TC_BOLD<<titles[current_menu]<<TC_NRM<<'\n';
-    std::cout<<"Arrival ID:";
-    std::cin>>t;
-    argument_vector.push_back(t);
-    tc_echo_off();
-    //call dikjstra
-    //Show the results
+    do {
+        c = getchar();
+        to_int(c, t);
+    }
+    while (c != ENTR);
+    argument_map[Attribute] = t;
+}
 
-
+/**
+ * @brief Simple way to read the user input without filling the terminal buffer
+ * @param c one of the many character of the integer input
+ * @param n integer that will be incremented concatenated with the c character
+ */
+void to_int(const char c, int& n) {
+    if (c<48 || c>57) {
+        return;
+    }
+    n = n*10 + (c-48);
 }
