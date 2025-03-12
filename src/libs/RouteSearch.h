@@ -13,4 +13,6 @@ void printRoute(const std::vector<int> &route, int routeCost);
 
 void driveRoute(Graph<std::string> * g, const int &origin, const int& dest);
 
+void driveRestrictedRoute(Graph<std::string> * g, const int &origin, const int& dest, std::vector<int>& vertex, std::vector<std::pair<int,int>>& edges,const int& middle);
+
 #endif //ROUTESEARCH_H

@@ -48,7 +48,7 @@ void dijkstra(Graph<std::string> *g, const int &origin) {
     }
 }
 
-bool getPath(Graph<std::string> *g, const int &origin, const int& dest,std::vector<int> &route, int &cost) {
+bool getPath(Graph<std::string> *g, const int &origin, const int& dest,std::vector<int> &route, int &cost, bool isRestricted) {
 
     dijkstra(g, origin);
     Vertex<std::string> *dst = g->idFindVertex(dest);
@@ -64,11 +64,18 @@ bool getPath(Graph<std::string> *g, const int &origin, const int& dest,std::vect
     while (dst->getId() != origin) {
         int vertexId = dst->getId();
         cost += dst->getPath()->getDriving();
-        dst->setSelected(true);
+        if (!isRestricted) {
+            dst->setSelected(true);
+        }
         dst = dst->getPath()->getOrig();
         route.push_back(vertexId);
     }
     route.push_back(origin);
+    return true;
+}
+
+bool getRestrictedPath(Graph<std::string> *g, const int &origin, const int &middle,const int& dest,std::vector<int> &route, int &cost) {
+
     return true;
 }
 
@@ -106,5 +113,41 @@ void driveRoute(Graph<std::string> * g, const int &origin, const int& dest){
     }
     else {
         printRoute(alternativeRoute,alternativeRouteCost);
+    }
+}
+
+
+void driveRestrictedRoute(Graph<std::string> * g, const int &origin, const int& dest, std::vector<int>& vertex, std::vector<std::pair<int,int>>& edges,const int& middle) {
+    std::cout << "Source:" << origin << std::endl;
+    std::cout << "Destination:" << dest << std::endl;
+
+    for (const int id : vertex) {
+        g->idFindVertex(id)->setSelected(true);
+    }
+    for (std::pair<int,int> p : edges) {
+        Vertex<std::string> *originVertex = g->idFindVertex(p.first);
+        if (originVertex == nullptr || originVertex->isSelected()) {
+            continue;
+        }
+        for (auto e : originVertex->getAdj()) {
+            if (e->getDest()->getId() == p.second) {
+                e->setSelected(true);
+                break;
+            }
+        }
+    }
+
+    int cost = 0;
+    std::vector<int> route;
+
+    std::cout << "RestrictedDrivingRoute:";
+    if (!getPath(g,origin,middle,route,cost)) {
+        std::cout<<"none\n"<<std::endl;
+    }
+    else if (!getPath(g,middle,dest,route,cost)) {
+        std::cout<<"none\n"<<std::endl;
+    }
+    else {
+        printRoute(route,cost);
     }
 }
