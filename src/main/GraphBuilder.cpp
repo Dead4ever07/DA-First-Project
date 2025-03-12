@@ -31,9 +31,8 @@ void graphDistance(Graph<std::string>* g, std::string distances){
         }
         int foot = std::stoi(walking);
 
-        std::cout << "l1: " << location1 << "l2: " << location2 << "d: " << driving << "w: " << walking << "c: " << car << "f: " << foot<< std::endl;
 
-        //g->addEdge(location1, location2, car, foot); //perguntar
+        g->addBidirectionalEdge(location1, location2, car, foot); //perguntar
 
     }
     inD.close();
@@ -58,15 +57,10 @@ void graphLocation(Graph<std::string>* g, std::string locations){
         getline(iss, parking, ',');
 
         int idL = std::stoi(id);
-        bool p = 0;
-        if (parking == "1") {
-            p=1;
-        }
+        bool p = parking=="1";
 
 
-        std::cout << "l: " << location << "id: " << id << "idl: " << idL << "c: " << code  << "pk: " << parking << "p: " << p << std::endl;
-
-        //g->addVertex(location, idL, code, p); //perguntar
+        g->addVertex(idL, location, code, p); //perguntar
 
     }
     inL.close();
