@@ -65,3 +65,30 @@ void graphLocation(Graph<std::string>* g, std::string locations){
     }
     inL.close();
 }
+
+void readInput() {
+    std::ifstream in("../resources/input.txt");
+    if (!in) {
+        std::cerr << "Error opening input file"<< std::endl;
+        return;
+    }
+    std::string line, mode, source, destination;
+    while (getline(in, line)) {
+        std::istringstream iss(line);
+        std::string m;
+        getline(iss, m, ':');
+        std::cout << m;
+        if (m == "Mode") {
+            getline(iss, mode);
+            std::cout << mode << std::endl;
+        }
+        else if (m == "Source") {
+            getline(iss, source);
+            std::cout << source << std::endl;
+        }
+        else if (m == "Destination") {
+            getline(iss, destination);
+            std::cout << destination << std::endl;
+        }
+    }
+}
