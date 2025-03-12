@@ -9,7 +9,7 @@
 
 int main() {
 
-    Graph<int> g;
+    Graph<std::string> g;
 
     g.addVertex(1,"a", "10",false);
     g.addVertex(2,"b", "20",false);
@@ -19,20 +19,7 @@ int main() {
     g.addVertex(6,"f", "60",false);
     g.addVertex(7,"g", "70",false);
 
-    g.addEdge(1, 2, 3,0);
-    g.addEdge(1, 5, 5,0);
-    g.addEdge(2, 5, 10,0);
-    g.addEdge(2, 6, 2,0);
-    g.addEdge(3, 4, 1,0);
-    g.addEdge(5, 6, 2,0);
-    g.addEdge(5, 7, 6,0);
-    g.addEdge(6, 3, 4,0);
-    g.addEdge(6, 7, 8,0);
-    g.addEdge(7, 4, 8,0);
 
-    int origin = 1;
-    int dest = 4;
-    driveRoute(&g,origin,dest);
 
     return 0;
 }

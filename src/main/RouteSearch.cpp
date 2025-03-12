@@ -1,11 +1,13 @@
 #include "libs/RouteSearch.h"
 
-bool relaxCar(Edge<int> *edge) { // d[u] + driv(u,v) < d[v]
-    if (edge->getDriving() == -1) {
+bool relaxCar(Edge<std::string> *edge) { // d[u] + driv(u,v) < d[v]
+    Vertex<std::string> *src = edge->getOrig();
+    Vertex<std::string> *dst = edge->getDest();
+
+    if (edge->getDriving() == -1 || edge->isSelected() || dst->isSelected()) {
         return false;
     }
-    Vertex<int> *src = edge->getOrig();
-    Vertex<int> *dst = edge->getDest();
+
     if (dst->getDist() > src->getDist() + edge->getDriving()) {
         dst->setDist(src->getDist() + edge->getDriving());
         dst->setPath(edge);
@@ -14,9 +16,9 @@ bool relaxCar(Edge<int> *edge) { // d[u] + driv(u,v) < d[v]
     return false;
 }
 
-void dijkstra(Graph<int> *g, const int &origin) {
+void dijkstra(Graph<std::string> *g, const int &origin) {
 
-    MutablePriorityQueue<Vertex<int>> q;
+    MutablePriorityQueue<Vertex<std::string>> q;
 
     for (auto temp : g->getVertexSet()) {
         temp->setPath(nullptr);
@@ -24,16 +26,17 @@ void dijkstra(Graph<int> *g, const int &origin) {
         temp->setVisited(false);
     }
 
-    auto ini = g->findVertex(origin);
+    auto ini = g->idFindVertex(origin);
     ini->setDist(0);
     q.insert(ini);
     ini->setVisited(true);
     while (!q.empty()) {
-        Vertex<int> *vertex = q.extractMin();
+        Vertex<std::string> *vertex = q.extractMin();
 
-        for (Edge<int> *edge : vertex->getAdj()) {
+        for (Edge<std::string> *edge : vertex->getAdj()) {
             if(relaxCar(edge)) {
                 if (!edge->getDest()->isVisited()) {
+                    edge->getDest()->setVisited(true);
                     q.insert(edge->getDest());
                 }
                 else {
@@ -45,25 +48,25 @@ void dijkstra(Graph<int> *g, const int &origin) {
     }
 }
 
-bool getPath(Graph<int> *g, const int &origin, const int& dest,std::vector<int> &route, int &cost) {
+bool getPath(Graph<std::string> *g, const int &origin, const int& dest,std::vector<int> &route, int &cost) {
 
     dijkstra(g, origin);
-    Vertex<int> *dst = g->findVertex(dest);
+    Vertex<std::string> *dst = g->idFindVertex(dest);
 
     if (dst->getPath() == nullptr) {
         return false;
     }
 
     cost += dst->getPath()->getDriving();
-    route.push_back(dst->getInfo());
+    route.push_back(dst->getId());
     dst = dst->getPath()->getOrig();
 
-    while (dst->getInfo() != origin) {
-        int vertexInfo = dst->getInfo();
+    while (dst->getId() != origin) {
+        int vertexId = dst->getId();
         cost += dst->getPath()->getDriving();
+        dst->setSelected(true);
         dst = dst->getPath()->getOrig();
-        route.push_back(vertexInfo);
-        g->removeVertex(vertexInfo);
+        route.push_back(vertexId);
     }
     route.push_back(origin);
     return true;
@@ -78,7 +81,7 @@ void printRoute(const std::vector<int> &route,const int routeCost) {
 }
 
 
-void driveRoute(Graph<int> * g, const int &origin, const int& dest){
+void driveRoute(Graph<std::string> * g, const int &origin, const int& dest){
     std::vector<int> bestRoute;
     int bestRouteCost = 0;
 

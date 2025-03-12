@@ -21,7 +21,7 @@ class Edge;
 template <class T>
 class Vertex {
 public:
-    Vertex(T in, std::string location, std::string code, bool parking);
+    Vertex(std::string location,int id, T info, bool parking);
     bool operator<(Vertex<T> & vertex) const; // // required by MutablePriorityQueue
 
     T getInfo() const;
@@ -32,6 +32,8 @@ public:
     double getDist() const;
     Edge<T> *getPath() const;
     std::vector<Edge<T> *> getIncoming() const;
+
+    int getId() const;
 
     void setInfo(T info);
     void setVisited(bool visited);
@@ -51,15 +53,22 @@ public:
     void removeOutgoingEdges();
 
     void setLocation(std::string location);
+
+    void setId(int id);
+
     std::string getLocation() const;
     void setCode(std::string code);
     std::string getCode() const;
     void setParking(bool parking);
     bool isParking() const;
+    void setSelected(bool selected);
+    bool isSelected() const;
 
 
     friend class MutablePriorityQueue<Vertex>;
 protected:
+    std::string location;
+    int id;
     T info;                // info node
     std::vector<Edge<T> *> adj;  // outgoing edges
 
@@ -71,11 +80,10 @@ protected:
     double dist = 0;
     Edge<T> *path = nullptr;
 
-    //!!!!, info é o id
-    std::string location;
-    std::string code;
+
+
     bool parking = false;
-    //!!!!
+    bool selected = false;
     std::vector<Edge<T> *> incoming; // incoming edges
 
     int queueIndex = 0; 		// required by MutablePriorityQueue and UFDS
@@ -101,6 +109,8 @@ public:
     int getDriving() const;
     //!!!!
 
+
+
     void setSelected(bool selected);
     void setReverse(Edge<T> *reverse);
     void setFlow(double flow);
@@ -113,7 +123,7 @@ protected:
     Vertex<T> *orig;
 
     Vertex<T> * dest; // destination vertex
-    //double weight; // edge weight, can also be used for capacity
+    double weight; // edge weight, can also be used for capacity
 
     // auxiliary fields
     bool selected = false;
@@ -139,11 +149,14 @@ public:
     * Auxiliary function to find a vertex with a given the content.
     */
     Vertex<T> *findVertex(const T &in) const;
+
+    Vertex<T> *idFindVertex(int id) const;
+
     /*
      *  Adds a vertex with a given content or info (in) to a graph (this).
      *  Returns true if successful, and false if a vertex with that content already exists.
      */
-    bool addVertex(const T &in, std::string location, std::string code, bool parking);
+    bool addVertex(int id, std::string location, T info, bool parking);
     bool removeVertex(const T &in);
 
     /*
@@ -183,7 +196,7 @@ void deleteMatrix(double **m, int n);
 /************************* Vertex  **************************/
 
 template<class T>
-Vertex<T>::Vertex(T in,std::string location, std::string code,bool parking): info(in),location(location),code(code), parking(parking) {}
+Vertex<T>::Vertex(std::string location, int id, T info, bool parking) : location(location),id(id),info(info),parking(parking) {}
 
 /*
  * Auxiliary function to add an outgoing edge to a vertex (this),
@@ -234,6 +247,7 @@ void Vertex<T>::removeOutgoingEdges() {
         deleteEdge(edge);
     }
 }
+
 
 template <class T>
 bool Vertex<T>::operator<(Vertex<T> & vertex) const {
@@ -301,18 +315,23 @@ std::vector<Edge<T> *> Vertex<T>::getIncoming() const {
 }
 
 template<class T>
+int Vertex<T>::getId() const {
+    return this->id;
+}
+
+template<class T>
 std::string Vertex<T>::getLocation() const {
     return this->location;
 }
 
 template<class T>
-std::string Vertex<T>::getCode() const {
-    return this->code;
+bool Vertex<T>::isParking() const {
+    return this->parking;
 }
 
 template<class T>
-bool Vertex<T>::isParking() const {
-    return this->parking;
+bool Vertex<T>::isSelected() const {
+    return this->selected;
 }
 
 template <class T>
@@ -367,8 +386,8 @@ void Vertex<T>::setLocation(std::string location) {
 }
 
 template<class T>
-void Vertex<T>::setCode(std::string code) {
-    this->code = code;
+void Vertex<T>::setId(int id) {
+    this->id = id;
 }
 
 template<class T>
@@ -474,6 +493,17 @@ Vertex<T> * Graph<T>::findVertex(const T &in) const {
 /*
  * Finds the index of the vertex with a given content.
  */
+
+
+template <class T>
+Vertex<T> * Graph<T>::idFindVertex(int id) const {
+    for (auto v : vertexSet)
+        if (v->getId() == id)
+            return v;
+    return nullptr;
+}
+
+//!!!
 template <class T>
 int Graph<T>::findVertexIdx(const T &in) const {
     for (unsigned i = 0; i < vertexSet.size(); i++)
@@ -486,10 +516,10 @@ int Graph<T>::findVertexIdx(const T &in) const {
  *  Returns true if successful, and false if a vertex with that content already exists.
  */
 template <class T>
-bool Graph<T>::addVertex(const T &in, std::string location, std::string code, bool parking){
-    if (findVertex(in) != nullptr)
+bool Graph<T>::addVertex(int id, std::string location, T info, bool parking){
+    if (findVertex(info) != nullptr)
         return false;
-    vertexSet.push_back(new Vertex<T>(in,location,code,parking));
+    vertexSet.push_back(new Vertex<T>(location,id,info,parking));
     return true;
 }
 
