@@ -365,6 +365,11 @@ void Vertex<T>::setPath(Edge<T> *path) {
 }
 
 template <class T>
+void Vertex<T>::setSelected(bool selected) {
+    this->selected = selected;
+}
+
+template <class T>
 void Vertex<T>::deleteEdge(Edge<T> *edge) {
     Vertex<T> *dest = edge->getDest();
     // Remove the corresponding edge from the incoming list
