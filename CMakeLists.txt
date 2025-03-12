@@ -22,9 +22,6 @@ set(PROJECT_SOURCES
         src/main/Menu.cpp
 )
 
-find_package(Curses REQUIRED)
-include_directories(${CURSES_INCLUDE_DIR})
-
 
 add_executable(Project
         src/main/main.cpp

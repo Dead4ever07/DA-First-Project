@@ -4,15 +4,12 @@
 
 #include "../libs/Menu.h"
 #include "libs/tc.h"
-
-
 Menu::Menu() {
     menus[0] =  mainOptions;
     menus[1] =  secOptions;
+    menus[2] = thirdOptions;
+    g = new Graph<int>();
 }
-
-
-
 
 void Menu::init() {
     std::cout << HIDE_CURSOR;
@@ -20,30 +17,23 @@ void Menu::init() {
 
 }
 
-
 void Menu::run() {
 
     ACTIONS Pressed = NONE;
     while (Pressed != ACTIONS::EXIT)
         {
-
             clear_screen();
             print_menu();
-            std::cout<<"Hello\n";
             get_input(Pressed);
             processKey(Pressed);
     }
 }
 
-
-
 void Menu::get_input(ACTIONS& Pressed) {
     int c = getchar();
-    std::cout<<c<<"\n";
     switch (c) {
         case(ENTR):
             Pressed = ENTER;
-            std::cout<<"Hello\n";
             break;
         case(81):
         case(113):
@@ -69,7 +59,6 @@ void Menu::get_input(ACTIONS& Pressed) {
 
 }
 
-
 void Menu::print_menu() {
     int index = 0;
     std::cout<<TC_BOLD<<titles[current_menu]<<'\n'<<TC_NRM;
@@ -85,17 +74,16 @@ void Menu::print_menu() {
     }
 }
 
-
 void Menu::processKey(ACTIONS &Pressed) {
     switch (current_menu) {
         case(0):
             processMenu1(Pressed);
             break;
         case(1):
-           // processMenu2(Pressed);
+            processMenu2(Pressed);
             break;
         case(2):
-            //processMenu3(Pressed);
+            processMenu3(Pressed);
             break;
         case(3):
             //processMenu4(Pressed);
@@ -108,13 +96,8 @@ void Menu::processKey(ACTIONS &Pressed) {
 void Menu::processMenu1(ACTIONS &Pressed) {
     switch (Pressed) {
         case(UP):
-            selected_line--;
-        if (selected_line<0) {
-            selected_line = menus[current_menu].size()-1;
-        }
-        break;
         case(DOWN):
-            selected_line = (selected_line+1)%menus[current_menu].size();
+            processArrowInMenu(Pressed);
         break;
         case(ENTER):
             if (selected_line == menus[current_menu].size()-1) Pressed = EXIT;
@@ -128,3 +111,102 @@ void Menu::processMenu1(ACTIONS &Pressed) {
     }
 }
 
+void Menu::processMenu2(ACTIONS & Pressed) {
+    switch (Pressed) {
+        case(UP):
+        case(DOWN):
+            processArrowInMenu(Pressed);
+        break;
+        case(ENTER):
+            switch (selected_line) {
+                case(0):
+                    getUserInput();
+                    std::cout<<'\n'<<"Press Enter To Return";
+                    do {
+                        std::cout<<"hello\n";
+                        get_input(Pressed);
+                    }while (Pressed!= ENTER);
+                    clear_screen();
+                    break;
+                case(1):
+                    //CALL readInput that should print the result to the output.txt
+                break;
+                case(2):
+                    //Call menu that reads all the edges
+                    break;
+                case(3):
+                    current_menu--;
+                    selected_line = 0;
+                    break;
+                case(4):
+                    Pressed = EXIT;
+                    break;
+            }
+        default:
+            break;
+    }
+}
+
+void Menu::processMenu3(ACTIONS &Pressed) {
+    switch (Pressed) {
+        case(ENTER):
+            switch (selected_line) {
+                case(0):
+                    int t;
+                std::cin>>t;
+                argument_vector.push_back(t);
+                std::cout<<t<<'\n';
+                tc_echo_off();
+                getchar();
+                break;
+                case 1:
+                    Pressed = EXIT;
+                break;
+            }
+        default:
+            processArrowInMenu(Pressed);
+            break;
+
+    }
+}
+
+
+
+
+void Menu::processArrowInMenu(const ACTIONS & Pressed) {
+    switch (Pressed) {
+        case(UP):
+            selected_line--;
+            if (selected_line<0) {
+                selected_line = menus[current_menu].size()-1;
+            }
+            break;
+        case(DOWN):
+            selected_line = (selected_line+1)%menus[current_menu].size();
+            break;
+        default:
+            break;
+    }
+}
+
+
+
+void Menu::getUserInput() {
+    clear_screen();
+    std::cout<<TC_BOLD<<titles[current_menu]<<TC_NRM<<'\n';
+    std::cout<<"Departure ID:";
+    tc_echo_on();
+    int t = 0;
+    std::cin>>t;
+    argument_vector.push_back(t);
+    clear_screen();
+    std::cout<<TC_BOLD<<titles[current_menu]<<TC_NRM<<'\n';
+    std::cout<<"Arrival ID:";
+    std::cin>>t;
+    argument_vector.push_back(t);
+    tc_echo_off();
+    //call dikjstra
+    //Show the results
+
+
+}

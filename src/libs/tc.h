@@ -43,6 +43,8 @@
 #define TRAIL_CHR (c == 27 && getchar()==91)
 #define ARROW_UP 65
 #define ARROW_DOWN 66
+#define ARROW_RIGHT 67
+#define ARROW_LEFT 68
 #define ENTR 10
 void tc_echo_off(){
     struct termios term;
@@ -53,7 +55,7 @@ void tc_echo_off(){
 void tc_echo_on(){
     struct termios term;
     tcgetattr(1, &term);
-    term.c_lflag |= ECHO;
+    term.c_lflag |= (ECHO|ICANON);
     tcsetattr(1, TCSANOW, &term);
 }
 #else
@@ -64,6 +66,8 @@ void tc_echo_on(){
 #define TRAIL_CHR(c) c==224
 #define ARROW_UP 72
 #define ARROW_DOWN 80
+#define ARROW_RIGHT 77
+#define ARROW_LEFT 75
 #define ENTR 13
 
 
