@@ -170,6 +170,7 @@ void Menu::getUserInput(std::string Attribute) {
     clear_screen();
     std::cout<<TC_BOLD<<titles[current_menu]<<TC_NRM<<'\n';
     std::cout<<Attribute;
+    std::cout<<SHOW_CURSOR;
     tc_echo_on();
     char c = 0;
     int t = 0;

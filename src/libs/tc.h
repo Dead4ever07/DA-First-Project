@@ -9,6 +9,7 @@
 #define TC_H
 
 #define HIDE_CURSOR "\033[?25l"
+#define SHOW_CURSOR "\033[?25h"
 
 #define TC_BOLD "\033[1m" // Sets text to bold
 #define TC_NRM "\x1B[0m" // normal color
@@ -36,7 +37,46 @@
 
 #define clear_screen() write(1, "\033[H\033[2J\033[3J", 11)
 
-#ifdef __unix__
+#ifdef _WIN32
+
+#include<windows.h>
+#include<conio.h>
+
+#define getchar _getch
+#define TRAIL_CHR 224
+#define ARROW_UP 72
+#define ARROW_DOWN 80
+#define ARROW_RIGHT 77
+#define ARROW_LEFT 75
+#define ENTR 13
+DWORD mode;
+
+void tc_echo_off() {
+    HANDLE hStdin = GetStdHandle(STD_INPUT_HANDLE);
+    if (hStdin == INVALID_HANDLE_VALUE) {
+        std::cerr << "Couldn't get the standard input handle" << std::endl;
+    }
+    DWORD mode;
+    if (GetConsoleMode(hStdin, &mode)) {
+        std::cerr << "Couldn't get the standard input handle" << std::endl;
+    }
+    mode &= ~ENABLE_ECHO_INPUT;  // Disable echo
+    SetConsoleMode(hStdin, mode);
+}
+
+void tc_echo_on() {
+    HANDLE hStdin = GetStdHandle(STD_INPUT_HANDLE);
+    if (hStdin == INVALID_HANDLE_VALUE) {
+        std::cerr << "Couldn't get the standard input handle" << std::endl;
+    }
+    DWORD mode;
+    if (GetConsoleMode(hStdin, &mode) != 0) {
+        std::cerr << "Failed to get console mode" << std::endl;
+    }
+    mode |= ENABLE_ECHO_INPUT;  // Enable echo
+    SetConsoleMode(hStdin, mode);
+}
+#else
 #include <sys/ioctl.h>
 #include <termios.h>
 
@@ -58,34 +98,6 @@ void tc_echo_on(){
     term.c_lflag |= (ECHO|ICANON);
     tcsetattr(1, TCSANOW, &term);
 }
-#else
-#include<conio.h>
 
-
-#define getchar _getch
-#define TRAIL_CHR(c) c==224
-#define ARROW_UP 72
-#define ARROW_DOWN 80
-#define ARROW_RIGHT 77
-#define ARROW_LEFT 75
-#define ENTR 13
-
-
-
-void tc_echo_off() {
-    HANDLE hStdin = GetStdHandle(STD_INPUT_HANDLE);
-    DWORD mode;
-    GetConsoleMode(hStdin, &mode);
-    mode &= ~ENABLE_ECHO_INPUT;  // Disable echo
-    SetConsoleMode(hStdin, mode);
-}
-
-void tc_echo_on() {
-    HANDLE hStdin = GetStdHandle(STD_INPUT_HANDLE);
-    DWORD mode;
-    GetConsoleMode(hStdin, &mode);
-    mode |= ENABLE_ECHO_INPUT;  // Enable echo
-    SetConsoleMode(hStdin, mode);
-}
 #endif
 #endif //TC_H
