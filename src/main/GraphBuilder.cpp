@@ -5,7 +5,7 @@
 #include "../libs/GraphBuilder.h"
 #include <sstream>
 #include <fstream>
-
+#include <vector>
 
 void graphDistance(Graph<std::string>* g, std::string distances){
     std::ifstream inD(distances);
@@ -72,7 +72,9 @@ void readInput() {
         std::cerr << "Error opening input file"<< std::endl;
         return;
     }
-    std::string line, mode, source, destination;
+    std::string line, mode, source, destination, nodesLine;
+    std::vector<int> avoidNodes;
+    std::vector<std::pair<int,int>> avoidSegments;
     while (getline(in, line)) {
         std::istringstream iss(line);
         std::string m;
@@ -88,6 +90,28 @@ void readInput() {
         }
         else if (m == "Destination") {
             getline(iss, destination);
+            std::cout << destination << std::endl;
+        }
+        else if (m == "AvoidNodes") {
+            getline(iss, nodesLine);
+            std::istringstream issNodesLine(nodesLine);
+            int node;
+            while (issNodesLine >> node) {
+                char comma;
+                issNodesLine >> comma;
+                avoidNodes.push_back(node);
+            }
+            std::cout << destination << std::endl;
+        }
+        else if (m == "AvoidSegments") {
+            getline(iss, nodesLine);
+            std::istringstream issNodesLine(nodesLine);
+            char comma, pLeft, pRight;
+            std::pair<int, int> segment;
+            while (issNodesLine >> pLeft) {
+                issNodesLine >> segment.first >> comma >> segment.second >> pRight >> comma ;
+                avoidSegments.push_back(segment);
+            }
             std::cout << destination << std::endl;
         }
     }
