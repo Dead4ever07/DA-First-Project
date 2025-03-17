@@ -16,7 +16,7 @@ bool relaxCar(Edge<std::string> *edge) { // d[u] + driv(u,v) < d[v]
     return false;
 }
 
-void dijkstra(Graph<std::string> *g, const int &origin) {
+void dijkstra(Graph<std::string> *g, const int &origin,const int &dest) {
 
     MutablePriorityQueue<Vertex<std::string>> q;
 
@@ -32,7 +32,9 @@ void dijkstra(Graph<std::string> *g, const int &origin) {
     ini->setVisited(true);
     while (!q.empty()) {
         Vertex<std::string> *vertex = q.extractMin();
-
+        if (vertex->getId() == dest) {
+            return;
+        }
         for (Edge<std::string> *edge : vertex->getAdj()) {
             if(relaxCar(edge)) {
                 if (!edge->getDest()->isVisited()) {
@@ -48,9 +50,9 @@ void dijkstra(Graph<std::string> *g, const int &origin) {
     }
 }
 
-bool getPath(Graph<std::string> *g, const int &origin, const int& dest,std::vector<int> &route, int &cost) {
+bool getPath(Graph<std::string> *g, const int &origin, const int& dest,std::vector<int> &route, int &cost, bool isRestricted, bool secondRoute) {
 
-    dijkstra(g, origin);
+    dijkstra(g, origin,dest);
     Vertex<std::string> *dst = g->idFindVertex(dest);
 
     if (dst->getPath() == nullptr) {
@@ -58,13 +60,17 @@ bool getPath(Graph<std::string> *g, const int &origin, const int& dest,std::vect
     }
 
     cost += dst->getPath()->getDriving();
-    route.push_back(dst->getId());
     dst = dst->getPath()->getOrig();
+    if (!secondRoute) {
+        route.push_back(dst->getId());
+    }
 
     while (dst->getId() != origin) {
         int vertexId = dst->getId();
         cost += dst->getPath()->getDriving();
-        dst->setSelected(true);
+        if (!isRestricted) {
+            dst->setSelected(true);
+        }
         dst = dst->getPath()->getOrig();
         route.push_back(vertexId);
     }
@@ -89,7 +95,7 @@ void driveRoute(Graph<std::string> * g, const int &origin, const int& dest){
     std::cout << "Destination:" << dest << std::endl;
 
     std::cout << "BestDrivingRoute:";
-    if (!getPath(g,origin,dest,bestRoute, bestRouteCost)) {
+    if (!getPath(g,origin,dest,bestRoute, bestRouteCost,false,false)) {
         std::cout<<"none\n"<<std::endl;
         std::cout << "AlternativeDrivingRoute:none\n";
     }
@@ -101,10 +107,46 @@ void driveRoute(Graph<std::string> * g, const int &origin, const int& dest){
     int alternativeRouteCost = 0;
 
     std::cout << "AlternativeDrivingRoute:";
-    if (!getPath(g,origin,dest,alternativeRoute, alternativeRouteCost)) {
+    if (!getPath(g,origin,dest,alternativeRoute, alternativeRouteCost,false,false)) {
         std::cout << "none\n";
     }
     else {
         printRoute(alternativeRoute,alternativeRouteCost);
+    }
+}
+
+
+void driveRestrictedRoute(Graph<std::string> * g, const int &origin, const int& dest, std::vector<int>& vertex, std::vector<std::pair<int,int>>& edges,const int& middle) {
+    std::cout << "Source:" << origin << std::endl;
+    std::cout << "Destination:" << dest << std::endl;
+
+    for (const int id : vertex) {
+        g->idFindVertex(id)->setSelected(true);
+    }
+    for (std::pair<int,int> p : edges) {
+        Vertex<std::string> *originVertex = g->idFindVertex(p.first);
+        if (originVertex == nullptr || originVertex->isSelected()) {
+            continue;
+        }
+        for (auto e : originVertex->getAdj()) {
+            if (e->getDest()->getId() == p.second) {
+                e->setSelected(true);
+                break;
+            }
+        }
+    }
+
+    int cost = 0;
+    std::vector<int> route;
+
+    std::cout << "RestrictedDrivingRoute:";
+    if (!getPath(g,origin,middle,route,cost,true,false)) {
+        std::cout<<"none\n"<<std::endl;
+    }
+    else if (!getPath(g,middle,dest,route,cost,true,true)) {
+        std::cout<<"none\n"<<std::endl;
+    }
+    else {
+        printRoute(route,cost);
     }
 }
