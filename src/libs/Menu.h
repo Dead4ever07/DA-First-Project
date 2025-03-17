@@ -6,7 +6,7 @@
 #include <iostream>
 #include <map>
 #include <vector>
-
+#include "libs/GraphBuilder.h"
 #include "Graph.h"
 
 #define LINE_SIZE 20
@@ -49,7 +49,7 @@ private:
     std::map<int, std::string> titles = {{0, "Choose Your Data Set"}};
     std::map<std::string,int> argument_map;
 
-    Graph<int>* g;
+    Graph<std::string>* g;
 
     int current_menu = 0;
     int selected_line = 0;

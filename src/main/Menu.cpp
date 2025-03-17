@@ -3,12 +3,13 @@
 //
 
 #include "../libs/Menu.h"
+
 #include "libs/tc.h"
 Menu::Menu() {
     menus[0] =  mainOptions;
     menus[1] =  secOptions;
     menus[2] = thirdOptions;
-    g = new Graph<int>();
+    g = new Graph<std::string>();
 }
 
 void Menu::init() {
@@ -98,14 +99,40 @@ void Menu::processMenu1(ACTIONS &Pressed) {
         case(UP):
         case(DOWN):
             processArrowInMenu(Pressed);
-        break;
+            break;
         case(ENTER):
-            if (selected_line == menus[current_menu].size()-1) Pressed = EXIT;
-            else {
-                titles[current_menu+1] = menus[current_menu][selected_line];
-                current_menu ++;
-                selected_line = 0;
+            switch (selected_line) {
+                case 0:
+                    if (g != nullptr) {
+                        delete g;
+                        g = new Graph<std::string>();
+                    }
+                    graphLocation(this->g, "../resources/Locations.csv");
+                    graphDistance(this->g, "../resources/Distances.csv");
+                    current_menu++;
+                    titles[current_menu] = mainOptions[selected_line];
+                    selected_line = 0;
+                    break;
+                case 1:
+                    if (g != nullptr) {
+                        delete g;
+                        g = new Graph<std::string>();
+                    }
+                    graphLocation(this->g, "../resources/SmallLocations.csv");
+                    graphDistance(this->g, "../resources/SmallDistances.csv");
+                    selected_line = 0;
+                    current_menu ++;
+                    break;
+                case 2:
+                        std::cout<<"Not Implemented\n";
+                    break;
+                case 3:
+                    Pressed = EXIT;
+                    break;
+                default:
+                    break;
             }
+            break;
         default:
             break;
     }
@@ -129,6 +156,10 @@ void Menu::processMenu2(ACTIONS & Pressed) {
                     clear_screen();
                     break;
                 case(1):
+                    clear_screen();
+                    std::cout<<TC_BOLD<<"Best Path\n";
+                    readInput( g,"input.txt");
+                    getchar();
                     //CALL readInput that should print the result to the output.txt
                 break;
                 case(2):

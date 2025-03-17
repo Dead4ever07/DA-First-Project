@@ -22,7 +22,7 @@ void graphLocation(Graph<std::string>* g, std::string locations);
 
 Graph<std::string> * createGraph();
 
-void readInput(std::string input);
+void readInput(Graph<std::string>*g, std::string input);
 
 
 

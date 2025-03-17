@@ -1,7 +1,3 @@
-//
-// Created by luis-santos on 2/27/25.
-//
-
 #include "../libs/GraphBuilder.h"
 #include "../libs/RouteSearch.h"
 #include <sstream>
@@ -74,7 +70,7 @@ Graph<std::string> *createGraph() {
 }
 
 
-void readInput(std::string input) {
+void readInput(Graph<std::string>* g , std::string input) {
     std::ifstream in("../resources/" + input);
     if (!in) {
         std::cerr << "Error opening input file"<< std::endl;
@@ -89,20 +85,16 @@ void readInput(std::string input) {
         std::istringstream iss(line);
         std::string m;
         getline(iss, m, ':');
-        //std::cout << m;
         if (m == "Mode") {
             getline(iss, mode, '\r');
-            //std::cout << mode << std::endl;
         }
         else if (m == "Source") {
             getline(iss, source);
             iSource = stoi(source);
-            //std::cout << source << std::endl;
         }
         else if (m == "Destination") {
             getline(iss, destination);
             iDestination = stoi(destination);
-            //std::cout << destination << std::endl;
         }
         else if (m == "AvoidNodes") {
             getline(iss, nodesLine);
@@ -113,7 +105,6 @@ void readInput(std::string input) {
                 issNodesLine >> comma;
                 avoidNodes.push_back(node);
             }
-            //std::cout << destination << std::endl;
         }
         else if (m == "AvoidSegments") {
             getline(iss, nodesLine);
@@ -124,19 +115,15 @@ void readInput(std::string input) {
                 issNodesLine >> segment.first >> comma >> segment.second >> pRight >> comma ;
                 avoidSegments.push_back(segment);
             }
-            //std::cout << destination << std::endl;
         }
         else if (m == "IncludeNode") {
             getline(iss, nodesLine);
             std::istringstream issNodesLine(nodesLine);
             issNodesLine >> includeNode;
-            //std::cout << includeNode << std::endl;
         }
     }
-    Graph<std::string> *g = createGraph();
     if (mode == "driving") {
         if (includeNode != -1 || !avoidNodes.empty() || !avoidSegments.empty() ) {
-            //std::cout << "sitio certo\n";
             driveRestrictedRoute(g,iSource,iDestination,avoidNodes, avoidSegments, includeNode);
         }
         else {
