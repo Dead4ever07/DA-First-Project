@@ -3,9 +3,11 @@
 //
 
 #include "../libs/GraphBuilder.h"
+#include "../libs/RouteSearch.h"
 #include <sstream>
 #include <fstream>
 #include <vector>
+
 
 void graphDistance(Graph<std::string>* g, std::string distances){
     std::ifstream inD(distances);
@@ -32,7 +34,7 @@ void graphDistance(Graph<std::string>* g, std::string distances){
         int foot = std::stoi(walking);
 
 
-        g->addBidirectionalEdge(location1, location2, car, foot); //perguntar
+        g->addBidirectionalEdge(location1, location2, car, foot);
 
     }
     inD.close();
@@ -60,11 +62,19 @@ void graphLocation(Graph<std::string>* g, std::string locations){
         bool p = parking=="1";
 
 
-        g->addVertex(idL, location, code, p); //perguntar
+        g->addVertex(idL, location, code, p);
 
     }
     inL.close();
 }
+
+Graph<std::string> *createGraph() {
+    Graph<std::string>* g = new Graph<std::string>();
+    graphLocation(g, "../resources/SmallLocations.csv");
+    graphDistance(g, "../resources/SmallDistances.csv");
+    return g;
+}
+
 
 void readInput() {
     std::ifstream in("../resources/input.txt");
@@ -73,6 +83,7 @@ void readInput() {
         return;
     }
     std::string line, mode, source, destination, nodesLine;
+    int iSource, iDestination;
     std::vector<int> avoidNodes;
     std::vector<std::pair<int,int>> avoidSegments;
     while (getline(in, line)) {
@@ -83,13 +94,17 @@ void readInput() {
         if (m == "Mode") {
             getline(iss, mode);
             std::cout << mode << std::endl;
+            //detetar o mode e depois do while fazer um switch e dependendo do moddo chamar funcao (routesearch) correta
+            //perguntar professoa se tem mais do que um caso por input
         }
         else if (m == "Source") {
             getline(iss, source);
+            iSource = stoi(source);
             std::cout << source << std::endl;
         }
         else if (m == "Destination") {
             getline(iss, destination);
+            iDestination = stoi(destination);
             std::cout << destination << std::endl;
         }
         else if (m == "AvoidNodes") {
@@ -114,5 +129,23 @@ void readInput() {
             }
             std::cout << destination << std::endl;
         }
+        else if (m == "IncludeNode") {
+            getline(iss, nodesLine);
+            std::istringstream issNodesLine(nodesLine);
+            std::string node;
+            std::pair<int, int> segment;
+            issNodesLine >> node;
+            std::cout << node << std::endl;
+        }
     }
+    Graph<std::string> *g = createGraph();
+    switch (mode) {
+        case "driving":
+            driveRoute(g,iSource, iDestination);
+        break;
+        case "driving-walking":
+            //wip
+        break;
+    }
+
 }

@@ -22,6 +22,8 @@ void graphDistance(Graph<std::string>* g, std::string distances);
 
 void graphLocation(Graph<std::string>* g, std::string locations);
 
+Graph<std::string> * createGraph();
+
 void readInput();
 
 
