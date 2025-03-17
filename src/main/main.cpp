@@ -16,12 +16,12 @@ int main() {
 
     driveRoute(g,3,8);
     */
-    readInput("input.txt");
     /*
+    readInput("input.txt");
+    */
     Menu menu;
     menu.init();
     menu.run();
-    */
     return 0;
 }
 

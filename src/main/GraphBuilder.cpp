@@ -91,7 +91,7 @@ void readInput(std::string input) {
         getline(iss, m, ':');
         //std::cout << m;
         if (m == "Mode") {
-            getline(iss, mode);
+            getline(iss, mode, '\r');
             //std::cout << mode << std::endl;
         }
         else if (m == "Source") {
