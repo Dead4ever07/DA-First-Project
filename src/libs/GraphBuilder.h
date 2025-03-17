@@ -7,10 +7,6 @@
 
 #include "Graph.h"
 
-
-
-
-
 /**
  * @brief It fills the graph with the information provided.
  * @param[out] g The name of the reservoir.
