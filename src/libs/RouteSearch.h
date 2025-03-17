@@ -5,9 +5,9 @@
 
 bool relaxCar(Edge<std::string> *edge);
 
-void dijkstra(Graph<std::string> * g, const int &origin);
+void dijkstra(Graph<std::string> *g, const int &origin,const int &dest);
 
-bool getPath(Graph<std::string> * g, const int &origin, const int& dest,std::vector<int> &route, int &cost);
+bool getPath(Graph<std::string> *g, const int &origin, const int& dest,std::vector<int> &route, int &cost, bool isRestricted, bool secondRoute);
 
 void printRoute(const std::vector<int> &route, int routeCost);
 
