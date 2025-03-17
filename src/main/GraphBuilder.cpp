@@ -33,7 +33,6 @@ void graphDistance(Graph<std::string>* g, std::string distances){
         }
         int foot = std::stoi(walking);
 
-
         g->addBidirectionalEdge(location1, location2, car, foot);
 
     }
@@ -60,7 +59,6 @@ void graphLocation(Graph<std::string>* g, std::string locations){
 
         int idL = std::stoi(id);
         bool p = parking=="1";
-
 
         g->addVertex(idL, location, code, p);
 
@@ -95,9 +93,6 @@ void readInput(std::string input) {
         if (m == "Mode") {
             getline(iss, mode);
             //std::cout << mode << std::endl;
-
-            //detetar o mode e depois do while fazer um switch e dependendo do moddo chamar funcao (routesearch) correta
-            //perguntar professoa se tem mais do que um caso por input
         }
         else if (m == "Source") {
             getline(iss, source);
