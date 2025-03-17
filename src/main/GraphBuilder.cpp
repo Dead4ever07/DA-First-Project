@@ -91,7 +91,7 @@ void readInput(std::string input) {
         getline(iss, m, ':');
         //std::cout << m;
         if (m == "Mode") {
-            getline(iss, mode);
+            getline(iss, mode,'\r');
             //std::cout << mode << std::endl;
         }
         else if (m == "Source") {
@@ -136,14 +136,14 @@ void readInput(std::string input) {
     Graph<std::string> *g = createGraph();
     if (mode == "driving") {
         if (includeNode != -1 || !avoidNodes.empty() || !avoidSegments.empty() ) {
-            //std::cout << "sitio certo\n";
-            driveRestrictedRoute(g,iSource,iDestination,avoidNodes, avoidSegments, includeNode);
+            std::cout << driveRestrictedRoute(g,iSource,iDestination,avoidNodes, avoidSegments, includeNode);
         }
         else {
-            driveRoute(g,iSource, iDestination);
+            std::cout << driveRoute(g,iSource, iDestination);
         }
     }
     else if(mode == "driving-walking") {
+        //std::cout << "sitio certo\n";
         //wip
         return;
     }

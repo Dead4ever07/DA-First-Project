@@ -7,14 +7,6 @@
 #include "libs/RouteSearch.h"
 
 int main() {
-    /*
-    Graph<std::string>* g = new Graph<std::string>();
-
-    graphLocation(g, "../resources/SmallLocations.csv");
-    graphDistance(g, "../resources/SmallDistances.csv");
-
-    driveRoute(g,3,8);
-    */
     readInput("input.txt");
     return 0;
 }

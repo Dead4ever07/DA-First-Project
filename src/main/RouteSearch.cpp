@@ -50,7 +50,8 @@ void dijkstra(Graph<std::string> *g, const int &origin,const int &dest) {
     }
 }
 
-bool getPath(Graph<std::string> *g, const int &origin, const int& dest,std::vector<int> &route, int &cost, bool isRestricted, bool secondRoute) {
+//tirar o is restrictive!!!
+bool getPath(Graph<std::string> *g, const int &origin, const int& dest,std::vector<int> &route, int &cost, bool isRestricted, bool firstPath) {
 
     dijkstra(g, origin,dest);
     Vertex<std::string> *dst = g->idFindVertex(dest);
@@ -59,7 +60,8 @@ bool getPath(Graph<std::string> *g, const int &origin, const int& dest,std::vect
         return false;
     }
 
-    if (!secondRoute) {
+    //to avoid repeating the same vertex in restricted path when I call getPath(g,middle,dest,route,cost,true,false) -> getPath(g,origin,middle,route,cost,true,true)
+    if (!firstPath) {
         route.push_back(dest);
     }
 
@@ -69,57 +71,58 @@ bool getPath(Graph<std::string> *g, const int &origin, const int& dest,std::vect
     while (dst->getId() != origin) {
         int vertexId = dst->getId();
         cost += dst->getPath()->getDriving();
+        //in restricted paths I can repeat the vertices of the first/last graph
         if (!isRestricted) {
             dst->setSelected(true);
         }
         dst = dst->getPath()->getOrig();
         route.push_back(vertexId);
     }
+
     route.push_back(origin);
+
     return true;
 }
 
-void printRoute(const std::vector<int> &route,const int routeCost) {
-    std::cout << route[route.size()-1];
+std::string printRoute(const std::vector<int> &route,const int routeCost) {
+    std::string result = std::to_string(route[route.size()-1]);
     for (int i = route.size()-2; i >= 0; i--) {
-        std::cout << "," <<route[i];
+        result.append("," + std::to_string(route[i]));
     }
-    std::cout << "(" << routeCost << ")" <<std::endl;
+    result.append("(" + std::to_string(routeCost) + ")\n");
+    return result;
 }
 
 
-void driveRoute(Graph<std::string> * g, const int &origin, const int& dest){
+std::string driveRoute(Graph<std::string> * g, const int &origin, const int& dest){
+
+    std::string result = "Source:" + std::to_string(origin) + "\n" + "Dest:" + std::to_string(dest) + '\n' + "BestDrivingRoute:";
+
     std::vector<int> bestRoute;
     int bestRouteCost = 0;
 
-    std::cout << "Source:" << origin << std::endl;
-    std::cout << "Destination:" << dest << std::endl;
-
-    std::cout << "BestDrivingRoute:";
     if (!getPath(g,origin,dest,bestRoute, bestRouteCost,false,false)) {
-        std::cout<<"none\n"<<std::endl;
-        std::cout << "AlternativeDrivingRoute:none\n";
+        result.append("none\nAlternativeDrivingRoute:none\n"); //!! ver complexidade de append e ver se faz mais sentido usar outra operação
+        return result;
     }
-    else {
-        printRoute(bestRoute,bestRouteCost);
-    }
+
+    result.append(printRoute(bestRoute,bestRouteCost));
+
+    result.append("AlternativeDrivingRoute:");
 
     std::vector<int> alternativeRoute;
     int alternativeRouteCost = 0;
 
-    std::cout << "AlternativeDrivingRoute:";
     if (!getPath(g,origin,dest,alternativeRoute, alternativeRouteCost,false,false)) {
-        std::cout << "none\n";
+        result.append("none\n");
     }
     else {
-        printRoute(alternativeRoute,alternativeRouteCost);
+        result.append(printRoute(alternativeRoute,alternativeRouteCost));
     }
+    return result;
 }
 
-
-void driveRestrictedRoute(Graph<std::string> * g, const int &origin, const int& dest, std::vector<int>& vertex, std::vector<std::pair<int,int>>& edges,const int& middle) {
-    std::cout << "Source:" << origin << std::endl;
-    std::cout << "Destination:" << dest << std::endl;
+std::string driveRestrictedRoute(Graph<std::string> * g, const int &origin, const int& dest, std::vector<int>& vertex, std::vector<std::pair<int,int>>& edges,const int& middle) {
 
     for (const int id : vertex) {
         g->idFindVertex(id)->setSelected(true);
@@ -138,20 +141,28 @@ void driveRestrictedRoute(Graph<std::string> * g, const int &origin, const int& 
         }
     }
 
+    std::string result = "Source:" + std::to_string(origin) + "\n" + "Dest:" + std::to_string(dest) + '\n' + "RestrictedDrivingRoute:";
+
     int cost = 0;
     std::vector<int> route;
 
-    std::cout << "RestrictedDrivingRoute:";
+
     if (middle == -1) {
-        driveRoute(g,origin,dest);
+        if (!getPath(g,origin,dest,route,cost,true,false)) {
+            result.append("none\n");
+        }
+        else {
+            result.append(printRoute(route,cost));
+        }
+        return result;
     }
-    if (!getPath(g,origin,middle,route,cost,true,false)) {
-        std::cout<<"none\n"<<std::endl;
+
+    if (!getPath(g,middle,dest,route,cost,true,false) || !getPath(g,origin,middle,route,cost,true,true)) {
+        result.append("none\n");
+        return result;
     }
-    else if (!getPath(g,middle,dest,route,cost,true,true)) {
-        std::cout<<"none\n"<<std::endl;
-    }
-    else {
-        printRoute(route,cost);
-    }
+
+    result.append(printRoute(route,cost));
+
+    return result;
 }
