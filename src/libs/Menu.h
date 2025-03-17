@@ -7,6 +7,7 @@
 #include <map>
 #include <vector>
 #include "libs/GraphBuilder.h"
+#include "libs/RouteSearch.h"
 #include "Graph.h"
 
 #define LINE_SIZE 20
@@ -27,7 +28,7 @@ private:
     void processMenu2(ACTIONS &Pressed);
     void processMenu3(ACTIONS &Pressed);//Not implemented
     void processMenu4(ACTIONS &Pressed);//Not implemented;
-    void getUserInput(std::string);
+    int getUserInput(std::string);
     void processArrowInMenu(const ACTIONS & Pressed);
     std::pmr::vector<std::string> mainOptions =
         {"Large Data Set"
@@ -36,7 +37,7 @@ private:
         ,"Quit(Q)"
         };
     std::pmr::vector<std::string> secOptions =
-        {"Find Distance Between Two Places"
+        {"Find Driving Distance Between Two Places"
         ,"Execute Input.txt"
         , "Show Vertices"
         ,"Return"
@@ -47,8 +48,6 @@ private:
         };
     std::map<int, std::pmr::vector<std::string>> menus;
     std::map<int, std::string> titles = {{0, "Choose Your Data Set"}};
-    std::map<std::string,int> argument_map;
-
     Graph<std::string>* g;
 
     int current_menu = 0;

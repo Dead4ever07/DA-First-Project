@@ -139,6 +139,8 @@ void Menu::processMenu1(ACTIONS &Pressed) {
 }
 
 void Menu::processMenu2(ACTIONS & Pressed) {
+    int dep;
+    int arr;
     switch (Pressed) {
         case(UP):
         case(DOWN):
@@ -147,12 +149,15 @@ void Menu::processMenu2(ACTIONS & Pressed) {
         case(ENTER):
             switch (selected_line) {
                 case(0):
-                    getUserInput("Input :");
+                    dep = getUserInput("Departure:");
+                    arr = getUserInput("Arrival:");
+                    clear_screen();
+                    std::cout<<driveRoute(g,dep, arr);
                     std::cout<<'\n'<<"Press Enter To Return";
                     do {
-                        std::cout<<"hello\n";
                         get_input(Pressed);
                     }while (Pressed!= ENTER);
+
                     clear_screen();
                     break;
                 case(1):
@@ -197,7 +202,7 @@ void Menu::processArrowInMenu(const ACTIONS & Pressed) {
  * @brief Simple function that reads the user input, allowing the user to see what it is typing in the process
  * @param Attribute Sentence to be printed
  */
-void Menu::getUserInput(std::string Attribute) {
+int Menu::getUserInput(std::string Attribute) {
     clear_screen();
     std::cout<<TC_BOLD<<titles[current_menu]<<TC_NRM<<'\n';
     std::cout<<Attribute;
@@ -207,10 +212,17 @@ void Menu::getUserInput(std::string Attribute) {
     int t = 0;
     do {
         c = getchar();
+        if (c == EOF) break;
         to_int(c, t);
     }
-    while (c != ENTR);
-    argument_map[Attribute] = t;
+    while (c != ENTR & c != 32);
+    std::cout<<HIDE_CURSOR;
+    tc_echo_off();
+
+
+
+
+    return t;
 }
 
 /**

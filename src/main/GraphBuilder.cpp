@@ -125,9 +125,10 @@ void readInput(Graph<std::string>* g , std::string input) {
     if (mode == "driving") {
         if (includeNode != -1 || !avoidNodes.empty() || !avoidSegments.empty() ) {
             driveRestrictedRoute(g,iSource,iDestination,avoidNodes, avoidSegments, includeNode);
+            std::cout << driveRestrictedRoute(g,iSource,iDestination,avoidNodes, avoidSegments, includeNode);
         }
         else {
-            driveRoute(g,iSource, iDestination);
+            std::cout << driveRoute(g,iSource, iDestination);
         }
     }
     else if(mode == "driving-walking") {
