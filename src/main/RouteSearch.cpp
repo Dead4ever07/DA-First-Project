@@ -59,11 +59,12 @@ bool getPath(Graph<std::string> *g, const int &origin, const int& dest,std::vect
         return false;
     }
 
+    if (!secondRoute) {
+        route.push_back(dest);
+    }
+
     cost += dst->getPath()->getDriving();
     dst = dst->getPath()->getOrig();
-    if (!secondRoute) {
-        route.push_back(dst->getId());
-    }
 
     while (dst->getId() != origin) {
         int vertexId = dst->getId();
@@ -123,6 +124,7 @@ void driveRestrictedRoute(Graph<std::string> * g, const int &origin, const int& 
     for (const int id : vertex) {
         g->idFindVertex(id)->setSelected(true);
     }
+
     for (std::pair<int,int> p : edges) {
         Vertex<std::string> *originVertex = g->idFindVertex(p.first);
         if (originVertex == nullptr || originVertex->isSelected()) {
@@ -140,6 +142,9 @@ void driveRestrictedRoute(Graph<std::string> * g, const int &origin, const int& 
     std::vector<int> route;
 
     std::cout << "RestrictedDrivingRoute:";
+    if (middle == -1) {
+        driveRoute(g,origin,dest);
+    }
     if (!getPath(g,origin,middle,route,cost,true,false)) {
         std::cout<<"none\n"<<std::endl;
     }
