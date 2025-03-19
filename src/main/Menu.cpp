@@ -152,7 +152,6 @@ void Menu::processMenu2(ACTIONS & Pressed) {
                     dep = getUserInput("Departure:");
                     arr = getUserInput("Arrival:");
                     clear_screen();
-                    std::cout<<driveRoute(g,dep, arr);
                     std::cout<<'\n'<<"Press Enter To Return";
                     do {
                         get_input(Pressed);

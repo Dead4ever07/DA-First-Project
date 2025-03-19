@@ -174,6 +174,7 @@ void readInput(Graph<std::string>*g,std::string input) {
 }
 
 std::string checkInput(Graph<std::string> * g, const int &origin, const int& dest, std::vector<int>& vertex, std::vector<std::pair<int,int>>& edges,const int& middle, std::string mode) {
+
     Vertex<std::string>* originVertex = g->idFindVertex(origin);
     if (originVertex == nullptr) {
         return "Invalid Source inserted:(" +std::to_string(origin) + ")!";
@@ -181,18 +182,51 @@ std::string checkInput(Graph<std::string> * g, const int &origin, const int& des
 
     Vertex<std::string>* destVertex = g->idFindVertex(dest);
     if (destVertex == nullptr) {
-        std::cout << "Invalid Destination inserted: (" << dest << " )!";
+        return "Invalid Destination inserted:(" +std::to_string(dest) + ")!";
     }
-    std::string result;
+
+    std::string result = "Source:" + std::to_string(origin) + "\n" + "Dest:" + std::to_string(dest)+'\n';
+
     if (mode == "driving") {
-        if (middle != -1 || !vertex.empty() || !edges.empty() ) {
+        if (middle == -1 && vertex.empty() && edges.empty() ) {
             //std::cout << "sitio certo\n";
-            driveRestrictedRoute(g,origin,dest,vertex, edges, middle);
+            result.append(driveRoute(g,originVertex, destVertex));
+            return result;
         }
-        else {
-            driveRoute(g,origin, dest);
+
+        if (middle == -1 || g->idFindVertex(middle) == nullptr) {
+            return "Invalid IncludeNode inserted:(" +std::to_string(middle) + ")!";
         }
+
+        for (const int id : vertex) {
+            Vertex<std::string> *vertex = g->idFindVertex(id);
+            if (vertex == nullptr) {
+                return "Invalid AvoidNode inserted!";
+            }
+            vertex->setSelected(true);
+        }
+
+        for (std::pair<int,int> p : edges) {
+            Vertex<std::string> *originVertex = g->idFindVertex(p.first);
+            if (originVertex == nullptr) {
+                return "Invalid AvoidSegment inserted!";
+            }
+            if (originVertex->isSelected()) {
+                continue;
+            }
+            for (auto e : originVertex->getAdj()) {
+                if (e->getDest()->getId() == p.second) {
+                    e->setSelected(true);
+                    break;
+                }
+            }
+            return "Invalid AvoidSegment inserted!";
+        }
+        result.append(driveRestrictedRoute(g,originVertex,destVertex,vertex,edges,middle));
+        return result;
     }
+
+
     else if(mode == "driving-walking") {
         //wip
         //std::cout << "im here";
