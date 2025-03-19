@@ -30,14 +30,9 @@
 #define TC_BG_CYN "\x1B[46m"
 #define TC_BG_WHT "\x1B[47m"
 
-
-
-
-
-
 #define clear_screen() write(1, "\033[H\033[2J\033[3J", 11)
 
-#ifdef _WIN32
+#ifdef _WIN64
 
 #include<windows.h>
 #include<conio.h>

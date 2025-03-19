@@ -69,13 +69,20 @@ Graph<std::string> *createGraph() {
     return g;
 }
 
-
-void readInput(Graph<std::string>* g , std::string input) {
-    std::ifstream in("../resources/" + input);
+void readInputFromFile(Graph<std::string>* g, std::string fileName, std::string& output) {
+    std::ifstream in("../resources/" + fileName);
     if (!in) {
         std::cerr << "Error opening input file"<< std::endl;
         return;
     }
+    std::string s(std::istreambuf_iterator<char>(in), {});
+    readInputFromString(g, s, output);
+}
+
+
+
+void readInputFromString(Graph<std::string>* g , std::string input, std::string& output) {
+    std::istringstream in(input);
     std::string line, mode, source, destination, nodesLine;
     int iSource, iDestination;
     std::vector<int> avoidNodes = {};
@@ -124,11 +131,10 @@ void readInput(Graph<std::string>* g , std::string input) {
     }
     if (mode == "driving") {
         if (includeNode != -1 || !avoidNodes.empty() || !avoidSegments.empty() ) {
-            driveRestrictedRoute(g,iSource,iDestination,avoidNodes, avoidSegments, includeNode);
-            std::cout << driveRestrictedRoute(g,iSource,iDestination,avoidNodes, avoidSegments, includeNode);
+            output  = driveRestrictedRoute(g,iSource,iDestination,avoidNodes, avoidSegments, includeNode);
         }
         else {
-            std::cout << driveRoute(g,iSource, iDestination);
+            output =  driveRoute(g,iSource, iDestination);
         }
     }
     else if(mode == "driving-walking") {

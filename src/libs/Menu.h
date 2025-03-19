@@ -28,7 +28,7 @@ private:
     void processMenu2(ACTIONS &Pressed);
     void processMenu3(ACTIONS &Pressed);//Not implemented
     void processMenu4(ACTIONS &Pressed);//Not implemented;
-    int getUserInput(std::string);
+    std::string getUserInput(std::string);
     void processArrowInMenu(const ACTIONS & Pressed);
     std::pmr::vector<std::string> mainOptions =
         {"Large Data Set"

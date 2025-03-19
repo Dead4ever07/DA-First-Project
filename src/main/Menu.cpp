@@ -4,7 +4,10 @@
 
 #include "../libs/Menu.h"
 
+#include <fstream>
 #include "libs/tc.h"
+
+
 Menu::Menu() {
     menus[0] =  mainOptions;
     menus[1] =  secOptions;
@@ -29,7 +32,10 @@ void Menu::run() {
             processKey(Pressed);
     }
 }
-
+///
+/// @brief Captures user input and updates the associated action.
+/// @param[out] Pressed A reference to an `ACTIONS` object where the user's input
+///
 void Menu::get_input(ACTIONS& Pressed) {
     int c = getchar();
     switch (c) {
@@ -59,7 +65,9 @@ void Menu::get_input(ACTIONS& Pressed) {
        }
 
 }
-
+///
+/// @brief Displays the menu interface to the user.
+///
 void Menu::print_menu() {
     int index = 0;
     std::cout<<TC_BOLD<<titles[current_menu]<<'\n'<<TC_NRM;
@@ -94,6 +102,7 @@ void Menu::processKey(ACTIONS &Pressed) {
     }
 }
 
+
 void Menu::processMenu1(ACTIONS &Pressed) {
     switch (Pressed) {
         case(UP):
@@ -120,8 +129,9 @@ void Menu::processMenu1(ACTIONS &Pressed) {
                     }
                     graphLocation(this->g, "../resources/SmallLocations.csv");
                     graphDistance(this->g, "../resources/SmallDistances.csv");
-                    selected_line = 0;
                     current_menu ++;
+                    titles[current_menu] = mainOptions[selected_line];
+                    selected_line = 0;
                     break;
                 case 2:
                         std::cout<<"Not Implemented\n";
@@ -139,8 +149,9 @@ void Menu::processMenu1(ACTIONS &Pressed) {
 }
 
 void Menu::processMenu2(ACTIONS & Pressed) {
-    int dep;
-    int arr;
+    std::string dep;
+    std::ofstream ofs ("../resources/output.txt", std::ofstream::out);
+    std::string out;
     switch (Pressed) {
         case(UP):
         case(DOWN):
@@ -149,21 +160,26 @@ void Menu::processMenu2(ACTIONS & Pressed) {
         case(ENTER):
             switch (selected_line) {
                 case(0):
-                    dep = getUserInput("Departure:");
-                    arr = getUserInput("Arrival:");
-                    clear_screen();
-                    std::cout<<driveRoute(g,dep, arr);
-                    std::cout<<'\n'<<"Press Enter To Return";
-                    do {
-                        get_input(Pressed);
-                    }while (Pressed!= ENTER);
+                    dep.append("Mode:");
+                    dep.append(getUserInput("Mode:"));
+                    dep.append("Source:");
+                    dep.append(getUserInput("Source:"));
+                    dep.append("Destination:");
+                    dep.append(getUserInput("Destination:"));
 
                     clear_screen();
+                    std::cout<<TC_BOLD<<"Best Route:\n";
+                    readInputFromString(g,dep,out);
+                    std::cout<<out<<'\n';
+                    getchar();
                     break;
                 case(1):
                     clear_screen();
                     std::cout<<TC_BOLD<<"Best Path\n";
-                    readInput( g,"input.txt");
+                    readInputFromFile( g,"input.txt", out);
+                    std::cout<<out<<'\n';
+                    ofs<<out;
+                    ofs.close();
                     getchar();
                     //CALL readInput that should print the result to the output.txt
                 break;
@@ -202,27 +218,23 @@ void Menu::processArrowInMenu(const ACTIONS & Pressed) {
  * @brief Simple function that reads the user input, allowing the user to see what it is typing in the process
  * @param Attribute Sentence to be printed
  */
-int Menu::getUserInput(std::string Attribute) {
+std::string Menu::getUserInput(std::string Attribute) {
     clear_screen();
     std::cout<<TC_BOLD<<titles[current_menu]<<TC_NRM<<'\n';
     std::cout<<Attribute;
     std::cout<<SHOW_CURSOR;
     tc_echo_on();
-    char c = 0;
-    int t = 0;
+    std::string result;
+    char c;
     do {
         c = getchar();
+        result += c;
         if (c == EOF) break;
-        to_int(c, t);
     }
     while (c != ENTR & c != 32);
     std::cout<<HIDE_CURSOR;
     tc_echo_off();
-
-
-
-
-    return t;
+    return result;
 }
 
 /**
