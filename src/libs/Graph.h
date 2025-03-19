@@ -493,11 +493,15 @@ Vertex<T> * Graph<T>::findVertex(const T &in) const {
     return nullptr;
 }
 
-/*
- * Finds the index of the vertex with a given content.
+/**
+ * @brief Searches for a vertex in the graph by its ID
+ *
+ * @param id The ID of the vertex to find
+ *
+ * @return Pointer to the vertex with the matching ID, or nullptr if no such vertex exists
+ *
+ * @note Time Complexity: O(V), where V is the number of vertices in the graph
  */
-
-
 template <class T>
 Vertex<T> * Graph<T>::idFindVertex(int id) const {
     for (auto v : vertexSet)
@@ -514,9 +518,18 @@ int Graph<T>::findVertexIdx(const T &in) const {
             return i;
     return -1;
 }
-/*
- *  Adds a vertex with a given content or code (in) to a graph (this).
- *  Returns true if successful, and false if a vertex with that content already exists.
+
+/**
+ * @brief Adds a new vertex to the graph.
+ *
+ * @param id The unique identifier of the vertex.
+ * @param location The name of the location associated with the vertex.
+ * @param code The unique code representing the vertex.
+ * @param parking A boolean indicating whether parking is available at this location.
+ *
+ * @return true if successful, false if a vertex with that content already exists.
+ *
+ * @note Time Complexity: O(V), where V is the number of vertices in the graph.
  */
 template <class T>
 bool Graph<T>::addVertex(int id, std::string location, T code, bool parking){
