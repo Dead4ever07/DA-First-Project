@@ -122,10 +122,8 @@ void readInput(Graph<std::string>*g,std::string input) {
         std::istringstream iss(line);
         std::string m;
         getline(iss, m, ':');
-        //std::cout << m;
         if (m == "Mode") {
-            getline(iss, mode);
-            //std::cout << mode << std::endl;
+            getline(iss, mode, '\r');
         }
         else if (m == "Source") {
             getline(iss, source);

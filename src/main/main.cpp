@@ -1,18 +1,9 @@
-#include <iostream>
 
-#include <sstream>
-
-#include "../libs/Graph.h"
-#include "libs/GraphBuilder.h"
-#include "libs/RouteSearch.h"
-
+#include "../libs/Menu.h"
 int main() {
 
-    Graph<std::string>* g = new Graph<std::string>();
-
-    graphLocation(g, "../resources/SmallLocations.csv");
-    graphDistance(g, "../resources/SmallDistances.csv");
-
-    readInput(g, "input.txt");
+    Menu menu;
+    menu.init();
+    menu.run();
     return 0;
 }
