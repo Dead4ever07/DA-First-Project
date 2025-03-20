@@ -136,10 +136,10 @@ void readInputFromString(Graph<std::string>* g , std::string input, std::string&
             issNodesLine >> maxWalkTime;
         }
     }
-    output = checkInput(g, iSource, iDestination, avoidNodes, avoidSegments, includeNode, mode);
+    output = checkInput(g, iSource, iDestination, avoidNodes, avoidSegments, includeNode, mode,maxWalkTime);
 }
 
-std::string checkInput(Graph<std::string> * g, const int &origin, const int& dest, std::vector<int>& vertex, std::vector<std::pair<int,int>>& edges,const int& middle, std::string mode) {
+std::string checkInput(Graph<std::string> * g, const int &origin, const int& dest, std::vector<int>& vertex, std::vector<std::pair<int,int>>& edges,const int& middle, std::string mode, int maxWalkTime) {
 
     Vertex<std::string>* originVertex = g->idFindVertex(origin);
     if (originVertex == nullptr) {
@@ -188,11 +188,13 @@ std::string checkInput(Graph<std::string> * g, const int &origin, const int& des
         }
     }
     if(mode == "driving") {
-        result.append(driveRestrictedRoute(g,originVertex,destVertex,vertex,edges,middle));
+        result.append(driveRestrictedRoute(g,originVertex,destVertex,middle));
     }
     else if(mode == "driving-walking") {
-        //wip
+        result.append(driveWalkingRoute(g,originVertex,destVertex,maxWalkTime));
     }
-    else return "Invalid Mode inserted:(" + mode + ")!";
+    else {
+        return "Invalid Mode inserted:(" + mode + ")!";
+    }
     return result;
 }

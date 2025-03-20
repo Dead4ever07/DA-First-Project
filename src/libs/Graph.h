@@ -30,7 +30,9 @@ public:
     bool isProcessing() const;
     unsigned int getIndegree() const;
     double getDist() const;
+    double getForwardDist() const;
     Edge<T> *getPath() const;
+    Edge<T> *getForwardPath() const;
     std::vector<Edge<T> *> getIncoming() const;
 
     int getId() const;
@@ -46,7 +48,11 @@ public:
 
     void setIndegree(unsigned int indegree);
     void setDist(double dist);
+
+    void setForwardDist(double fowardDist);
+
     void setPath(Edge<T> *path);
+    void setForwardPath(Edge<T> *forwardPath);
 
     Edge<T> * addEdge(Vertex<T> *dest, int driving, int walking);
     bool removeEdge(T in);
@@ -77,7 +83,9 @@ protected:
     unsigned int indegree; // used by topsort
     double dist = 0;
     Edge<T> *path = nullptr;
+    Edge<T> *forwardPath = nullptr;
 
+    double forwardDist;;
 
 
     bool parking = false;
@@ -302,9 +310,19 @@ double Vertex<T>::getDist() const {
     return this->dist;
 }
 
+template<class T>
+double Vertex<T>::getForwardDist() const {
+    return this->forwardDist;
+}
+
 template <class T>
 Edge<T> *Vertex<T>::getPath() const {
     return this->path;
+}
+
+template<class T>
+Edge<T> * Vertex<T>::getForwardPath() const {
+    return this->forwardPath;
 }
 
 template <class T>
@@ -358,8 +376,18 @@ void Vertex<T>::setDist(double dist) {
 }
 
 template <class T>
+void Vertex<T>::setForwardDist(double forwardDist) {
+    this->forwardDist = forwardDist;
+}
+
+template <class T>
 void Vertex<T>::setPath(Edge<T> *path) {
     this->path = path;
+}
+
+template<class T>
+void Vertex<T>::setForwardPath(Edge<T> *forwardPath) {
+    this->forwardPath = forwardPath;
 }
 
 template <class T>
