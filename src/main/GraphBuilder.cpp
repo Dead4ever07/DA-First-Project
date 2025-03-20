@@ -198,3 +198,12 @@ std::string checkInput(Graph<std::string> * g, const int &origin, const int& des
     }
     return result;
 }
+
+void deselect(Graph<std::string> * g) {
+    for (auto v : g->getVertexSet()) {
+        v->setSelected(true);
+        for (auto e : v->getAdj()) {
+            e->setSelected(false);
+        }
+    }
+}
