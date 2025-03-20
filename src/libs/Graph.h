@@ -387,7 +387,7 @@ void Vertex<T>::setPath(Edge<T> *path) {
 
 template<class T>
 void Vertex<T>::setForwardPath(Edge<T> *forwardPath) {
-    this->forwardPath = forwardPath
+    this->forwardPath = forwardPath;
 }
 
 template <class T>

@@ -48,12 +48,12 @@ void dijkstraWalking(Graph<std::string> *g, Vertex<std::string> *origin, int max
 
     while (!q.empty()) {
         Vertex<std::string> *vertex = q.extractMin();
-        if (q.extractMin()->getDist() >= maxWalkingDist) {
+        if (vertex->getDist() >= maxWalkingDist) {
             return;
         }
         for (Edge<std::string> *edge : vertex->getAdj()) {
             if(relaxWalking(edge)) {
-                if (!edge->getOrig()->isVisited()) {
+                if (!edge->getDest()->isVisited()) {
                     edge->getDest()->setVisited(true);
                     q.insert(edge->getDest());
                 }
@@ -105,7 +105,7 @@ void getWalkRoute(Graph<std::string> *g, Vertex<std::string>* middle, Vertex<std
     route.push_back(middle->getId());
 
     cost += middle->getForwardPath()->getWalking();
-    dest = dest->getPath()->getOrig();
+    middle = middle->getForwardPath()->getOrig();
 
     while (middle != dest) {
         int vertexId = middle->getId();
@@ -114,7 +114,7 @@ void getWalkRoute(Graph<std::string> *g, Vertex<std::string>* middle, Vertex<std
         route.push_back(vertexId);
     }
 
-    route.push_back(dest->getId());
+    route.push_back(middle->getId());
 }
 
 void getDriveRoute(Graph<std::string> *g, Vertex<std::string>* origin, Vertex<std::string>* dest,std::vector<int> &route, int &cost, bool isRestricted, bool firstPath) {
@@ -230,22 +230,23 @@ std::string driveWalkingRoute(Graph<std::string> * g,Vertex<std::string>* origin
             parkingSpots.push_back(temp);
         }
     }
+
     if (parkingSpots.empty()) {
         return "DrivingRoute:none\nParkingNode:none\nWalkingRoute:none\nTotalTime:\nMessage:No possible route with max. walking time of "+std::to_string(max) + " minutes.";
     }
 
     dijkstra(g,origin,nullptr);
-    double distance = INF;
-    Vertex<std::string> *vertex = nullptr;
+    int distance = INF;
+    Vertex<std::string> *parkingVertex = nullptr;
     for (auto temp : parkingSpots) {
-        if ((temp->getDist() + temp->getForwardDist() < distance) || ((temp->getDist() + temp->getForwardDist() == distance) && vertex != nullptr && temp->getForwardDist() > vertex->getForwardDist())) {
+        if ((temp->getDist() + temp->getForwardDist() < distance) || ((temp->getDist() + temp->getForwardDist() == distance) && parkingVertex != nullptr && temp->getForwardDist() > parkingVertex->getForwardDist())) {
             distance = temp->getDist() + temp->getForwardDist();
-            vertex = temp;
+            parkingVertex = temp;
         }
     }
 
     //não tenho ainda certeza da parte dos erros !!!
-    if (vertex == nullptr) {
+    if (parkingVertex == nullptr) {
         return "DrivingRoute:none\nParkingNode:none\nWalkingRoute:none\nTotalTime:\nMessage:No possible route with max. walking time of "+std::to_string(max) + " minutes.";
     }
 
@@ -255,15 +256,19 @@ std::string driveWalkingRoute(Graph<std::string> * g,Vertex<std::string>* origin
     std::vector<int> walkRoute;
     int walkRouteCost = 0;
 
-    getDriveRoute(g,origin,dest,drivingRoute,drivingRouteCost,true,false);
+    getDriveRoute(g,origin,parkingVertex,drivingRoute,drivingRouteCost,true,false);
     result.append(printRoute(drivingRoute,drivingRouteCost));
-    result.append("ParkingNode:" + std::to_string(vertex->getId()));
+
+    result.append("ParkingNode:" + std::to_string(parkingVertex->getId()));
     result.append("\nWalkingRoute:");
 
-    getWalkRoute(g,vertex,dest,walkRoute,walkRouteCost);
+    getWalkRoute(g,parkingVertex,dest,walkRoute,walkRouteCost);
+    std::ranges::reverse(walkRoute);
     result.append(printRoute(walkRoute,walkRouteCost));
 
-    result.append("\nTotalTime:");
+    result.append("TotalTime:");
     result.append(std::to_string(distance));
+
     return result;
+
 }

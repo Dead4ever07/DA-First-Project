@@ -5,13 +5,6 @@
 #include <vector>
 
 
-/**
- * Reads distance data from a file and adds edges to the graph.
- *
- * @param g Pointer to the Graph object.
- * @param distances Path to the file containing distances between locations.
- * @note Time Complexity: O(E), where E is the number of edges in the file
- */
 void graphDistance(Graph<std::string>* g, std::string distances){
     std::ifstream inD(distances);
     if (!inD) {
@@ -42,13 +35,6 @@ void graphDistance(Graph<std::string>* g, std::string distances){
     inD.close();
 }
 
-/**
- * Reads location data from a file and adds vertices to the graph.
- *
- * @param g Pointer to the Graph object.
- * @param locations Path to the file containing location data.
- * @note Time Complexity: O(V), where V is the number of vertices in the file.
- */
 void graphLocation(Graph<std::string>* g, std::string locations){
     std::ifstream inL(locations);
     if (!inL) {
@@ -76,32 +62,6 @@ void graphLocation(Graph<std::string>* g, std::string locations){
     inL.close();
 }
 
-/**
- * Creates and initializes a graph with locations and distances from files.
- *
- * @return Pointer to the created Graph object.
- *
- * @note Time Complexity: O(V + E), where V is the number of vertices and E is the number of edges
- */
-Graph<std::string> *createGraph() {
-    Graph<std::string>* g = new Graph<std::string>();
-    graphLocation(g, "../resources/SmallLocations.csv");
-    graphDistance(g, "../resources/SmallDistances.csv");
-    return g;
-}
-
-/**
- * Reads and processes input commands to determine a route based on a given mode.
- *
- * @param input Filename of the input file containing route parameters.
- *
- * @note Time Complexity: O(L + M + N + A + (V + E)log V), where:
- *   - L is the number of lines in the input file,
- *   - V is the number of vertices,
- *   - E is the number of edges,
- *   - A is the number of avoid nodes/segments.
- *   - (V + E)log V is the time complexity of a Dijkstra search,
- */
 void readInputFromFile(Graph<std::string>* g, std::string fileName, std::string& output) {
     std::ifstream in("../resources/" + fileName);
     if (!in) {
@@ -112,15 +72,12 @@ void readInputFromFile(Graph<std::string>* g, std::string fileName, std::string&
     readInputFromString(g, s, output);
 }
 
-
-
 void readInputFromString(Graph<std::string>* g , std::string input, std::string& output) {
     std::istringstream in(input);
     std::string line, mode, source, destination, nodesLine;
-    int iSource, iDestination, maxWalkTime;
+    int iSource, iDestination, maxWalkTime, includeNode = -1;
     std::vector<int> avoidNodes = {};
     std::vector<std::pair<int,int>> avoidSegments = {};
-    int includeNode = -1;
     while (getline(in, line)) {
         std::istringstream iss(line);
         std::string m;
@@ -130,11 +87,23 @@ void readInputFromString(Graph<std::string>* g , std::string input, std::string&
         }
         else if (m == "Source") {
             getline(iss, source);
+            try{
             iSource = stoi(source);
+            }
+            catch (std::exception &err) {
+                output = "Invalid Source inserted:(" + source + ")!";
+                return;
+            }
         }
         else if (m == "Destination") {
             getline(iss, destination);
-            iDestination = stoi(destination);
+            try {
+                iDestination = stoi(destination);
+            }
+            catch (std::exception &err) {
+                output = "Invalid Destination inserted:(" + destination + ")!";
+                return;
+            }
         }
         else if (m == "AvoidNodes") {
             getline(iss, nodesLine);
@@ -165,68 +134,67 @@ void readInputFromString(Graph<std::string>* g , std::string input, std::string&
             getline(iss, nodesLine);
             std::istringstream issNodesLine(nodesLine);
             issNodesLine >> maxWalkTime;
-            //std::cout << maxWalkTime << std::endl;
         }
     }
-     std::cout << checkInput(g, iSource, iDestination, avoidNodes, avoidSegments, includeNode, mode);
+    output = checkInput(g, iSource, iDestination, avoidNodes, avoidSegments, includeNode, mode,maxWalkTime);
 }
 
-std::string checkInput(Graph<std::string> * g, const int &origin, const int& dest, std::vector<int>& vertex, std::vector<std::pair<int,int>>& edges,const int& middle, std::string mode) {
+std::string checkInput(Graph<std::string> * g, const int &origin, const int& dest, std::vector<int>& vertex, std::vector<std::pair<int,int>>& edges,const int& middle, std::string mode, int maxWalkTime) {
 
     Vertex<std::string>* originVertex = g->idFindVertex(origin);
     if (originVertex == nullptr) {
-        return "Invalid Source inserted:(" +std::to_string(origin) + ")!";
+        return "Invalid Source inserted:(" + std::to_string(origin) + ")!";
     }
 
     Vertex<std::string>* destVertex = g->idFindVertex(dest);
     if (destVertex == nullptr) {
-        return "Invalid Destination inserted:(" +std::to_string(dest) + ")!";
+        return "Invalid Destination inserted:(" + std::to_string(dest) + ")!";
     }
 
-    std::string result = "Source:" + std::to_string(origin) + "\n" + "Dest:" + std::to_string(dest)+'\n';
+    std::string result = "Source:" + std::to_string(origin) + "\n" + "Destination:" + std::to_string(dest)+'\n';
 
-    if (mode == "driving") {
-        if (middle == -1 && vertex.empty() && edges.empty() ) {
-            //std::cout << "sitio certo\n";
+
+        if (middle == -1 && vertex.empty() && edges.empty() && mode == "driving") {
             result.append(driveRoute(g,originVertex, destVertex));
             return result;
         }
 
-        if (middle == -1 || g->idFindVertex(middle) == nullptr) {
-            return "Invalid IncludeNode inserted:(" +std::to_string(middle) + ")!";
-        }
-
-        for (const int id : vertex) {
-            Vertex<std::string> *vertex = g->idFindVertex(id);
-            if (vertex == nullptr) {
-                return "Invalid AvoidNode inserted!";
-            }
-            vertex->setSelected(true);
-        }
-
-        for (std::pair<int,int> p : edges) {
-            Vertex<std::string> *originVertex = g->idFindVertex(p.first);
-            if (originVertex == nullptr) {
-                return "Invalid AvoidSegment inserted!";
-            }
-            if (originVertex->isSelected()) {
-                continue;
-            }
-            for (auto e : originVertex->getAdj()) {
-                if (e->getDest()->getId() == p.second) {
-                    e->setSelected(true);
-                    break;
-                }
-            }
-            return "Invalid AvoidSegment inserted!";
-        }
-        result.append(driveRestrictedRoute(g,originVertex,destVertex,vertex,edges,middle));
-        return result;
+    if (!(middle == -1 || g->idFindVertex(middle) != nullptr)) {
+        return "Invalid IncludeNode inserted:(" + std::to_string(middle) + ")!";
     }
 
+    for (const int id : vertex) {
+        Vertex<std::string> *vertex = g->idFindVertex(id);
+        if (vertex == nullptr) {
+            return "Invalid AvoidNode inserted:(" + std::to_string(id) + ")!";
+        }
+        vertex->setSelected(true);
+    }
 
+    for (std::pair<int,int> p : edges) {
+        Vertex<std::string> *originVertex = g->idFindVertex(p.first);
+        if (originVertex == nullptr) {
+            return "Invalid AvoidSegment inserted:(" + std::to_string(p.first) + "," + std::to_string(p.second) + ")!";
+        }
+        bool error = true;
+        for (auto e : originVertex->getAdj()) {
+            if (e->getDest()->getId() == p.second) {
+                e->setSelected(true);
+                error = false;
+            }
+        }
+        if (error) {
+            return "Invalid AvoidSegment inserted:(" + std::to_string(p.first) + "," + std::to_string(p.second) + ")!";
+        }
+    }
+    if(mode == "driving") {
+        result.append(driveRestrictedRoute(g,originVertex,destVertex,middle));
+    }
     else if(mode == "driving-walking") {
-
+        result.append(driveWalkingRoute(g,originVertex,destVertex,maxWalkTime));
     }
-    return "";
+    else {
+        return "Invalid Mode inserted:(" + mode + ")!";
+    }
+    return result;
 }
