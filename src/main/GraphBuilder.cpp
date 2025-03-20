@@ -226,7 +226,6 @@ std::string checkInput(Graph<std::string> * g, const int &origin, const int& des
 
 
     else if(mode == "driving-walking") {
-        //wip
 
     }
     return "";
