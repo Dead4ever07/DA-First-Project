@@ -1,5 +1,17 @@
 #include "libs/RouteSearch.h"
 
+/**
+ * This function checks whether an edge can provide a shorter path to its destination vertex. It compares
+ * the current shortest known distance to the destination with the potential new distance by going through
+ * the considered edge. If the new distance is smaller, it updates the destination vertex with the new distance
+ * and sets the path to come from the considered edge. The function returns true if an update was made, otherwise,
+ * it returns false
+ *
+ * @param edge Pointer to the edge being considered for relaxation.
+ * @return True if the edge was relaxed, false otherwise.
+ *
+ * @note Time Complexity: O(1), since it performs a constant number of operations.
+ */
 bool relaxCar(Edge<std::string> *edge) { // d[u] + driv(u,v) < d[v]
     Vertex<std::string> *src = edge->getOrig();
     Vertex<std::string> *dst = edge->getDest();
@@ -16,6 +28,28 @@ bool relaxCar(Edge<std::string> *edge) { // d[u] + driv(u,v) < d[v]
     return false;
 }
 
+/**
+ * This function implements Dijkstra’s algorithm to find the shortest path from a starting vertex
+ * to a destination vertex. It initializes all vertices by setting their distances to infinity and
+ * marking them as unvisited. The starting vertex is given a distance of zero and added to a priority
+ * queue. The algorithm then repeatedly extracts the vertex with the smallest distance from the queue
+ * and relaxes all its adjacent edges. If relaxing an edge improves the known distance to a neighboring
+ * vertex, that vertex is either added to the queue or updated if it is already in the queue. The process
+ * continues until all reachable vertices have been processed or the destination vertex is reached. If the
+ * destination is unreachable, its node has no path and its distance remains infinity.
+ *
+ * @param g Pointer to the graph.
+ * @param origin Pointer to the source vertex.
+ * @param dest Pointer to the destination vertex.
+ *
+ * @note Time Complexity: O((V + E)log V), where:
+ *   - V is the number of vertices.
+ *   - E is the number of edges.
+ *   - Extracting the minimum and updating keys in Priority Queue cost O(log V)
+ *   - Extracting the minimum is executed O(V) times
+ *   - Keys are updated O(E) times
+ *   - Therefore the overall complexity is O((V + E)log V)
+ */
 void dijkstra(Graph<std::string> *g, Vertex<std::string> *origin,Vertex<std::string> *dest) {
 
     MutablePriorityQueue<Vertex<std::string>> q;
@@ -50,6 +84,25 @@ void dijkstra(Graph<std::string> *g, Vertex<std::string> *origin,Vertex<std::str
     }
 }
 
+/**
+ * This function is responsible for retrieving the shortest path computed by Dijkstra’s algorithm. It first
+ * calls dijkstra() to check if there are paths are available, from the origin to the destination. If no path
+ * exists it returns false, otherwise, it reconstructs the path by following the stored edges backward from the
+ * destination to the origin, storing the visited vertices in a route vector while also accumulating the total
+ * cost. If the function is being used for restricted paths, it marks visited vertices as selected to prevent
+ * them from being reused in further computations.
+ *
+ * @param g Pointer to the graph.
+ * @param origin Pointer to the source vertex.
+ * @param dest Pointer to the destination vertex.
+ * @param route Reference to a vector where the computed path will be stored.
+ * @param cost Reference to an integer storing the total cost of the path.
+ * @param isRestricted Whether the path is restricted.
+ * @param firstPath Indicates whether this is the first segment of a restricted path.
+ * @return True if a valid path is found, false otherwise.
+ *
+ * @note Time Complexity: O((V + E)log V), since it calls dijkstra().
+ */
 bool getPath(Graph<std::string> *g, Vertex<std::string>* origin, Vertex<std::string>* dest,std::vector<int> &route, int &cost, bool isRestricted, bool firstPath) {
 
     dijkstra(g,origin,dest);
@@ -82,6 +135,15 @@ bool getPath(Graph<std::string> *g, Vertex<std::string>* origin, Vertex<std::str
     return true;
 }
 
+/**
+ * This function generates a formatted string with the expected result
+ *
+ * @param route Vector of vertex IDs representing the computed route.
+ * @param routeCost The total cost of the computed route.
+ * @return A formatted string representing the route.
+ *
+ * @note Time Complexity: O(N), where N is the number of nodes in the route.
+ */
 std::string printRoute(const std::vector<int> &route,const int routeCost) {
     std::string result = std::to_string(route[route.size()-1]);
     for (int i = route.size()-2; i >= 0; i--) {
@@ -91,7 +153,15 @@ std::string printRoute(const std::vector<int> &route,const int routeCost) {
     return result;
 }
 
-
+/**
+ *
+ * @param g Pointer to the graph.
+ * @param origin Pointer to the source vertex.
+ * @param dest Pointer to the destination vertex.
+ * @return A formatted string containing the best and alternative routes.
+ *
+ * @note Time Complexity: O((V + E) log V) since it calls getPath() which executes dijkstra().
+ */
 std::string driveRoute(Graph<std::string> * g, Vertex<std::string>* origin, Vertex<std::string>* dest){
 
     std::string result = "BestDrivingRoute:";
