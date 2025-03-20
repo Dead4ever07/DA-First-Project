@@ -154,6 +154,14 @@ std::string printRoute(const std::vector<int> &route,const int routeCost) {
 }
 
 /**
+ * @brief This function computes the shortest driving route between two vertices using
+ * Dijkstra’s algorithm. It also attempts to find an alternative route, if possible.
+ *
+ * This function computes and returns the best driving route from an origin vertex to a destination vertex.
+ * It first calls getPath to determine the shortest path. If a path is found the function attempts to find
+ * an alternative route by calling getPath again. If no alternative route is found, it appends "none" to
+ * the result. Otherwise, it formats and adds the alternative route.
+ *
  *
  * @param g Pointer to the graph.
  * @param origin Pointer to the source vertex.
