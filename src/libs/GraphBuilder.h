@@ -25,16 +25,13 @@ void graphDistance(Graph<std::string>* g, std::string distances);
  */
 void graphLocation(Graph<std::string>* g, std::string locations);
 
+/**
+ * This function visits each vertice and iterates through all its adjacent edges, marking both as not selected.
+ *
+ * @param g Pointer to the graph.
+ *
+ * @note Time Complexity: O(V + E), where V is the number of vertices and E is the number of edges.
+ */
 void deselect(Graph<std::string>*g);
-
-
-
-
-
-
-
-
-
-
 
 #endif //GRAPHBUILDER_H

@@ -64,7 +64,7 @@ void graphLocation(Graph<std::string>* g, std::string locations){
 
 void deselect(Graph<std::string> * g) {
     for (auto v : g->getVertexSet()) {
-        v->setSelected(true);
+        v->setSelected(false);
         for (auto e : v->getAdj()) {
             e->setSelected(false);
         }
