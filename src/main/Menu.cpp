@@ -1,12 +1,7 @@
-//
-// Created by luis-santos on 3/9/25.
-//
-
 #include "../libs/Menu.h"
 
 #include <fstream>
 #include "libs/tc.h"
-
 
 Menu::Menu() {
     menus[0] =  mainOptions;
@@ -231,7 +226,7 @@ std::string Menu::getUserInput(std::string Attribute) {
         result += c;
         if (c == EOF) break;
     }
-    while (c != ENTR & c != 32);
+    while (c != ENTR && c != 32);
     std::cout<<HIDE_CURSOR;
     tc_echo_off();
     return result;

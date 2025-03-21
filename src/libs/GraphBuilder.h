@@ -1,7 +1,3 @@
-//
-// Created by luis-santos on 2/27/25.
-//
-
 #ifndef GRAPHBUILDER_H
 #define GRAPHBUILDER_H
 
