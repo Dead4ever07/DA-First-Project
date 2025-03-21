@@ -1,6 +1,8 @@
 #include "libs/RouteSearch.h"
 
 /**
+ * @brief Relaxes an edge in the graph for driving mode.
+ *
  * This function checks whether an edge can provide a shorter path to its destination vertex. It compares
  * the current shortest known distance to the destination with the potential new distance by going through
  * the considered edge. If the new distance is smaller, it updates the destination vertex with the new distance
@@ -79,6 +81,8 @@ void dijkstraWalking(Graph<std::string> *g, Vertex<std::string> *origin, int max
 }
 
 /**
+ * @brief Implements Dijkstra's algorithm to find the shortest path.
+ *
  * This function implements Dijkstra’s algorithm to find the shortest path from a starting vertex
  * to a destination vertex. It initializes all vertices by setting their distances to infinity and
  * marking them as unvisited. The starting vertex is given a distance of zero and added to a priority
@@ -151,25 +155,6 @@ void getWalkRoute(Graph<std::string> *g, Vertex<std::string>* middle, Vertex<std
     route.push_back(middle->getId());
 }
 
-/**
- * This function is responsible for retrieving the shortest path computed by Dijkstra’s algorithm. It first
- * calls dijkstra() to check if there are paths are available, from the origin to the destination. If no path
- * exists it returns false, otherwise, it reconstructs the path by following the stored edges backward from the
- * destination to the origin, storing the visited vertices in a route vector while also accumulating the total
- * cost. If the function is being used for restricted paths, it marks visited vertices as selected to prevent
- * them from being reused in further computations.
- *
- * @param g Pointer to the graph.
- * @param origin Pointer to the source vertex.
- * @param dest Pointer to the destination vertex.
- * @param route Reference to a vector where the computed path will be stored.
- * @param cost Reference to an integer storing the total cost of the path.
- * @param isRestricted Whether the path is restricted.
- * @param firstPath Indicates whether this is the first segment of a restricted path.
- * @return True if a valid path is found, false otherwise.
- *
- * @note Time Complexity: O((V + E)log V), since it calls dijkstra().
- */
 void getDriveRoute(Graph<std::string> *g, Vertex<std::string>* origin, Vertex<std::string>* dest,std::vector<int> &route, int &cost, bool isRestricted, bool firstPath) {
     //to avoid repeating the same vertex in restricted path when I call getPath(g,middle,dest,route,cost,true,false) -> getPath(g,origin,middle,route,cost,true,true)
     if (!firstPath) {
@@ -193,6 +178,27 @@ void getDriveRoute(Graph<std::string> *g, Vertex<std::string>* origin, Vertex<st
     route.push_back(origin->getId());
 }
 
+/**
+ * @brief Retrieves the shortest path from origin to destination.
+ *
+ * This function is responsible for retrieving the shortest path computed by Dijkstra’s algorithm. It first
+ * calls dijkstra() to check if there are paths are available, from the origin to the destination. If no path
+ * exists it returns false, otherwise, it reconstructs the path by following the stored edges backward from the
+ * destination to the origin, storing the visited vertices in a route vector while also accumulating the total
+ * cost. If the function is being used for restricted paths, it marks visited vertices as selected to prevent
+ * them from being reused in further computations.
+ *
+ * @param g Pointer to the graph.
+ * @param origin Pointer to the source vertex.
+ * @param dest Pointer to the destination vertex.
+ * @param route Reference to a vector where the computed path will be stored.
+ * @param cost Reference to an integer storing the total cost of the path.
+ * @param isRestricted Whether the path is restricted.
+ * @param firstPath Indicates whether this is the first segment of a restricted path.
+ * @return True if a valid path is found, false otherwise.
+ *
+ * @note Time Complexity: O((V + E)log V), since it calls dijkstra().
+ */
 bool getPath(Graph<std::string> *g, Vertex<std::string>* origin, Vertex<std::string>* dest,std::vector<int> &route, int &cost, bool isRestricted, bool firstPath) {
 
     dijkstra(g,origin,dest);

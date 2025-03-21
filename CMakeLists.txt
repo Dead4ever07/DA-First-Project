@@ -22,6 +22,8 @@ set(PROJECT_SOURCES
         src/libs/RouteSearch.h
         src/main/RouteSearch.cpp
         src/main/Menu.cpp
+        src/libs/InputUtils.h
+        src/main/InputUtils.cpp
 )
 
 
