@@ -1,6 +1,3 @@
-//
-// Created by luis-santos on 3/9/25.
-//
 #ifndef MENU_H
 #define MENU_H
 #include <iostream>

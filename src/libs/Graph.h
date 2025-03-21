@@ -85,7 +85,7 @@ protected:
     Edge<T> *path = nullptr;
     Edge<T> *forwardPath = nullptr;
 
-    double forwardDist;;
+    double forwardDist;
 
 
     bool parking = false;
