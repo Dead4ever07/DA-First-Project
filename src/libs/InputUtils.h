@@ -53,6 +53,6 @@ void readInputFromString(Graph<std::string>*g, std::string input, std::string& o
  * @note Time Complexity: O((V + E) log V). The function may call driveRoute(), driveRestrictedRoute(),
  * or driveWalkingRoute(), each executing Dijkstra’s algorithm.
  */
-std::string checkInput(Graph<std::string> * g, const int &origin, const int& dest, std::vector<int>& vertex, std::vector<std::pair<int,int>>& edges,const int& middle, std::string mode, int maxWalkTime);
+std::string checkInput(Graph<std::string> * g, const int &origin, const int& dest, std::vector<int>& vertex, std::vector<std::pair<int,int>>& edges, int& middle, std::string mode, int maxWalkTime);
 
 #endif //INPUTUTILS_H

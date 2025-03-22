@@ -82,7 +82,7 @@ void readInputFromString(Graph<std::string>* g , std::string input, std::string&
     output = checkInput(g, iSource, iDestination, avoidNodes, avoidSegments, includeNode, mode,maxWalkTime);
 }
 
-std::string checkInput(Graph<std::string> * g, const int &origin, const int& dest, std::vector<int>& vertex, std::vector<std::pair<int,int>>& edges,const int& middle, std::string mode, int maxWalkTime) {
+std::string checkInput(Graph<std::string> * g, const int &origin, const int& dest, std::vector<int>& vertex, std::vector<std::pair<int,int>>& edges, int& middle, std::string mode, int maxWalkTime) {
 
     Vertex<std::string>* originVertex = g->idFindVertex(origin);
     if (originVertex == nullptr) {
@@ -97,13 +97,16 @@ std::string checkInput(Graph<std::string> * g, const int &origin, const int& des
     std::string result = "Source:" + std::to_string(origin) + "\n" + "Destination:" + std::to_string(dest)+'\n';
 
 
-        if (middle == -1 && vertex.empty() && edges.empty() && mode == "driving") {
-            result.append(driveRoute(g,originVertex, destVertex));
-            return result;
-        }
+    if (middle == -1 && vertex.empty() && edges.empty() && mode == "driving") {
+        result.append(driveRoute(g,originVertex, destVertex));
+        return result;
+    }
 
     if (!(middle == -1 || g->idFindVertex(middle) != nullptr)) {
         return "Invalid IncludeNode inserted:(" + std::to_string(middle) + ")!";
+    }
+    if (middle == origin || middle == dest) {
+        middle = -1;
     }
 
     for (const int id : vertex) {

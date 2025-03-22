@@ -11,7 +11,9 @@ void dijkstraWalking(Graph<std::string> *g, Vertex<std::string> *origin);
 
 void dijkstra(Graph<std::string> *g, Vertex<std::string> *origin,Vertex<std::string> *dest);
 
-bool getPath(Graph<std::string> *g, Vertex<std::string>* origin, Vertex<std::string>* dest,std::vector<int> &route, int &cost, bool isRestricted, bool firstPath);
+void getDriveRoute(Graph<std::string> *g, Vertex<std::string>* origin, Vertex<std::string>* dest,std::vector<int> &route, int &cost, bool toSelect, bool firstPath);
+
+bool getPath(Graph<std::string> *g, Vertex<std::string>* origin, Vertex<std::string>* dest,std::vector<int> &route, int &cost, bool toSelect, bool firstPath);
 
 std::string printRoute(const std::vector<int> &route, int routeCost);
 

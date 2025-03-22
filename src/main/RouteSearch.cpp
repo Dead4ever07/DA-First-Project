@@ -155,24 +155,28 @@ void getWalkRoute(Graph<std::string> *g, Vertex<std::string>* middle, Vertex<std
 }
 
 void getDriveRoute(Graph<std::string> *g, Vertex<std::string>* origin, Vertex<std::string>* dest,std::vector<int> &route, int &cost, bool toSelect, bool firstPath) {
-    //to avoid repeating the same vertex in restricted path when I call getPath(g,middle,dest,route,cost,true,false) -> getPath(g,origin,middle,route,cost,true,true)
     if (!firstPath) {
         route.push_back(dest->getId());
     }
 
+    if (toSelect) {
+        dest->getPath()->setSelected(true);
+    }
     cost += dest->getPath()->getDriving();
     dest = dest->getPath()->getOrig();
+
 
     while (dest != origin) {
         int vertexId = dest->getId();
         cost += dest->getPath()->getDriving();
-        //in the alternative path I can't repeat any of the edges or nodes! if i can't repeat the node I can't repeat the edge
         if (toSelect) {
             dest->setSelected(true);
+            dest->getPath()->setSelected(true);
         }
         dest = dest->getPath()->getOrig();
         route.push_back(vertexId);
     }
+
 
     route.push_back(origin->getId());
 }
@@ -198,7 +202,7 @@ void getDriveRoute(Graph<std::string> *g, Vertex<std::string>* origin, Vertex<st
  *
  * @note Time Complexity: O((V + E)log V), since it calls dijkstra().
  */
-bool getPath(Graph<std::string> *g, Vertex<std::string>* origin, Vertex<std::string>* dest,std::vector<int> &route, int &cost, bool isRestricted, bool firstPath) {
+bool getPath(Graph<std::string> *g, Vertex<std::string>* origin, Vertex<std::string>* dest,std::vector<int> &route, int &cost, bool toSelect, bool firstPath) {
 
     dijkstra(g,origin,dest);
 
@@ -206,7 +210,7 @@ bool getPath(Graph<std::string> *g, Vertex<std::string>* origin, Vertex<std::str
         return false;
     }
 
-    getDriveRoute(g,origin,dest,route,cost,isRestricted,firstPath);
+    getDriveRoute(g,origin,dest,route,cost,toSelect,firstPath);
 
     return true;
 }
@@ -253,7 +257,7 @@ std::string driveRoute(Graph<std::string> * g, Vertex<std::string>* origin, Vert
     std::vector<int> bestRoute;
     int bestRouteCost = 0;
 
-    if (!getPath(g,origin,dest,bestRoute, bestRouteCost,false,false)) {
+    if (!getPath(g,origin,dest,bestRoute, bestRouteCost,true,false)) {
         result.append("none\nAlternativeDrivingRoute:none\n");
         return result;
     }
@@ -265,7 +269,7 @@ std::string driveRoute(Graph<std::string> * g, Vertex<std::string>* origin, Vert
     std::vector<int> alternativeRoute;
     int alternativeRouteCost = 0;
 
-    if (!getPath(g,origin,dest,alternativeRoute, alternativeRouteCost,false,false)) {
+    if (!getPath(g,origin,dest,alternativeRoute, alternativeRouteCost,true,false)) {
         result.append("none\n");
     }
     else {
@@ -281,8 +285,9 @@ std::string driveRestrictedRoute(Graph<std::string> * g,Vertex<std::string>* ori
     int cost = 0;
     std::vector<int> route;
 
+
     if (middle == -1) {
-        if (!getPath(g,origin,dest,route,cost,true,false)) {
+        if (!getPath(g,origin,dest,route,cost,false,false)) {
             result.append("none\n");
         }
         else {
@@ -292,7 +297,7 @@ std::string driveRestrictedRoute(Graph<std::string> * g,Vertex<std::string>* ori
     }
     Vertex<std::string>* middleVertex = g->idFindVertex(middle);
 
-    if (!getPath(g,middleVertex,dest,route,cost,true,false) || !getPath(g,origin,middleVertex,route,cost,true,true)) {
+    if (!getPath(g,middleVertex,dest,route,cost,false,false) || !getPath(g,origin,middleVertex,route,cost,false,true)) {
         result.append("none\n");
         return result;
     }
@@ -346,7 +351,8 @@ std::string printWalkingDrivingRoute(Graph<std::string> * g,Vertex<std::string>*
     std::vector<int> walkRoute;
     int walkRouteCost = 0;
 
-    getDriveRoute(g,origin,parkingVertex,drivingRoute,drivingRouteCost,true,false);
+
+    getDriveRoute(g,origin,parkingVertex,drivingRoute,drivingRouteCost,false,false);
     result.append(printRoute(drivingRoute,drivingRouteCost));
 
     result.append("ParkingNode"+ numRoute +":" + std::to_string(parkingVertex->getId()));
@@ -368,7 +374,10 @@ std::string approximateSolution(Graph<std::string> * g,Vertex<std::string>* orig
     int distance1 = INT_MAX;
     int distance2 = INT_MAX;
 
+
+
     std::pair<Vertex<std::string>*,Vertex<std::string> *> parkingVertexes = driveWalkingPaths(parkingSpots,distance1,distance2);
+
     Vertex<std::string>* parkingVertex1 = parkingVertexes.first;
     Vertex<std::string> *parkingVertex2 = parkingVertexes.second;
 
@@ -401,7 +410,7 @@ std::string driveWalkingRoute(Graph<std::string> * g,Vertex<std::string>* origin
     std::vector<Vertex<std::string>*> requirementParkingSpots;
 
     for (auto temp : g->getVertexSet()) {
-        if (temp->getDist() != INT_MAX && temp->isParking()) {
+        if (temp->getDist() != INT_MAX && temp->isParking() && temp != origin && temp != dest) {
             temp->setForwardDist(temp->getDist());
             parkingSpots.push_back(temp);
             if (temp->getDist() <= max) {
@@ -409,6 +418,7 @@ std::string driveWalkingRoute(Graph<std::string> * g,Vertex<std::string>* origin
             }
         }
     }
+
 
     if (requirementParkingSpots.empty()) {
         //ver com a prof!!!
@@ -429,6 +439,8 @@ std::string driveWalkingRoute(Graph<std::string> * g,Vertex<std::string>* origin
     Vertex<std::string> *parkingVertex = driveWalkingPath(requirementParkingSpots,distance);
 
     if (parkingVertex == nullptr) {
+
+
 
         result.append(approximateSolution(g,origin,dest,parkingSpots));
 

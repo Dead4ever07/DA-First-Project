@@ -1,6 +1,8 @@
 #include "../libs/Menu.h"
 
 #include <fstream>
+
+#include "libs/InputUtils.h"
 #include "libs/tc.h"
 
 Menu::Menu() {
