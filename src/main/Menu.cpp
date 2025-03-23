@@ -29,6 +29,7 @@ void Menu::run() {
             processKey(Pressed);
     }
 }
+//duvida para luis-> where the user's input ?
 ///
 /// @brief Captures user input and updates the associated action.
 /// @param[out] Pressed A reference to an `ACTIONS` object where the user's input
@@ -234,9 +235,10 @@ std::string Menu::getUserInput(std::string Attribute) {
     return result;
 }
 
+//duvida para luis-> incremented -and- concatenated -/added- with the c character ?
 /**
  * @brief Simple way to read the user input without filling the terminal buffer
- * @param c one of the many character of the integer input
+ * @param c one of the many characters of the integer input
  * @param n integer that will be incremented concatenated with the c character
  */
 void to_int(const char c, int& n) {

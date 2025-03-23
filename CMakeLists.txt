@@ -15,13 +15,15 @@ set(PROJECT_HEADERS
         src/libs/Menu.h
         src/libs/tc.h
         src/libs/RouteSearch.h
+        src/libs/InputUtils.h
+        src/libs/DijkstraFunctions.h
 )
 set(PROJECT_SOURCES
         src/main/GraphBuilder.cpp
         src/main/RouteSearch.cpp
         src/main/Menu.cpp
-        src/libs/InputUtils.h
         src/main/InputUtils.cpp
+        src/main/DijkstraFunctions.cpp
 )
 
 
