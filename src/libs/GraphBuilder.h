@@ -4,7 +4,7 @@
 #include "Graph.h"
 
 /**
- * Reads distance data from a file and adds edges to the graph.
+ * This function reads distance data from a file and adds edges to the graph.
  *
  * @param g Pointer to the Graph object.
  * @param distances Path to the file containing distances between locations.
@@ -13,7 +13,7 @@
 void graphDistance(Graph<std::string>* g, std::string distances);
 
 /**
- * Reads location data from a file and adds vertices to the graph.
+ * This function reads location data from a file and adds vertices to the graph.
  *
  * @param g Pointer to the Graph object.
  * @param locations Path to the file containing location data.
