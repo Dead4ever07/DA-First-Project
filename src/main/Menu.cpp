@@ -226,12 +226,15 @@ std::string Menu::getUserInput(std::string Attribute) {
     std::cout<<SHOW_CURSOR;
     tc_echo_on();
     std::string result;
-    std::string c;
+    char c;
     do {
-        std::cin>>c;
+        #ifdef WIN64
+            std::cout<<c;
+        #endif
+        c = getchar();
         result += c;
     }
-    while (std::cin>>c);
+    while (c != ENTR);
     std::cout<<HIDE_CURSOR;
     tc_echo_off();
     return result;
