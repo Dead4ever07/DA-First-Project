@@ -44,7 +44,6 @@
 #define ARROW_RIGHT 77
 #define ARROW_LEFT 75
 #define ENTR 13
-DWORD mode;
 
 void tc_echo_off() {
     HANDLE hStdin = GetStdHandle(STD_INPUT_HANDLE);

@@ -1,3 +1,6 @@
+//
+// Created by luis-santos on 3/9/25.
+//
 #ifndef MENU_H
 #define MENU_H
 #include <iostream>
@@ -18,13 +21,24 @@ public:
     void init();
     void run();
 private:
+    ///
+    /// @brief Captures user input and updates the associated action.
+    /// @param[out] Pressed A reference to an `ACTIONS` object where the user's input
+    ///
     void get_input(ACTIONS& Pressed);
+    ///
+    /// @brief Displays the menu interface to the user.
+    ///
     void print_menu();
     void processKey(ACTIONS &Pressed);
     void processMenu1(ACTIONS &Pressed);
     void processMenu2(ACTIONS &Pressed);
     void processMenu3(ACTIONS &Pressed);//Not implemented
     void processMenu4(ACTIONS &Pressed);//Not implemented;
+    /**
+     * @brief Simple function that reads the user input, allowing the user to see what it is typing in the process
+     * @param Attribute Sentence to be printed
+     */
     std::string getUserInput(std::string);
     void processArrowInMenu(const ACTIONS & Pressed);
     std::pmr::vector<std::string> mainOptions =

@@ -1,9 +1,11 @@
 #include "../libs/Menu.h"
 
 #include <fstream>
+#include <sstream>
 
 #include "libs/InputUtils.h"
 #include "libs/tc.h"
+
 
 Menu::Menu() {
     menus[0] =  mainOptions;
@@ -29,7 +31,6 @@ void Menu::run() {
             processKey(Pressed);
     }
 }
-//duvida para luis-> where the user's input ?
 ///
 /// @brief Captures user input and updates the associated action.
 /// @param[out] Pressed A reference to an `ACTIONS` object where the user's input
@@ -147,9 +148,11 @@ void Menu::processMenu1(ACTIONS &Pressed) {
 }
 
 void Menu::processMenu2(ACTIONS & Pressed) {
-    std::string dep;
+    std::string ss;
+    std::ostringstream oss;
     std::ofstream ofs ("../resources/output.txt", std::ofstream::out);
     std::string out;
+    std::string mode;
     switch (Pressed) {
         case(UP):
         case(DOWN):
@@ -158,16 +161,33 @@ void Menu::processMenu2(ACTIONS & Pressed) {
         case(ENTER):
             switch (selected_line) {
                 case(0):
-                    dep.append("Mode:");
-                    dep.append(getUserInput("Mode:"));
-                    dep.append("Source:");
-                    dep.append(getUserInput("Source:"));
-                    dep.append("Destination:");
-                    dep.append(getUserInput("Destination:"));
+                    oss<<"Mode:";
+                    mode = getUserInput("Mode:");
+                    oss<<mode;
+                    oss<<"Source:";
+                    oss<<getUserInput("Source:");
+                    oss<<"Destination:";
+                    oss<<getUserInput("Destination:");
+                    if (mode == "driving-walking\n") {
+                        oss<<"MaxWalkTime:";
+                        oss<<getUserInput("MaxWalkTime:");
+                    }
+                    oss<<"AvoidNodes:";
+                    oss<<getUserInput("AvoidNodes:");
+                    oss<<"AvoidSegments:";
+
+                    oss<<getUserInput("AvoidSegments:");
+                    if (mode == "driving\n") {
+                        oss<<("IncludeNode:");
+                        oss<<(getUserInput("IncludeNode:"));
+                    }
 
                     clear_screen();
                     std::cout<<TC_BOLD<<"Best Route:\n";
-                    readInputFromString(g,dep,out);
+
+                    ofs<<oss.str()<<'\n';
+                    readInputFromString(g,oss.str(),out);
+                    std::cout<<'\n';
                     std::cout<<out<<'\n';
                     getchar();
                     break;
@@ -177,7 +197,6 @@ void Menu::processMenu2(ACTIONS & Pressed) {
                     readInputFromFile( g,"input.txt", out);
                     std::cout<<out<<'\n';
                     ofs<<out;
-                    ofs.close();
                     getchar();
                     //CALL readInput that should print the result to the output.txt
                 break;
@@ -195,6 +214,7 @@ void Menu::processMenu2(ACTIONS & Pressed) {
         default:
             break;
     }
+    ofs.close();
 }
 void Menu::processArrowInMenu(const ACTIONS & Pressed) {
     switch (Pressed) {
@@ -221,29 +241,19 @@ std::string Menu::getUserInput(std::string Attribute) {
     std::cout<<TC_BOLD<<titles[current_menu]<<TC_NRM<<'\n';
     std::cout<<Attribute;
     std::cout<<SHOW_CURSOR;
-    tc_echo_on();
+    //tc_echo_on();
     std::string result;
     char c;
     do {
         c = getchar();
+        #ifdef WIN64
+                std::cout<<c;
+        #endif
         result += c;
         if (c == EOF) break;
     }
-    while (c != ENTR && c != 32);
+    while (c != ENTR);
     std::cout<<HIDE_CURSOR;
-    tc_echo_off();
+    //tc_echo_off();
     return result;
-}
-
-//duvida para luis-> incremented -and- concatenated -/added- with the c character ?
-/**
- * @brief Simple way to read the user input without filling the terminal buffer
- * @param c one of the many characters of the integer input
- * @param n integer that will be incremented concatenated with the c character
- */
-void to_int(const char c, int& n) {
-    if (c<48 || c>57) {
-        return;
-    }
-    n = n*10 + (c-48);
 }
