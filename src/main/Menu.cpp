@@ -32,10 +32,6 @@ void Menu::run() {
             processKey(Pressed);
     }
 }
-///
-/// @brief Captures user input and updates the associated action.
-/// @param[out] Pressed A reference to an `ACTIONS` object where the user's input
-///
 void Menu::get_input(ACTIONS& Pressed) {
     int c = getchar();
     switch (c) {
@@ -65,9 +61,6 @@ void Menu::get_input(ACTIONS& Pressed) {
        }
 
 }
-///
-/// @brief Displays the menu interface to the user.
-///
 void Menu::print_menu() {
     int index = 0;
     std::cout<<TC_BOLD<<titles[current_menu]<<'\n'<<TC_NRM;
@@ -150,6 +143,7 @@ void Menu::processMenu1(ACTIONS &Pressed) {
 
 void Menu::processMenu2(ACTIONS & Pressed) {
     std::string dep;
+    std::string mode;
     std::ofstream ofs ("../resources/output.txt", std::ofstream::out);
     std::string out;
     switch (Pressed) {
@@ -161,12 +155,24 @@ void Menu::processMenu2(ACTIONS & Pressed) {
             switch (selected_line) {
                 case(0):
                     dep.append("Mode:");
-                    dep.append(getUserInput("Mode:"));
+                    mode = getUserInput("Mode:");
+                    dep.append(mode);
                     dep.append("Source:");
                     dep.append(getUserInput("Source:"));
                     dep.append("Destination:");
                     dep.append(getUserInput("Destination:"));
-
+                    if (mode == "driving-walking\n") {
+                        dep.append("MaxWalkTime:");
+                        dep.append(getUserInput("MaxWalkTime:"));
+                    }
+                    dep.append("AvoidNodes:");
+                    dep.append(getUserInput("AvoidNodes:"));
+                    dep.append("AvoidSegments:");
+                    dep.append(getUserInput("AvoidSegments:"));
+                    if (mode == "driving\n") {
+                        dep.append("IncludeNode:");
+                        dep.append(getUserInput("IncludeNode:"));
+                    }
                     clear_screen();
                     std::cout<<TC_BOLD<<"Best Route:\n";
                     readInputFromString(g,dep,out);
@@ -213,11 +219,6 @@ void Menu::processArrowInMenu(const ACTIONS & Pressed) {
             break;
     }
 }
-
-/**
- * @brief Simple function that reads the user input, allowing the user to see what it is typing in the process
- * @param Attribute Sentence to be printed
- */
 std::string Menu::getUserInput(std::string Attribute) {
     clear_screen();
     std::cout<<TC_BOLD<<titles[current_menu]<<TC_NRM<<'\n';
@@ -225,26 +226,13 @@ std::string Menu::getUserInput(std::string Attribute) {
     std::cout<<SHOW_CURSOR;
     tc_echo_on();
     std::string result;
-    char c;
+    std::string c;
     do {
-        c = getchar();
+        std::cin>>c;
         result += c;
-        if (c == EOF) break;
     }
-    while (c != ENTR & c != 32);
+    while (std::cin>>c);
     std::cout<<HIDE_CURSOR;
     tc_echo_off();
     return result;
-}
-
-/**
- * @brief Simple way to read the user input without filling the terminal buffer
- * @param c one of the many character of the integer input
- * @param n integer that will be incremented concatenated with the c character
- */
-void to_int(const char c, int& n) {
-    if (c<48 || c>57) {
-        return;
-    }
-    n = n*10 + (c-48);
 }

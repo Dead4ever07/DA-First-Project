@@ -75,21 +75,6 @@ void graphLocation(Graph<std::string>* g, std::string locations){
     }
     inL.close();
 }
-
-/**
- * Creates and initializes a graph with locations and distances from files.
- *
- * @return Pointer to the created Graph object.
- *
- * @note Time Complexity: O(V + E), where V is the number of vertices and E is the number of edges
- */
-Graph<std::string> *createGraph() {
-    Graph<std::string>* g = new Graph<std::string>();
-    graphLocation(g, "../resources/SmallLocations.csv");
-    graphDistance(g, "../resources/SmallDistances.csv");
-    return g;
-}
-
 /**
  * Reads and processes input commands to determine a route based on a given mode.
  *
