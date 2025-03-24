@@ -51,7 +51,6 @@ void tc_echo_off() {
     if (hStdin == INVALID_HANDLE_VALUE) {
         std::cerr << "Couldn't get the standard input handle" << std::endl;
     }
-    DWORD mode;
     if (GetConsoleMode(hStdin, &mode)) {
         std::cerr << "Couldn't get the standard input handle" << std::endl;
     }
@@ -63,10 +62,6 @@ void tc_echo_on() {
     HANDLE hStdin = GetStdHandle(STD_INPUT_HANDLE);
     if (hStdin == INVALID_HANDLE_VALUE) {
         std::cerr << "Couldn't get the standard input handle" << std::endl;
-    }
-    DWORD mode;
-    if (GetConsoleMode(hStdin, &mode) != 0) {
-        std::cerr << "Failed to get console mode" << std::endl;
     }
     mode |= ENABLE_ECHO_INPUT;  // Enable echo
     SetConsoleMode(hStdin, mode);

@@ -29,10 +29,9 @@ void Menu::run() {
             processKey(Pressed);
     }
 }
-//duvida para luis-> where the user's input ?
 ///
 /// @brief Captures user input and updates the associated action.
-/// @param[out] Pressed A reference to an `ACTIONS` object where the user's input
+/// @param[out] Pressed A reference to an ACTIONS type object where the user's input is one of the mapped keys or the variable Pressed is None
 ///
 void Menu::get_input(ACTIONS& Pressed) {
     int c = getchar();
@@ -226,6 +225,9 @@ std::string Menu::getUserInput(std::string Attribute) {
     char c;
     do {
         c = getchar();
+        #ifdef WIN32
+            std::cout<<c;
+        #endif
         result += c;
         if (c == EOF) break;
     }
@@ -233,17 +235,4 @@ std::string Menu::getUserInput(std::string Attribute) {
     std::cout<<HIDE_CURSOR;
     tc_echo_off();
     return result;
-}
-
-//duvida para luis-> incremented -and- concatenated -/added- with the c character ?
-/**
- * @brief Simple way to read the user input without filling the terminal buffer
- * @param c one of the many characters of the integer input
- * @param n integer that will be incremented concatenated with the c character
- */
-void to_int(const char c, int& n) {
-    if (c<48 || c>57) {
-        return;
-    }
-    n = n*10 + (c-48);
 }
