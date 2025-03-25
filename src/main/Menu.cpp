@@ -246,10 +246,13 @@ std::string Menu::getUserInput(std::string Attribute) {
     char c;
     do {
         c = getchar();
-        #ifdef WIN64
-                std::cout<<c;
-        #endif
-        result += c;
+        if (c == 127 && result.size()>0) {
+            std::cout<<'\b';
+            result.pop_back();
+        }else if (c != 127) {
+            result += c;
+            std::cout<<c;
+        }
         if (c == EOF) break;
     }
     while (c != ENTR);
