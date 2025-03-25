@@ -13,7 +13,7 @@
 #define LINE_SIZE 20
 
 
-enum ACTIONS{NONE, UP, DOWN, ENTER ,EXIT};
+enum ACTIONS{NONE, UP, DOWN, LEFT, RIGHT ,ENTER ,EXIT};
 
 class Menu {
 public:
@@ -63,9 +63,10 @@ private:
 
     int current_menu = 0;
     int selected_line = 0;
+    int vertex_page = 0;
 };
 
-void to_int(const char c, int&n);
+void print_vertex(int pos, Graph<std::string>* g);
 
 
 

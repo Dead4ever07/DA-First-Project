@@ -17,7 +17,6 @@ void readInputFromFile(Graph<std::string>* g, std::string fileName, std::string&
 
 void readInputFromString(Graph<std::string>* g , std::string input, std::string& output) {
     std::istringstream in(input);
-    std::cout<<input<<'\n';
     std::string line, mode, source, destination, nodesLine;
     int iSource, iDestination, maxWalkTime, includeNode = -1;
     std::vector<int> avoidNodes = {};
@@ -31,7 +30,6 @@ void readInputFromString(Graph<std::string>* g , std::string input, std::string&
         }
         else if (m == "Source") {
             getline(iss, source);
-            std::cout<<source<<std::endl;
             try{
             iSource = stoi(source);
             }
@@ -81,8 +79,6 @@ void readInputFromString(Graph<std::string>* g , std::string input, std::string&
             issNodesLine >> maxWalkTime;
         }
     }
-    std::cout<<iSource<<' '<<source<<'\n';
-
     output = checkInput(g, iSource, iDestination, avoidNodes, avoidSegments, includeNode, mode,maxWalkTime);
 }
 

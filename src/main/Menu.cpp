@@ -25,7 +25,6 @@ void Menu::run() {
     ACTIONS Pressed = NONE;
     while (Pressed != ACTIONS::EXIT)
         {
-            clear_screen();
             print_menu();
             get_input(Pressed);
             processKey(Pressed);
@@ -55,6 +54,12 @@ void Menu::get_input(ACTIONS& Pressed) {
                 case(ARROW_DOWN):
                     Pressed = DOWN;
                     return;
+                case(ARROW_LEFT):
+                    Pressed = LEFT;
+                    return;
+                case(ARROW_RIGHT):
+                    Pressed = RIGHT;
+                    return;
                 default:
                     Pressed = NONE;
                     return;
@@ -68,6 +73,8 @@ void Menu::get_input(ACTIONS& Pressed) {
 /// @brief Displays the menu interface to the user.
 ///
 void Menu::print_menu() {
+    if (current_menu == 2) return;
+    clear_screen();
     int index = 0;
     std::cout<<TC_BOLD<<titles[current_menu]<<'\n'<<TC_NRM;
     for (auto p : menus[current_menu]) {
@@ -91,7 +98,7 @@ void Menu::processKey(ACTIONS &Pressed) {
             processMenu2(Pressed);
             break;
         case(2):
-            //processMenu3(Pressed);
+            processMenu3(Pressed);
             break;
         case(3):
             //processMenu4(Pressed);
@@ -115,8 +122,8 @@ void Menu::processMenu1(ACTIONS &Pressed) {
                         delete g;
                         g = new Graph<std::string>();
                     }
-                    graphLocation(this->g, "../resources/Locations.csv");
-                    graphDistance(this->g, "../resources/Distances.csv");
+                    graphLocation(this->g, "../resources/Locations/Locations.csv");
+                    graphDistance(this->g, "../resources/Distances/Distances.csv");
                     current_menu++;
                     titles[current_menu] = mainOptions[selected_line];
                     selected_line = 0;
@@ -126,14 +133,22 @@ void Menu::processMenu1(ACTIONS &Pressed) {
                         delete g;
                         g = new Graph<std::string>();
                     }
-                    graphLocation(this->g, "../resources/SmallLocations.csv");
-                    graphDistance(this->g, "../resources/SmallDistances.csv");
+                    graphLocation(this->g, "../resources/Locations/SmallLocations.csv");
+                    graphDistance(this->g, "../resources/Distances/SmallDistances.csv");
                     current_menu ++;
                     titles[current_menu] = mainOptions[selected_line];
                     selected_line = 0;
                     break;
                 case 2:
-                        std::cout<<"Not Implemented\n";
+                    if (g != nullptr) {
+                        delete g;
+                        g = new Graph<std::string>();
+                    }
+                    graphLocation(this->g, "../resources/Locations/CustomLocations.csv");
+                    graphDistance(this->g, "../resources/Distances/CustomDistances.csv");
+                    current_menu ++;
+                    titles[current_menu] = mainOptions[selected_line];
+                    selected_line = 0;
                     break;
                 case 3:
                     Pressed = EXIT;
@@ -148,7 +163,6 @@ void Menu::processMenu1(ACTIONS &Pressed) {
 }
 
 void Menu::processMenu2(ACTIONS & Pressed) {
-    std::string ss;
     std::ostringstream oss;
     std::ofstream ofs ("../resources/output.txt", std::ofstream::out);
     std::string out;
@@ -187,8 +201,8 @@ void Menu::processMenu2(ACTIONS & Pressed) {
 
                     ofs<<oss.str()<<'\n';
                     readInputFromString(g,oss.str(),out);
-                    std::cout<<'\n';
                     std::cout<<out<<'\n';
+                    deselect(g);
                     getchar();
                     break;
                 case(1):
@@ -198,10 +212,13 @@ void Menu::processMenu2(ACTIONS & Pressed) {
                     std::cout<<out<<'\n';
                     ofs<<out;
                     getchar();
-                    //CALL readInput that should print the result to the output.txt
                 break;
                 case(2):
-                    //Call menu that reads all the edges
+                    //Call menu that reads all the vertex
+                    current_menu++;
+                    titles[current_menu] = "Vertex:";
+                    clear_screen();
+                    std::cout<<"Press Right/Left Arrow to see the Vertex\n";
                     break;
                 case(3):
                     current_menu--;
@@ -210,12 +227,52 @@ void Menu::processMenu2(ACTIONS & Pressed) {
                 case(4):
                     Pressed = EXIT;
                     break;
+                default:
+                    Pressed = NONE;
+                    break;
             }
         default:
             break;
     }
     ofs.close();
 }
+
+void Menu::processMenu3(ACTIONS &Pressed) {
+    //char c;
+    clear_screen();
+    switch (Pressed) {
+        case(RIGHT):
+            if (this->vertex_page+1<this->g->getNumVertex()/10 + (this->g->getNumVertex()%10>0)) {
+                this->vertex_page++;
+            }
+            std::cout<<titles[current_menu]<<'\n';
+            print_vertex(this->vertex_page, this->g);
+            std::cout<<'\t'<<'<'<<this->vertex_page+1<<'/'<<this->g->getNumVertex()/10 + (this->g->getNumVertex()%10>0)<<'>'<<'\n';
+            break;
+        case(LEFT):
+            if (this->vertex_page>0) {
+                this->vertex_page--;
+            }
+            std::cout<<titles[current_menu]<<'\n';
+            print_vertex(this->vertex_page, this->g);
+            std::cout<<'\t'<<'<'<<this->vertex_page+1<<'/'<<this->g->getNumVertex()/10 + (this->g->getNumVertex()%10>0)<<'>'<<'\n';
+            break;
+        case(ENTER):
+            current_menu--;
+            break;
+        default:
+            std::cout<<titles[current_menu]<<'\n';
+            print_vertex(this->vertex_page, this->g);
+            std::cout<<'\t'<<'<'<<this->vertex_page+1<<'/'<<this->g->getNumVertex()/10 + (this->g->getNumVertex()%10>0)<<'>'<<'\n';
+            break;
+    }
+    std::cout<<"Press ENTER to return\n";
+}
+
+
+
+
+
 void Menu::processArrowInMenu(const ACTIONS & Pressed) {
     switch (Pressed) {
         case(UP):
@@ -247,7 +304,9 @@ std::string Menu::getUserInput(std::string Attribute) {
     do {
         c = getchar();
         if (c == 127 && result.size()>0) {
-            std::cout<<'\b';
+            std::cout<<"\b";
+            std::cout<<" ";
+            std::cout<<"\b";
             result.pop_back();
         }else if (c != 127) {
             result += c;
@@ -260,3 +319,13 @@ std::string Menu::getUserInput(std::string Attribute) {
     //tc_echo_off();
     return result;
 }
+
+
+void print_vertex(int pos, Graph<std::string> *g) {
+    if (pos < 0) pos = 0;
+    for (int i = 0; i<10 && i+pos*10<g->getNumVertex(); i++) {
+        if (g->getVertexSet()[pos*10+i] == nullptr) continue;
+        std::cout<<g->getVertexSet()[pos*10+i]->getId()<<". "<<g->getVertexSet()[pos*10+i]->getLocation()<<'\n';
+    }
+}
+

@@ -201,7 +201,6 @@ std::string approximateSolution(Graph<std::string> * g,Vertex<std::string>* orig
     Vertex<std::string>* parkingVertex1 = parkingVertexes.first;
     Vertex<std::string> *parkingVertex2 = parkingVertexes.second;
 
-
     if (parkingVertex1 == nullptr) {
         result.append("Its impossible to create an approximate solution\n");
         return result;
