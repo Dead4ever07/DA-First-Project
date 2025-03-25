@@ -1,0 +1,81 @@
+\doxysection{src/libs/\+Graph\+Builder.h File Reference}
+\hypertarget{GraphBuilder_8h}{}\label{GraphBuilder_8h}\index{src/libs/GraphBuilder.h@{src/libs/GraphBuilder.h}}
+{\ttfamily \#include "{}Graph.\+h"{}}\newline
+Include dependency graph for Graph\+Builder.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{GraphBuilder_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=206pt]{GraphBuilder_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classEdge}{void}} \mbox{\hyperlink{GraphBuilder_8h_a857525600378e7b2eacb929feb9fe521}{graph\+Distance}} (\mbox{\hyperlink{classGraph}{Graph}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}g, \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} \mbox{\hyperlink{classEdge}{distances}})
+\item 
+\mbox{\hyperlink{classEdge}{void}} \mbox{\hyperlink{GraphBuilder_8h_a239de1a230955c6db81826452a1ce485}{graph\+Location}} (\mbox{\hyperlink{classGraph}{Graph}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}g, \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} \mbox{\hyperlink{classEdge}{locations}})
+\item 
+\mbox{\hyperlink{classEdge}{void}} \mbox{\hyperlink{GraphBuilder_8h_ab61e535df801a689f8f15db03cc82e6e}{deselect}} (\mbox{\hyperlink{classGraph}{Graph}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}g)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{GraphBuilder_8h_ab61e535df801a689f8f15db03cc82e6e}\label{GraphBuilder_8h_ab61e535df801a689f8f15db03cc82e6e} 
+\index{GraphBuilder.h@{GraphBuilder.h}!deselect@{deselect}}
+\index{deselect@{deselect}!GraphBuilder.h@{GraphBuilder.h}}
+\doxysubsubsection{\texorpdfstring{deselect()}{deselect()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classEdge}{void}} deselect (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraph}{Graph}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}}]{g }\end{DoxyParamCaption})}
+
+This function visits each vertice and iterates through all its adjacent edges, marking both as not selected.
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & Pointer to the graph.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Time Complexity\+: O(V + E), where V is the number of vertices and E is the number of edges. 
+\end{DoxyNote}
+\Hypertarget{GraphBuilder_8h_a857525600378e7b2eacb929feb9fe521}\label{GraphBuilder_8h_a857525600378e7b2eacb929feb9fe521} 
+\index{GraphBuilder.h@{GraphBuilder.h}!graphDistance@{graphDistance}}
+\index{graphDistance@{graphDistance}!GraphBuilder.h@{GraphBuilder.h}}
+\doxysubsubsection{\texorpdfstring{graphDistance()}{graphDistance()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classEdge}{void}} graph\+Distance (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraph}{Graph}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}}]{g,  }\item[{\mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}}}]{distances }\end{DoxyParamCaption})}
+
+This function reads distance data from a file and adds edges to the graph.
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & Pointer to the \doxylink{classGraph}{Graph} object. \\
+\hline
+{\em distances} & Path to the file containing distances between locations. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Time Complexity\+: O(\+E), where E is the number of edges in the file 
+\end{DoxyNote}
+\Hypertarget{GraphBuilder_8h_a239de1a230955c6db81826452a1ce485}\label{GraphBuilder_8h_a239de1a230955c6db81826452a1ce485} 
+\index{GraphBuilder.h@{GraphBuilder.h}!graphLocation@{graphLocation}}
+\index{graphLocation@{graphLocation}!GraphBuilder.h@{GraphBuilder.h}}
+\doxysubsubsection{\texorpdfstring{graphLocation()}{graphLocation()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classEdge}{void}} graph\+Location (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraph}{Graph}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}}]{g,  }\item[{\mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}}}]{locations }\end{DoxyParamCaption})}
+
+This function reads location data from a file and adds vertices to the graph.
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & Pointer to the \doxylink{classGraph}{Graph} object. \\
+\hline
+{\em locations} & Path to the file containing location data. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Time Complexity\+: O(\+V), where V is the number of vertices in the file. 
+\end{DoxyNote}

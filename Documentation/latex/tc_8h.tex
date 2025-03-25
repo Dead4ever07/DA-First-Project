@@ -1,0 +1,248 @@
+\doxysection{src/libs/tc.h File Reference}
+\hypertarget{tc_8h}{}\label{tc_8h}\index{src/libs/tc.h@{src/libs/tc.h}}
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$sys/ioctl.\+h$>$}\newline
+{\ttfamily \#include $<$termios.\+h$>$}\newline
+Include dependency graph for tc.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=302pt]{tc_8h__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#\mbox{\hyperlink{classEdge}{define}} \mbox{\hyperlink{tc_8h_ad40305115a1eba76faa49995740aec80}{HIDE\+\_\+\+CURSOR}}~"{}\textbackslash{}033\mbox{[}?25l"{}
+\item 
+\#\mbox{\hyperlink{classEdge}{define}} \mbox{\hyperlink{tc_8h_a09ec0b302bee7262f9959add53ccd0c4}{SHOW\+\_\+\+CURSOR}}~"{}\textbackslash{}033\mbox{[}?25h"{}
+\item 
+\#\mbox{\hyperlink{classEdge}{define}} \mbox{\hyperlink{tc_8h_abc826ffb7649ab44b7e125fb0f2987cb}{TC\+\_\+\+BOLD}}~"{}\textbackslash{}033\mbox{[}1m"{}
+\item 
+\#\mbox{\hyperlink{classEdge}{define}} \mbox{\hyperlink{tc_8h_a5baae5296db62bd627a64d8f45d466ad}{TC\+\_\+\+NRM}}~"{}\textbackslash{}x1B\mbox{[}0m"{}
+\item 
+\#\mbox{\hyperlink{classEdge}{define}} \mbox{\hyperlink{tc_8h_aead2772b6c8203118a1d7b3373db31c4}{TC\+\_\+\+RED}}~"{}\textbackslash{}x1B\mbox{[}0;31\mbox{\hyperlink{classEdge}{m"{}}}
+\item 
+\#\mbox{\hyperlink{classEdge}{define}} \mbox{\hyperlink{tc_8h_a7c716ef553c65231ac7af71257924035}{TC\+\_\+\+GREEN}}~"{}\textbackslash{}x1B\mbox{[}0;32\mbox{\hyperlink{classEdge}{m"{}}}
+\item 
+\#\mbox{\hyperlink{classEdge}{define}} \mbox{\hyperlink{tc_8h_a67b905818e6f913a40cab360d71f0da7}{TC\+\_\+\+YLW}}~"{}\textbackslash{}x1B\mbox{[}0;33\mbox{\hyperlink{classEdge}{m"{}}}
+\item 
+\#\mbox{\hyperlink{classEdge}{define}} \mbox{\hyperlink{tc_8h_a4ab725ddf7d7617a57353e69fb473fe2}{TC\+\_\+\+BLUE}}~"{}\textbackslash{}x1B\mbox{[}0;34\mbox{\hyperlink{classEdge}{m"{}}}
+\item 
+\#\mbox{\hyperlink{classEdge}{define}} \mbox{\hyperlink{tc_8h_ae3326a14409fb9ee1b3f7ce17eca4578}{TC\+\_\+\+MAG}}~"{}\textbackslash{}x1B\mbox{[}0;35\mbox{\hyperlink{classEdge}{m"{}}}
+\item 
+\#\mbox{\hyperlink{classEdge}{define}} \mbox{\hyperlink{tc_8h_ae0408b1d85406d212232de71569e813b}{TC\+\_\+\+CYN}}~"{}\textbackslash{}x1B\mbox{[}0;36\mbox{\hyperlink{classEdge}{m"{}}}
+\item 
+\#\mbox{\hyperlink{classEdge}{define}} \mbox{\hyperlink{tc_8h_aad2a0b9cd788d8cf17b78c77b4dc950e}{TC\+\_\+\+WHT}}~"{}\textbackslash{}x1B\mbox{[}0;37\mbox{\hyperlink{classEdge}{m"{}}}
+\item 
+\#\mbox{\hyperlink{classEdge}{define}} \mbox{\hyperlink{tc_8h_a4159aa699c3da7d79ba2739e56621f6b}{TC\+\_\+\+BG\+\_\+\+NRM}}~"{}\textbackslash{}x1B\mbox{[}40m"{}
+\item 
+\#\mbox{\hyperlink{classEdge}{define}} \mbox{\hyperlink{tc_8h_ad954f5718f5b00f288c5f960d23c929c}{TC\+\_\+\+BG\+\_\+\+RED}}~"{} \textbackslash{}x1B\mbox{[}41\mbox{\hyperlink{classEdge}{m"{}}}
+\item 
+\#\mbox{\hyperlink{classEdge}{define}} \mbox{\hyperlink{tc_8h_ae83a1464919a1e0fcfc40155ceef7eb0}{TC\+\_\+\+BG\+\_\+\+GRN}}~"{}\textbackslash{}x1B\mbox{[}42\mbox{\hyperlink{classEdge}{m"{}}}
+\item 
+\#\mbox{\hyperlink{classEdge}{define}} \mbox{\hyperlink{tc_8h_aa501521a396cae2babfe8b7bc5449bb9}{TC\+\_\+\+BG\+\_\+\+YEL}}~"{}\textbackslash{}x1B\mbox{[}43\mbox{\hyperlink{classEdge}{m"{}}}
+\item 
+\#\mbox{\hyperlink{classEdge}{define}} \mbox{\hyperlink{tc_8h_ace7ee3ef41c6c4f043f7908c71af4e82}{TC\+\_\+\+BG\+\_\+\+BLU}}~"{}\textbackslash{}x1B\mbox{[}44\mbox{\hyperlink{classEdge}{m"{}}}
+\item 
+\#\mbox{\hyperlink{classEdge}{define}} \mbox{\hyperlink{tc_8h_a4872fdc8fad2cdca5b80067dad8a4bbb}{TC\+\_\+\+BG\+\_\+\+MAG}}~"{}\textbackslash{}x1B\mbox{[}45\mbox{\hyperlink{classEdge}{m"{}}}
+\item 
+\#\mbox{\hyperlink{classEdge}{define}} \mbox{\hyperlink{tc_8h_a88e3585c6fcbd0c7bf0f16e111ca017a}{TC\+\_\+\+BG\+\_\+\+CYN}}~"{}\textbackslash{}x1B\mbox{[}46\mbox{\hyperlink{classEdge}{m"{}}}
+\item 
+\#\mbox{\hyperlink{classEdge}{define}} \mbox{\hyperlink{tc_8h_a5584cbccee11a83001dda3925acd8d5b}{TC\+\_\+\+BG\+\_\+\+WHT}}~"{}\textbackslash{}x1B\mbox{[}47\mbox{\hyperlink{classEdge}{m"{}}}
+\item 
+\#\mbox{\hyperlink{classEdge}{define}} \mbox{\hyperlink{tc_8h_af4bb3f724206b7b7ab547e2a02132a25}{clear\+\_\+screen}}()~\mbox{\hyperlink{classEdge}{write}}(1, "{}\textbackslash{}033\mbox{[}H\textbackslash{}033\mbox{[}2\mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{J\textbackslash{}033}}\mbox{[}3\mbox{\hyperlink{classEdge}{J"{}}}, 11)
+\item 
+\#\mbox{\hyperlink{classEdge}{define}} \mbox{\hyperlink{tc_8h_a43c6650fb2200be160e5c0ce9d722e7b}{TRAIL\+\_\+\+CHR}}~(\mbox{\hyperlink{classEdge}{c}} == 27 \&\& \mbox{\hyperlink{classEdge}{getchar}}()==91)
+\item 
+\#\mbox{\hyperlink{classEdge}{define}} \mbox{\hyperlink{tc_8h_a016e68eaa6a8185455fc7a372055e623}{ARROW\+\_\+\+UP}}~65
+\item 
+\#\mbox{\hyperlink{classEdge}{define}} \mbox{\hyperlink{tc_8h_a3710616ea12e5437f6ff15170e3bbdc6}{ARROW\+\_\+\+DOWN}}~66
+\item 
+\#\mbox{\hyperlink{classEdge}{define}} \mbox{\hyperlink{tc_8h_ab7ab822b400589e7bb08dd5fa4cefb52}{ARROW\+\_\+\+RIGHT}}~67
+\item 
+\#\mbox{\hyperlink{classEdge}{define}} \mbox{\hyperlink{tc_8h_a972990573657c6767160574e40bf664e}{ARROW\+\_\+\+LEFT}}~68
+\item 
+\#\mbox{\hyperlink{classEdge}{define}} \mbox{\hyperlink{tc_8h_a7278a3f51f882e4c76cb5ecb83935cb8}{ENTR}}~10
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classEdge}{void}} \mbox{\hyperlink{tc_8h_a2b2a5031db77fd44d4318ecaaa9bd0ac}{tc\+\_\+echo\+\_\+off}} ()
+\item 
+\mbox{\hyperlink{classEdge}{void}} \mbox{\hyperlink{tc_8h_aa420f9eb2ad9d8e145abe05c8fbcf317}{tc\+\_\+echo\+\_\+on}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{tc_8h_a3710616ea12e5437f6ff15170e3bbdc6}\label{tc_8h_a3710616ea12e5437f6ff15170e3bbdc6} 
+\index{tc.h@{tc.h}!ARROW\_DOWN@{ARROW\_DOWN}}
+\index{ARROW\_DOWN@{ARROW\_DOWN}!tc.h@{tc.h}}
+\doxysubsubsection{\texorpdfstring{ARROW\_DOWN}{ARROW\_DOWN}}
+{\footnotesize\ttfamily \#\mbox{\hyperlink{classEdge}{define}} ARROW\+\_\+\+DOWN~66}
+
+\Hypertarget{tc_8h_a972990573657c6767160574e40bf664e}\label{tc_8h_a972990573657c6767160574e40bf664e} 
+\index{tc.h@{tc.h}!ARROW\_LEFT@{ARROW\_LEFT}}
+\index{ARROW\_LEFT@{ARROW\_LEFT}!tc.h@{tc.h}}
+\doxysubsubsection{\texorpdfstring{ARROW\_LEFT}{ARROW\_LEFT}}
+{\footnotesize\ttfamily \#\mbox{\hyperlink{classEdge}{define}} ARROW\+\_\+\+LEFT~68}
+
+\Hypertarget{tc_8h_ab7ab822b400589e7bb08dd5fa4cefb52}\label{tc_8h_ab7ab822b400589e7bb08dd5fa4cefb52} 
+\index{tc.h@{tc.h}!ARROW\_RIGHT@{ARROW\_RIGHT}}
+\index{ARROW\_RIGHT@{ARROW\_RIGHT}!tc.h@{tc.h}}
+\doxysubsubsection{\texorpdfstring{ARROW\_RIGHT}{ARROW\_RIGHT}}
+{\footnotesize\ttfamily \#\mbox{\hyperlink{classEdge}{define}} ARROW\+\_\+\+RIGHT~67}
+
+\Hypertarget{tc_8h_a016e68eaa6a8185455fc7a372055e623}\label{tc_8h_a016e68eaa6a8185455fc7a372055e623} 
+\index{tc.h@{tc.h}!ARROW\_UP@{ARROW\_UP}}
+\index{ARROW\_UP@{ARROW\_UP}!tc.h@{tc.h}}
+\doxysubsubsection{\texorpdfstring{ARROW\_UP}{ARROW\_UP}}
+{\footnotesize\ttfamily \#\mbox{\hyperlink{classEdge}{define}} ARROW\+\_\+\+UP~65}
+
+\Hypertarget{tc_8h_af4bb3f724206b7b7ab547e2a02132a25}\label{tc_8h_af4bb3f724206b7b7ab547e2a02132a25} 
+\index{tc.h@{tc.h}!clear\_screen@{clear\_screen}}
+\index{clear\_screen@{clear\_screen}!tc.h@{tc.h}}
+\doxysubsubsection{\texorpdfstring{clear\_screen}{clear\_screen}}
+{\footnotesize\ttfamily \#\mbox{\hyperlink{classEdge}{define}} clear\+\_\+screen(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})~\mbox{\hyperlink{classEdge}{write}}(1, "{}\textbackslash{}033\mbox{[}H\textbackslash{}033\mbox{[}2\mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{J\textbackslash{}033}}\mbox{[}3\mbox{\hyperlink{classEdge}{J"{}}}, 11)}
+
+\Hypertarget{tc_8h_a7278a3f51f882e4c76cb5ecb83935cb8}\label{tc_8h_a7278a3f51f882e4c76cb5ecb83935cb8} 
+\index{tc.h@{tc.h}!ENTR@{ENTR}}
+\index{ENTR@{ENTR}!tc.h@{tc.h}}
+\doxysubsubsection{\texorpdfstring{ENTR}{ENTR}}
+{\footnotesize\ttfamily \#\mbox{\hyperlink{classEdge}{define}} ENTR~10}
+
+\Hypertarget{tc_8h_ad40305115a1eba76faa49995740aec80}\label{tc_8h_ad40305115a1eba76faa49995740aec80} 
+\index{tc.h@{tc.h}!HIDE\_CURSOR@{HIDE\_CURSOR}}
+\index{HIDE\_CURSOR@{HIDE\_CURSOR}!tc.h@{tc.h}}
+\doxysubsubsection{\texorpdfstring{HIDE\_CURSOR}{HIDE\_CURSOR}}
+{\footnotesize\ttfamily \#\mbox{\hyperlink{classEdge}{define}} HIDE\+\_\+\+CURSOR~"{}\textbackslash{}033\mbox{[}?25l"{}}
+
+\Hypertarget{tc_8h_a09ec0b302bee7262f9959add53ccd0c4}\label{tc_8h_a09ec0b302bee7262f9959add53ccd0c4} 
+\index{tc.h@{tc.h}!SHOW\_CURSOR@{SHOW\_CURSOR}}
+\index{SHOW\_CURSOR@{SHOW\_CURSOR}!tc.h@{tc.h}}
+\doxysubsubsection{\texorpdfstring{SHOW\_CURSOR}{SHOW\_CURSOR}}
+{\footnotesize\ttfamily \#\mbox{\hyperlink{classEdge}{define}} SHOW\+\_\+\+CURSOR~"{}\textbackslash{}033\mbox{[}?25h"{}}
+
+\Hypertarget{tc_8h_ace7ee3ef41c6c4f043f7908c71af4e82}\label{tc_8h_ace7ee3ef41c6c4f043f7908c71af4e82} 
+\index{tc.h@{tc.h}!TC\_BG\_BLU@{TC\_BG\_BLU}}
+\index{TC\_BG\_BLU@{TC\_BG\_BLU}!tc.h@{tc.h}}
+\doxysubsubsection{\texorpdfstring{TC\_BG\_BLU}{TC\_BG\_BLU}}
+{\footnotesize\ttfamily \#\mbox{\hyperlink{classEdge}{define}} TC\+\_\+\+BG\+\_\+\+BLU~"{}\textbackslash{}x1B\mbox{[}44\mbox{\hyperlink{classEdge}{m"{}}}}
+
+\Hypertarget{tc_8h_a88e3585c6fcbd0c7bf0f16e111ca017a}\label{tc_8h_a88e3585c6fcbd0c7bf0f16e111ca017a} 
+\index{tc.h@{tc.h}!TC\_BG\_CYN@{TC\_BG\_CYN}}
+\index{TC\_BG\_CYN@{TC\_BG\_CYN}!tc.h@{tc.h}}
+\doxysubsubsection{\texorpdfstring{TC\_BG\_CYN}{TC\_BG\_CYN}}
+{\footnotesize\ttfamily \#\mbox{\hyperlink{classEdge}{define}} TC\+\_\+\+BG\+\_\+\+CYN~"{}\textbackslash{}x1B\mbox{[}46\mbox{\hyperlink{classEdge}{m"{}}}}
+
+\Hypertarget{tc_8h_ae83a1464919a1e0fcfc40155ceef7eb0}\label{tc_8h_ae83a1464919a1e0fcfc40155ceef7eb0} 
+\index{tc.h@{tc.h}!TC\_BG\_GRN@{TC\_BG\_GRN}}
+\index{TC\_BG\_GRN@{TC\_BG\_GRN}!tc.h@{tc.h}}
+\doxysubsubsection{\texorpdfstring{TC\_BG\_GRN}{TC\_BG\_GRN}}
+{\footnotesize\ttfamily \#\mbox{\hyperlink{classEdge}{define}} TC\+\_\+\+BG\+\_\+\+GRN~"{}\textbackslash{}x1B\mbox{[}42\mbox{\hyperlink{classEdge}{m"{}}}}
+
+\Hypertarget{tc_8h_a4872fdc8fad2cdca5b80067dad8a4bbb}\label{tc_8h_a4872fdc8fad2cdca5b80067dad8a4bbb} 
+\index{tc.h@{tc.h}!TC\_BG\_MAG@{TC\_BG\_MAG}}
+\index{TC\_BG\_MAG@{TC\_BG\_MAG}!tc.h@{tc.h}}
+\doxysubsubsection{\texorpdfstring{TC\_BG\_MAG}{TC\_BG\_MAG}}
+{\footnotesize\ttfamily \#\mbox{\hyperlink{classEdge}{define}} TC\+\_\+\+BG\+\_\+\+MAG~"{}\textbackslash{}x1B\mbox{[}45\mbox{\hyperlink{classEdge}{m"{}}}}
+
+\Hypertarget{tc_8h_a4159aa699c3da7d79ba2739e56621f6b}\label{tc_8h_a4159aa699c3da7d79ba2739e56621f6b} 
+\index{tc.h@{tc.h}!TC\_BG\_NRM@{TC\_BG\_NRM}}
+\index{TC\_BG\_NRM@{TC\_BG\_NRM}!tc.h@{tc.h}}
+\doxysubsubsection{\texorpdfstring{TC\_BG\_NRM}{TC\_BG\_NRM}}
+{\footnotesize\ttfamily \#\mbox{\hyperlink{classEdge}{define}} TC\+\_\+\+BG\+\_\+\+NRM~"{}\textbackslash{}x1B\mbox{[}40m"{}}
+
+\Hypertarget{tc_8h_ad954f5718f5b00f288c5f960d23c929c}\label{tc_8h_ad954f5718f5b00f288c5f960d23c929c} 
+\index{tc.h@{tc.h}!TC\_BG\_RED@{TC\_BG\_RED}}
+\index{TC\_BG\_RED@{TC\_BG\_RED}!tc.h@{tc.h}}
+\doxysubsubsection{\texorpdfstring{TC\_BG\_RED}{TC\_BG\_RED}}
+{\footnotesize\ttfamily \#\mbox{\hyperlink{classEdge}{define}} TC\+\_\+\+BG\+\_\+\+RED~"{} \textbackslash{}x1B\mbox{[}41\mbox{\hyperlink{classEdge}{m"{}}}}
+
+\Hypertarget{tc_8h_a5584cbccee11a83001dda3925acd8d5b}\label{tc_8h_a5584cbccee11a83001dda3925acd8d5b} 
+\index{tc.h@{tc.h}!TC\_BG\_WHT@{TC\_BG\_WHT}}
+\index{TC\_BG\_WHT@{TC\_BG\_WHT}!tc.h@{tc.h}}
+\doxysubsubsection{\texorpdfstring{TC\_BG\_WHT}{TC\_BG\_WHT}}
+{\footnotesize\ttfamily \#\mbox{\hyperlink{classEdge}{define}} TC\+\_\+\+BG\+\_\+\+WHT~"{}\textbackslash{}x1B\mbox{[}47\mbox{\hyperlink{classEdge}{m"{}}}}
+
+\Hypertarget{tc_8h_aa501521a396cae2babfe8b7bc5449bb9}\label{tc_8h_aa501521a396cae2babfe8b7bc5449bb9} 
+\index{tc.h@{tc.h}!TC\_BG\_YEL@{TC\_BG\_YEL}}
+\index{TC\_BG\_YEL@{TC\_BG\_YEL}!tc.h@{tc.h}}
+\doxysubsubsection{\texorpdfstring{TC\_BG\_YEL}{TC\_BG\_YEL}}
+{\footnotesize\ttfamily \#\mbox{\hyperlink{classEdge}{define}} TC\+\_\+\+BG\+\_\+\+YEL~"{}\textbackslash{}x1B\mbox{[}43\mbox{\hyperlink{classEdge}{m"{}}}}
+
+\Hypertarget{tc_8h_a4ab725ddf7d7617a57353e69fb473fe2}\label{tc_8h_a4ab725ddf7d7617a57353e69fb473fe2} 
+\index{tc.h@{tc.h}!TC\_BLUE@{TC\_BLUE}}
+\index{TC\_BLUE@{TC\_BLUE}!tc.h@{tc.h}}
+\doxysubsubsection{\texorpdfstring{TC\_BLUE}{TC\_BLUE}}
+{\footnotesize\ttfamily \#\mbox{\hyperlink{classEdge}{define}} TC\+\_\+\+BLUE~"{}\textbackslash{}x1B\mbox{[}0;34\mbox{\hyperlink{classEdge}{m"{}}}}
+
+\Hypertarget{tc_8h_abc826ffb7649ab44b7e125fb0f2987cb}\label{tc_8h_abc826ffb7649ab44b7e125fb0f2987cb} 
+\index{tc.h@{tc.h}!TC\_BOLD@{TC\_BOLD}}
+\index{TC\_BOLD@{TC\_BOLD}!tc.h@{tc.h}}
+\doxysubsubsection{\texorpdfstring{TC\_BOLD}{TC\_BOLD}}
+{\footnotesize\ttfamily \#\mbox{\hyperlink{classEdge}{define}} TC\+\_\+\+BOLD~"{}\textbackslash{}033\mbox{[}1m"{}}
+
+\Hypertarget{tc_8h_ae0408b1d85406d212232de71569e813b}\label{tc_8h_ae0408b1d85406d212232de71569e813b} 
+\index{tc.h@{tc.h}!TC\_CYN@{TC\_CYN}}
+\index{TC\_CYN@{TC\_CYN}!tc.h@{tc.h}}
+\doxysubsubsection{\texorpdfstring{TC\_CYN}{TC\_CYN}}
+{\footnotesize\ttfamily \#\mbox{\hyperlink{classEdge}{define}} TC\+\_\+\+CYN~"{}\textbackslash{}x1B\mbox{[}0;36\mbox{\hyperlink{classEdge}{m"{}}}}
+
+\Hypertarget{tc_8h_a7c716ef553c65231ac7af71257924035}\label{tc_8h_a7c716ef553c65231ac7af71257924035} 
+\index{tc.h@{tc.h}!TC\_GREEN@{TC\_GREEN}}
+\index{TC\_GREEN@{TC\_GREEN}!tc.h@{tc.h}}
+\doxysubsubsection{\texorpdfstring{TC\_GREEN}{TC\_GREEN}}
+{\footnotesize\ttfamily \#\mbox{\hyperlink{classEdge}{define}} TC\+\_\+\+GREEN~"{}\textbackslash{}x1B\mbox{[}0;32\mbox{\hyperlink{classEdge}{m"{}}}}
+
+\Hypertarget{tc_8h_ae3326a14409fb9ee1b3f7ce17eca4578}\label{tc_8h_ae3326a14409fb9ee1b3f7ce17eca4578} 
+\index{tc.h@{tc.h}!TC\_MAG@{TC\_MAG}}
+\index{TC\_MAG@{TC\_MAG}!tc.h@{tc.h}}
+\doxysubsubsection{\texorpdfstring{TC\_MAG}{TC\_MAG}}
+{\footnotesize\ttfamily \#\mbox{\hyperlink{classEdge}{define}} TC\+\_\+\+MAG~"{}\textbackslash{}x1B\mbox{[}0;35\mbox{\hyperlink{classEdge}{m"{}}}}
+
+\Hypertarget{tc_8h_a5baae5296db62bd627a64d8f45d466ad}\label{tc_8h_a5baae5296db62bd627a64d8f45d466ad} 
+\index{tc.h@{tc.h}!TC\_NRM@{TC\_NRM}}
+\index{TC\_NRM@{TC\_NRM}!tc.h@{tc.h}}
+\doxysubsubsection{\texorpdfstring{TC\_NRM}{TC\_NRM}}
+{\footnotesize\ttfamily \#\mbox{\hyperlink{classEdge}{define}} TC\+\_\+\+NRM~"{}\textbackslash{}x1B\mbox{[}0m"{}}
+
+\Hypertarget{tc_8h_aead2772b6c8203118a1d7b3373db31c4}\label{tc_8h_aead2772b6c8203118a1d7b3373db31c4} 
+\index{tc.h@{tc.h}!TC\_RED@{TC\_RED}}
+\index{TC\_RED@{TC\_RED}!tc.h@{tc.h}}
+\doxysubsubsection{\texorpdfstring{TC\_RED}{TC\_RED}}
+{\footnotesize\ttfamily \#\mbox{\hyperlink{classEdge}{define}} TC\+\_\+\+RED~"{}\textbackslash{}x1B\mbox{[}0;31\mbox{\hyperlink{classEdge}{m"{}}}}
+
+\Hypertarget{tc_8h_aad2a0b9cd788d8cf17b78c77b4dc950e}\label{tc_8h_aad2a0b9cd788d8cf17b78c77b4dc950e} 
+\index{tc.h@{tc.h}!TC\_WHT@{TC\_WHT}}
+\index{TC\_WHT@{TC\_WHT}!tc.h@{tc.h}}
+\doxysubsubsection{\texorpdfstring{TC\_WHT}{TC\_WHT}}
+{\footnotesize\ttfamily \#\mbox{\hyperlink{classEdge}{define}} TC\+\_\+\+WHT~"{}\textbackslash{}x1B\mbox{[}0;37\mbox{\hyperlink{classEdge}{m"{}}}}
+
+\Hypertarget{tc_8h_a67b905818e6f913a40cab360d71f0da7}\label{tc_8h_a67b905818e6f913a40cab360d71f0da7} 
+\index{tc.h@{tc.h}!TC\_YLW@{TC\_YLW}}
+\index{TC\_YLW@{TC\_YLW}!tc.h@{tc.h}}
+\doxysubsubsection{\texorpdfstring{TC\_YLW}{TC\_YLW}}
+{\footnotesize\ttfamily \#\mbox{\hyperlink{classEdge}{define}} TC\+\_\+\+YLW~"{}\textbackslash{}x1B\mbox{[}0;33\mbox{\hyperlink{classEdge}{m"{}}}}
+
+\Hypertarget{tc_8h_a43c6650fb2200be160e5c0ce9d722e7b}\label{tc_8h_a43c6650fb2200be160e5c0ce9d722e7b} 
+\index{tc.h@{tc.h}!TRAIL\_CHR@{TRAIL\_CHR}}
+\index{TRAIL\_CHR@{TRAIL\_CHR}!tc.h@{tc.h}}
+\doxysubsubsection{\texorpdfstring{TRAIL\_CHR}{TRAIL\_CHR}}
+{\footnotesize\ttfamily \#\mbox{\hyperlink{classEdge}{define}} TRAIL\+\_\+\+CHR~(\mbox{\hyperlink{classEdge}{c}} == 27 \&\& \mbox{\hyperlink{classEdge}{getchar}}()==91)}
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{tc_8h_a2b2a5031db77fd44d4318ecaaa9bd0ac}\label{tc_8h_a2b2a5031db77fd44d4318ecaaa9bd0ac} 
+\index{tc.h@{tc.h}!tc\_echo\_off@{tc\_echo\_off}}
+\index{tc\_echo\_off@{tc\_echo\_off}!tc.h@{tc.h}}
+\doxysubsubsection{\texorpdfstring{tc\_echo\_off()}{tc\_echo\_off()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classEdge}{void}} tc\+\_\+echo\+\_\+off (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{tc_8h_aa420f9eb2ad9d8e145abe05c8fbcf317}\label{tc_8h_aa420f9eb2ad9d8e145abe05c8fbcf317} 
+\index{tc.h@{tc.h}!tc\_echo\_on@{tc\_echo\_on}}
+\index{tc\_echo\_on@{tc\_echo\_on}!tc.h@{tc.h}}
+\doxysubsubsection{\texorpdfstring{tc\_echo\_on()}{tc\_echo\_on()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classEdge}{void}} tc\+\_\+echo\+\_\+on (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+

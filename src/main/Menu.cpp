@@ -189,20 +189,17 @@ void Menu::processMenu2(ACTIONS & Pressed) {
                     oss<<"AvoidNodes:";
                     oss<<getUserInput("AvoidNodes:");
                     oss<<"AvoidSegments:";
-
                     oss<<getUserInput("AvoidSegments:");
                     if (mode == "driving\n") {
                         oss<<("IncludeNode:");
                         oss<<(getUserInput("IncludeNode:"));
                     }
-
                     clear_screen();
                     std::cout<<TC_BOLD<<"Best Route:\n";
-
-                    ofs<<oss.str()<<'\n';
                     readInputFromString(g,oss.str(),out);
                     std::cout<<out<<'\n';
                     deselect(g);
+                    deselect(this->g);
                     getchar();
                     break;
                 case(1):
@@ -211,6 +208,7 @@ void Menu::processMenu2(ACTIONS & Pressed) {
                     readInputFromFile( g,"input.txt", out);
                     std::cout<<out<<'\n';
                     ofs<<out;
+                    deselect(this->g);
                     getchar();
                 break;
                 case(2):
