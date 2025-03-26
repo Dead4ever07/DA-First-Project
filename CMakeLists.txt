@@ -17,6 +17,7 @@ set(PROJECT_HEADERS
         src/libs/RouteSearch.h
         src/libs/InputUtils.h
         src/libs/DijkstraFunctions.h
+        src/libs/EcologicalRouteSearch.h
 )
 set(PROJECT_SOURCES
         src/main/GraphBuilder.cpp
@@ -24,8 +25,8 @@ set(PROJECT_SOURCES
         src/main/Menu.cpp
         src/main/InputUtils.cpp
         src/main/DijkstraFunctions.cpp
+        src/main/EcologicalRouteSearch.cpp
 )
-
 
 add_executable(Project
         src/main/main.cpp

@@ -1,94 +1,24 @@
-#ifndef ROUTESEARCH_H
-#define ROUTESEARCH_H
+#ifndef ECOLOGICALROUTESEARCH_H
+#define ECOLOGICALROUTESEARCH_H
 #include "Graph.h"
 
 
 /**
- * @brief Constructs the driving route from the destination to the origin based on the shortest path computed.
+ * @brief Constructs the driving-walking route from the destination to the origin based on the shortest path computed.
  *
- * This function traces back the shortest path from the destination to the origin using the path set by dijkstra().
+ * This function traces back the shortest walking path from the middle vertex (parkingVertex) to the destination, using
+ * the path set by dijkstraWalking().
  * It stores the sequence of vertex IDs in the route vector and accumulates the total driving cost.
- * If the function is being used for non-restricted driving paths (toSelect flag is enable), it marks visited vertices as selected to prevent
- * them from being reused in the alternative route.
  *
  * @param g Pointer to the graph.
- * @param origin Pointer to the starting vertex.
+ * @param middle Pointer to the vertex where the walking route starts.
  * @param dest Pointer to the destination vertex.
- * @param route Reference to a vector that will store the sequence of vertex IDs in the computed path.
- * @param cost Reference to an integer that will store the total cost of the computed path.
- * @param toSelect Boolean flag indicating whether to mark the vertices and edges in the path as selected (to avoid using it in the alternative route).
- * @param firstPath Boolean flag indicating whether this is the first path being computed (to avoid duplicate selections when including a node).
+ * @param route Reference to a vector storing the sequence of vertex IDs in the walking path.
+ * @param cost Reference to an integer storing the total walking cost.
  *
  * @note Time Complexity: O(V) since it traces back through at most all vertices in the path.
  */
-void getDriveRoute(Graph<std::string> *g, Vertex<std::string>* origin, Vertex<std::string>* dest,std::vector<int> &route, int &cost, bool toSelect, bool firstPath);
-
-/**
- * @brief Retrieves the shortest path from origin to destination using Dijkstra's algorithm.
- *
- * This function is responsible for retrieving the shortest path computed by Dijkstra’s algorithm. It first
- * calls dijkstra() to check if there are paths are available, from the origin to the destination. If no path
- * exists it returns false, otherwise, it retrieves the computed route and cost using getDriveRoute()
- *
- * @param g Pointer to the graph.
- * @param origin Pointer to the starting vertex.
- * @param dest Pointer to the destination vertex.
- * @param route Reference to a vector that will store the sequence of vertex IDs in the computed path.
- * @param cost Reference to an integer that will store the total cost of the computed path.
- * @param toSelect Boolean flag indicating whether to mark the vertices and edges as selected (to avoid using it in the alternative route).
- * @param firstPath Boolean flag indicating whether this is the first path being computed (to avoid duplicate selections when including a node).
- * @return True if a valid path is found, false otherwise.
- *
- * @note Time Complexity: O((V + E)log V), since it calls dijkstra().
- */
-bool getPath(Graph<std::string> *g, Vertex<std::string>* origin, Vertex<std::string>* dest,std::vector<int> &route, int &cost, bool toSelect, bool firstPath);
-
-/**
- * This function generates a formatted string with the expected result
- *
- * @param route Vector of vertex IDs representing the computed route.
- * @param routeCost The total cost of the computed route.
- * @return A formatted string representing the route.
- *
- * @note Time Complexity: O(N), where N is the number of nodes in the route.
- */
-std::string printRoute(const std::vector<int> &route, int routeCost);
-
-/**
- * @brief This function computes the shortest driving route between two vertices using
- * Dijkstra’s algorithm. It also attempts to find an alternative route, if possible.
- *
- * This function computes the best driving route from an origin vertex to a destination vertex. It first calls
- * getPath() to determine the shortest path. If a path is found the function attempts to find an alternative
- * route by calling getPath() again. If no alternative route is found, it appends "none" to the result. Otherwise,
- * it formats and adds the alternative route.
- *
- * @param g Pointer to the graph.
- * @param origin Pointer to the source vertex.
- * @param dest Pointer to the destination vertex.
- * @return A formatted string containing the best and alternative routes.
- *
- * @note Time Complexity: O((V + E)log V) since it calls getPath() which executes dijkstra().
- */
-std::string driveRoute(Graph<std::string> * g, Vertex<std::string>* origin, Vertex<std::string>* dest);
-
-/**
- * @brief This function computes the shortest restricted driving route between two vertices using Dijkstra’s algorithm.
- *
- * This function computes the best driving route from an origin to a destination origin vertex to a destination
- * vertex, while considering an optional middle vertex. If no middle vertex is specified, it finds the shortest
- * driving route by calling getPath(). If a middle vertex is provided, it ensures that the route passes through
- * it. The computed route and its cost are formatted into a string.
- *
- * @param g Pointer to the graph.
- * @param origin Pointer to the starting vertex.
- * @param dest Pointer to the destination vertex.
- * @param middle The ID of the middle vertex that must be included in the route (-1 if not required).
- * @return A formatted string containing the restricted driving route and its cost. If no route is found, "none" is returned.
- *
- * @note Time Complexity: O((V + E)log V) due to Dijkstra’s algorithm being used within getPath().
- */
-std::string driveRestrictedRoute(Graph<std::string> * g,Vertex<std::string>* origin, Vertex<std::string>* dest,const int& middle);
+void getWalkRoute(Graph<std::string> *g, Vertex<std::string>* middle, Vertex<std::string>* dest,std::vector<int> &route, int &cost);
 
 /**
  * @brief Finds the optimal parking spot based on the shortest combined driving and walking distance.
@@ -180,4 +110,5 @@ std::string approximateSolution(Graph<std::string> * g,Vertex<std::string>* orig
  */
 std::string driveWalkingRoute(Graph<std::string> * g,Vertex<std::string>* origin, Vertex<std::string>* dest,const int& max);
 
-#endif //ROUTESEARCH_H
+
+#endif //ECOLOGICALROUTESEARCH_H

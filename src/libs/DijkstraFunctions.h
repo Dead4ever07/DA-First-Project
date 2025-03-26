@@ -1,7 +1,3 @@
-//
-// Created by teres on 23/03/2025.
-//
-
 #ifndef DIJKSTRAFUNCTIONS_H
 #define DIJKSTRAFUNCTIONS_H
 
