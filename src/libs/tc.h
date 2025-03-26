@@ -17,6 +17,7 @@
 #define TC_GREEN "\x1B[0;32m"
 #define TC_YLW "\x1B[0;33m"
 #define TC_BLUE "\x1B[0;34m"
+#define TC_B_BLUE "\x1B[1;34m"
 #define TC_MAG "\x1B[0;35m"
 #define TC_CYN "\x1B[0;36m"
 #define TC_WHT "\x1B[0;37m"

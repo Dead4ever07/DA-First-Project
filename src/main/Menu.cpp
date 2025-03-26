@@ -204,7 +204,7 @@ void Menu::processMenu2(ACTIONS & Pressed) {
                     break;
                 case(1):
                     clear_screen();
-                    std::cout<<TC_BOLD<<"Best Path\n";
+                    std::cout<<TC_B_BLUE<<"Best Path:\n"<<TC_NRM;
                     readInputFromFile( g,"input.txt", out);
                     std::cout<<out<<'\n';
                     ofs<<out;
