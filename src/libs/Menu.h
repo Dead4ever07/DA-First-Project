@@ -22,19 +22,37 @@ public:
     void run();
 private:
     ///
-    /// @brief Captures user input and updates the associated action.
-    /// @param[out] Pressed A reference to an `ACTIONS` object where the user's input
+    /// @brief Captures user input and translates the associated action updates the associated action.
+    /// @param[out] Pressed A reference to an `ACTIONS` object associated with a user's input key
     ///
     void get_input(ACTIONS& Pressed);
     ///
-    /// @brief Displays the menu interface to the user.
+    /// @brief Displays the menu interface to the user.\n
+    ///Each line is stored in a predefine vector<string> and the selected line is printed in Blue
     ///
     void print_menu();
+
+    /**
+     * @brief Redirects the control to the function responsible to process the user input on that menu
+     * @param Pressed Key pressed by the user
+     */
     void processKey(ACTIONS &Pressed);
+
+    /**
+     * @brief Handles the logic responsible for the ACTION done by the user in the Menu 1
+     * @param Pressed Key pressed by the user
+     */
     void processMenu1(ACTIONS &Pressed);
+    /**
+     * @brief Handles the logic responsible for the ACTION done by the user in the Menu 2
+     * @param Pressed Key pressed by the user
+     */
     void processMenu2(ACTIONS &Pressed);
-    void processMenu3(ACTIONS &Pressed);//Not implemented
-    void processMenu4(ACTIONS &Pressed);//Not implemented;
+    /**
+     * @brief Handles the logic responsible for the ACTION done by the user in the Menu 3
+     * @param Pressed Key pressed by the user
+     */
+    void processMenu3(ACTIONS &Pressed);
     /**
      * @brief Simple function that reads the user input, allowing the user to see what it is typing in the process
      * @param Attribute Sentence to be printed
@@ -66,6 +84,11 @@ private:
     int vertex_page = 0;
 };
 
+/**
+ * @brief Function responsible for printing the 10 vertices of the selected page
+ * @param pos Page selected
+ * @param g Graph from which the nodes are being printed
+ */
 void print_vertex(int pos, Graph<std::string>* g);
 
 

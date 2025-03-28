@@ -100,9 +100,6 @@ void Menu::processKey(ACTIONS &Pressed) {
         case(2):
             processMenu3(Pressed);
             break;
-        case(3):
-            //processMenu4(Pressed);
-            break;
         default:
             break;
     }
