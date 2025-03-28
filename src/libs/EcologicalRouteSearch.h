@@ -23,16 +23,16 @@ void getWalkRoute(Graph<std::string> *g, Vertex<std::string>* middle, Vertex<std
 /**
  * @brief Finds the optimal parking spot based on the shortest combined driving and walking distance.
  *
- * This function iterates through a list of parking spots and selects the one that minimizes the total
- * distance, which is the sum of the driving distance (getDist()) and the walking distance (getForwardDist()).
- * If two parking spots have the same total distance, the one with the shorter driving distance is preferred.
+ * This function iterates through a list of potential parking spots and selects the best option in terms
+ * of total distance (driving + walking). If two parking spots have the same total distance, the one with the
+ * shorter driving distance is preferred (considered more eco-friendly). In the end, distance has the total
+ * distance for the best parking spot.
  *
  * @param parkingSpots A vector containing pointers to potential parking spot vertices.
- * @param distance Reference to an integer storing the minimum found total distance.
- *                 It gets updated to the best-found distance.
+ * @param distance Reference to an integer storing the minimum found total distance. It gets updated to the best-found distance.
  * @return A pointer to the optimal parking vertex. If no parking spot is found, returns nullptr.
  *
- * @note Time Complexity: O(N), where N is the number of parking spots in the vector.
+ * @note Time Complexity: O(N), where N is the number of parking spots in the vector. N is at most V
  */
 Vertex<std::string>* driveWalkingPath(std::vector<Vertex<std::string>*> &parkingSpots,int &distance);
 
@@ -47,14 +47,14 @@ Vertex<std::string>* driveWalkingPath(std::vector<Vertex<std::string>*> &parking
  * @param parkingSpots A vector containing pointers to candidate parking vertices.
  * @param distance1 Reference to an integer storing the total distance to the best parking spot.
  * @param distance2 Reference to an integer storing the total distance to the second-best parking spot.
- * @return A pair of pointers to the best and second-best parking vertices, respectively.
+ * @return A pair of pointers to the best and second-best parking vertices, respectively. A nullptr is returned for every missing parking spot.
  *
- * @note Time Complexity: O(N), where N is the number of parking spots and each vertex is checked once.
+ * @note Time Complexity: O(N), where N is the number of parking spots and each vertex is checked once. N is at most V
  */
 std::pair<Vertex<std::string>*,Vertex<std::string> *> driveWalkingPaths(std::vector<Vertex<std::string>*> &parkingSpots, int &distance1, int &distance2);
 
 /**
- * @brief Formats a combined driving-walking route from origin to destination, including a parking spot.
+ * @brief Formats a string with a driving-walking route from origin to destination, including a parking spot.
  *
  * This function first determines the driving route from the origin to the selected parking spot and then
  * computes the walking route from the parking spot to the destination. The resulting information is formatted
@@ -68,7 +68,7 @@ std::pair<Vertex<std::string>*,Vertex<std::string> *> driveWalkingPaths(std::vec
  * @param distance Total estimated time for the entire trip (driving + walking).
  * @return A formatted string describing the full route, including driving and walking segments.
  *
- * @note Time Complexity: O(V), since the function finds the driving and walking routes and reverses the walking route before adding it to the result.
+ * @note Time Complexity: O(V), since the function finds the driving and walking routes. Moreover, it reverses the walking route, before adding it to the result. V is the number of vertices.
  */
 std::string printWalkingDrivingRoute(Graph<std::string> * g,Vertex<std::string>* origin, Vertex<std::string>* parkingVertex,Vertex<std::string>* dest, std::string numRoute, int distance);
 
@@ -76,18 +76,18 @@ std::string printWalkingDrivingRoute(Graph<std::string> * g,Vertex<std::string>*
  * @brief Finds an approximate driving-walking route when an exact solution isn't available.
  *
  * This function attempts to find up to two parking spots that minimize the total travel distance
- * and generates two routes, if possible. First, it Identifies the two closest parking spots using
- * driveWalkingPaths(). If there are two valid parking spots, it generates both routes using
- * printWalkingDrivingRoute(). If no valid parking spots are available, it returns an error message
- * for each try.
+ * and generates two routes, if possible. First, it identifies the two shortest paths and their
+ * corresponding parking spots using driveWalkingPaths(). If there are two valid parking spots,
+ * it generates both routes using printWalkingDrivingRoute(). If there are no valid parking
+ * spots, it returns an error message for each try.
  *
  * @param g Pointer to the graph representing the road network.
  * @param origin Pointer to the origin vertex.
  * @param dest Pointer to the destination vertex.
- * @param parkingSpots List of available parking spots in the graph.
- * @return A formatted string containing the approximate driving-walking route(s).
+ * @param parkingSpots List of parking spots in the graph.
+ * @return A formatted string containing the approximate driving-walking route(s) and/or an error message.
  *
- * @note Time Complexity: O((V + E)log V) due to searching for parking spots and generating routes requires using Dijkstra's algorithm.
+ * @note Time Complexity: O((V + E)log V) due to searching for parking spots and generating routes requires using Dijkstra's algorithm. V is the number of vertices and E is the number of edges.
  */
 std::string approximateSolution(Graph<std::string> * g,Vertex<std::string>* origin,Vertex<std::string>* dest, std::vector<Vertex<std::string>*> parkingSpots);
 
@@ -106,7 +106,7 @@ std::string approximateSolution(Graph<std::string> * g,Vertex<std::string>* orig
  * @param max The maximum allowed walking time from the parking spot to the destination.
  * @return A formatted string describing the best possible route.
  *
- * @note Time Complexity: O((V + E)log V) due to Dijkstra’s algorithm being used within dijkstraWalking().
+ * @note Time Complexity: O((V + E)log V) due to Dijkstra’s algorithm being used within dijkstraWalking() and dijkstra(). V is the number of vertices and E is the number of edges.
  */
 std::string driveWalkingRoute(Graph<std::string> * g,Vertex<std::string>* origin, Vertex<std::string>* dest,const int& max);
 

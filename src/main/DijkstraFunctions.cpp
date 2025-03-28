@@ -1,6 +1,3 @@
-//
-// Created by teres on 23/03/2025.
-//
 #include "libs/RouteSearch.h"
 #include "libs/DijkstraFunctions.h"
 #include <stdint.h>

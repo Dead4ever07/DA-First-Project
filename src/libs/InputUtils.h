@@ -14,6 +14,7 @@
  *
  * @note Time Complexity: O(C + (V+E)log(V)), where:
  *   - C is the number of characters in the input file.
+ *   - V is the number of vertices and E is the number of edges.
  *   - (V+E)log(V) is the complexity of checkInput(), called by readInputFromString().
  */
 void readInputFromFile(Graph<std::string>* g, std::string fileName, std::string& output);
@@ -28,6 +29,7 @@ void readInputFromFile(Graph<std::string>* g, std::string fileName, std::string&
  *
  * @note Time Complexity: O(C + (V+E)log(V)), where:
  *   - C is the number of characters in the input string.
+ *   - V is the number of vertices and E is the number of edges.
  *   - (V+E)log(V) is the complexity of checkInput().
  */
 void readInputFromString(Graph<std::string>*g, std::string input, std::string& output);
@@ -51,7 +53,7 @@ void readInputFromString(Graph<std::string>*g, std::string input, std::string& o
  * @return A formatted string containing the computed route or an error message if the input is invalid.
  *
  * @note Time Complexity: O((V + E) log V). The function may call driveRoute(), driveRestrictedRoute(),
- * or driveWalkingRoute(), each executing Dijkstra’s algorithm.
+ * or driveWalkingRoute(), each executing Dijkstra’s algorithm. V is the number of vertices and E is the number of edges.
  */
 std::string checkInput(Graph<std::string> * g, const int &origin, const int& dest, std::vector<int>& vertex, std::vector<std::pair<int,int>>& edges, int& middle, std::string mode, int maxWalkTime);
 

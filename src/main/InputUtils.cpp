@@ -1,5 +1,6 @@
 #include "../libs/InputUtils.h"
 #include "../libs/RouteSearch.h"
+#include "../libs/EcologicalRouteSearch.h"
 #include <sstream>
 #include <fstream>
 #include <vector>
