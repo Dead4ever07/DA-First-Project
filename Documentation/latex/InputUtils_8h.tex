@@ -8,6 +8,14 @@ Include dependency graph for Input\+Utils.\+h\+:\nopagebreak
 \includegraphics[width=350pt]{InputUtils_8h__incl}
 \end{center}
 \end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=190pt]{InputUtils_8h__dep__incl}
+\end{center}
+\end{figure}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -55,7 +63,7 @@ This function checks if the given inputs exist in the graph. Then, it determines
 A formatted string containing the computed route or an error message if the input is invalid.
 \end{DoxyReturn}
 \begin{DoxyNote}{Note}
-Time Complexity\+: O((V + E) log V). The function may call \doxylink{RouteSearch_8h_a7278b18d7065b52ffc7fa359f1a6ab72}{drive\+Route()}, \doxylink{RouteSearch_8h_ad1f59963f85e4f72071fe928cf611854}{drive\+Restricted\+Route()}, or \doxylink{RouteSearch_8h_a421b3b14654cf4c556851c40260beefe}{drive\+Walking\+Route()}, each executing Dijkstra’s algorithm. 
+Time Complexity\+: O((V + E) log V). The function may call \doxylink{RouteSearch_8h_a7278b18d7065b52ffc7fa359f1a6ab72}{drive\+Route()}, \doxylink{RouteSearch_8h_ad1f59963f85e4f72071fe928cf611854}{drive\+Restricted\+Route()}, or \doxylink{EcologicalRouteSearch_8h_a421b3b14654cf4c556851c40260beefe}{drive\+Walking\+Route()}, each executing Dijkstra’s algorithm. V is the number of vertices and E is the number of edges. 
 \end{DoxyNote}
 \Hypertarget{InputUtils_8h_a301ddf621a703f03661e3f7ebcb81f58}\label{InputUtils_8h_a301ddf621a703f03661e3f7ebcb81f58} 
 \index{InputUtils.h@{InputUtils.h}!readInputFromFile@{readInputFromFile}}
@@ -78,6 +86,7 @@ This function opens the specified file, reads its contents into a string, and th
 Time Complexity\+: O(C + (V+E)log(\+V)), where\+:
 \begin{DoxyItemize}
 \item C is the number of characters in the input file.
+\item V is the number of vertices and E is the number of edges.
 \item (V+E)log(\+V) is the complexity of \doxylink{InputUtils_8h_ad09e2f4f5b9830e0a6194ffce0550612}{check\+Input()}, called by \doxylink{InputUtils_8h_ada01290da3c8eb70d8e88028896b43a9}{read\+Input\+From\+String()}. 
 \end{DoxyItemize}
 \end{DoxyNote}
@@ -102,6 +111,7 @@ This function reads an input string containing route parameters and processes th
 Time Complexity\+: O(C + (V+E)log(\+V)), where\+:
 \begin{DoxyItemize}
 \item C is the number of characters in the input string.
+\item V is the number of vertices and E is the number of edges.
 \item (V+E)log(\+V) is the complexity of \doxylink{InputUtils_8h_ad09e2f4f5b9830e0a6194ffce0550612}{check\+Input()}. 
 \end{DoxyItemize}
 \end{DoxyNote}

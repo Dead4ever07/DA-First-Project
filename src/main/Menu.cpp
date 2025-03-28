@@ -1,10 +1,6 @@
 #include "../libs/Menu.h"
-
-#include <fstream>
-#include <sstream>
-
-#include "libs/InputUtils.h"
 #include "libs/tc.h"
+
 
 
 Menu::Menu() {
@@ -30,10 +26,6 @@ void Menu::run() {
             processKey(Pressed);
     }
 }
-///
-/// @brief Captures user input and updates the associated action.
-/// @param[out] Pressed A reference to an `ACTIONS` object where the user's input
-///
 void Menu::get_input(ACTIONS& Pressed) {
     int c = getchar();
     switch (c) {

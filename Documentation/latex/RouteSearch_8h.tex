@@ -18,8 +18,6 @@ This graph shows which files directly or indirectly include this file\+:\nopageb
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classEdge}{void}} \mbox{\hyperlink{RouteSearch_8h_a0df9ebd22e14dd2e37db59cc2f760d5b}{get\+Walk\+Route}} (\mbox{\hyperlink{classGraph}{Graph}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}g, \mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classEdge}{middle}}, \mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}dest, \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::vector}}$<$ \mbox{\hyperlink{classEdge}{int}} $>$ \&\mbox{\hyperlink{classEdge}{route}}, \mbox{\hyperlink{classEdge}{int}} \&\mbox{\hyperlink{classEdge}{cost}})
-\begin{DoxyCompactList}\small\item\em Constructs the driving-\/walking route from the destination to the origin based on the shortest path computed. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classEdge}{void}} \mbox{\hyperlink{RouteSearch_8h_aa059527e092534cc62b3c2d53f7c4be8}{get\+Drive\+Route}} (\mbox{\hyperlink{classGraph}{Graph}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}g, \mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classEdge}{origin}}, \mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}dest, \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::vector}}$<$ \mbox{\hyperlink{classEdge}{int}} $>$ \&\mbox{\hyperlink{classEdge}{route}}, \mbox{\hyperlink{classEdge}{int}} \&\mbox{\hyperlink{classEdge}{cost}}, \mbox{\hyperlink{classEdge}{bool}} \mbox{\hyperlink{classEdge}{to\+Select}}, \mbox{\hyperlink{classEdge}{bool}} \mbox{\hyperlink{classEdge}{first\+Path}})
 \begin{DoxyCompactList}\small\item\em Constructs the driving route from the destination to the origin based on the shortest path computed. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classEdge}{bool}} \mbox{\hyperlink{RouteSearch_8h_a293841dc2d91eed2e54107ac150c2fe7}{get\+Path}} (\mbox{\hyperlink{classGraph}{Graph}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}g, \mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classEdge}{origin}}, \mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}dest, \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::vector}}$<$ \mbox{\hyperlink{classEdge}{int}} $>$ \&\mbox{\hyperlink{classEdge}{route}}, \mbox{\hyperlink{classEdge}{int}} \&\mbox{\hyperlink{classEdge}{cost}}, \mbox{\hyperlink{classEdge}{bool}} \mbox{\hyperlink{classEdge}{to\+Select}}, \mbox{\hyperlink{classEdge}{bool}} \mbox{\hyperlink{classEdge}{first\+Path}})
@@ -29,49 +27,10 @@ This graph shows which files directly or indirectly include this file\+:\nopageb
 \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} \mbox{\hyperlink{RouteSearch_8h_a7278b18d7065b52ffc7fa359f1a6ab72}{drive\+Route}} (\mbox{\hyperlink{classGraph}{Graph}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}g, \mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classEdge}{origin}}, \mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}dest)
 \begin{DoxyCompactList}\small\item\em This function computes the shortest driving route between two vertices using Dijkstra’s algorithm. It also attempts to find an alternative route, if possible. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} \mbox{\hyperlink{RouteSearch_8h_ad1f59963f85e4f72071fe928cf611854}{drive\+Restricted\+Route}} (\mbox{\hyperlink{classGraph}{Graph}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}g, \mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classEdge}{origin}}, \mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}dest, \mbox{\hyperlink{classEdge}{const}} \mbox{\hyperlink{classEdge}{int}} \&\mbox{\hyperlink{classEdge}{middle}})
-\begin{DoxyCompactList}\small\item\em This function computes the shortest restricted driving route between two vertices using Dijkstra’s algorithm. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{RouteSearch_8h_a044ff85d251d6d671fef78cad7e04c3a}{drive\+Walking\+Path}} (\mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::vector}}$<$ \mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*} $>$ \&\mbox{\hyperlink{classEdge}{parking\+Spots}}, \mbox{\hyperlink{classEdge}{int}} \&\mbox{\hyperlink{classEdge}{distance}})
-\begin{DoxyCompactList}\small\item\em Finds the optimal parking spot based on the shortest combined driving and walking distance. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::pair}}$<$ \mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}, \mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{RouteSearch_8h_a3304f73c4bf8c20a686149f890da954a}{drive\+Walking\+Paths}} (\mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::vector}}$<$ \mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*} $>$ \&\mbox{\hyperlink{classEdge}{parking\+Spots}}, \mbox{\hyperlink{classEdge}{int}} \&\mbox{\hyperlink{classEdge}{distance1}}, \mbox{\hyperlink{classEdge}{int}} \&\mbox{\hyperlink{classEdge}{distance2}})
-\begin{DoxyCompactList}\small\item\em Determines the two best parking spots for a drive-\/walk route based on distance and eco-\/friendliness. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} \mbox{\hyperlink{RouteSearch_8h_afff33a6dab7ff67a0cef2668ca3c781f}{print\+Walking\+Driving\+Route}} (\mbox{\hyperlink{classGraph}{Graph}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}g, \mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classEdge}{origin}}, \mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classEdge}{parking\+Vertex}}, \mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}dest, \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} \mbox{\hyperlink{classEdge}{num\+Route}}, \mbox{\hyperlink{classEdge}{int}} \mbox{\hyperlink{classEdge}{distance}})
-\begin{DoxyCompactList}\small\item\em Formats a combined driving-\/walking route from origin to destination, including a parking spot. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} \mbox{\hyperlink{RouteSearch_8h_ae9c7c4d0c7a36cdd5df1c6006c1184c6}{approximate\+Solution}} (\mbox{\hyperlink{classGraph}{Graph}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}g, \mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classEdge}{origin}}, \mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}dest, \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::vector}}$<$ \mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{classEdge}{parking\+Spots}})
-\begin{DoxyCompactList}\small\item\em Finds an approximate driving-\/walking route when an exact solution isn\textquotesingle{}t available. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} \mbox{\hyperlink{RouteSearch_8h_a421b3b14654cf4c556851c40260beefe}{drive\+Walking\+Route}} (\mbox{\hyperlink{classGraph}{Graph}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}g, \mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classEdge}{origin}}, \mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}dest, \mbox{\hyperlink{classEdge}{const}} \mbox{\hyperlink{classEdge}{int}} \&\mbox{\hyperlink{classEdge}{max}})
-\begin{DoxyCompactList}\small\item\em Finds the best driving and walking route given a maximum walking distance constraint. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em This function computes the shortest restricted driving route between two vertices using Dijkstra’s algorithm. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Function Documentation}
-\Hypertarget{RouteSearch_8h_ae9c7c4d0c7a36cdd5df1c6006c1184c6}\label{RouteSearch_8h_ae9c7c4d0c7a36cdd5df1c6006c1184c6} 
-\index{RouteSearch.h@{RouteSearch.h}!approximateSolution@{approximateSolution}}
-\index{approximateSolution@{approximateSolution}!RouteSearch.h@{RouteSearch.h}}
-\doxysubsubsection{\texorpdfstring{approximateSolution()}{approximateSolution()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} approximate\+Solution (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraph}{Graph}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}}]{g,  }\item[{\mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}}]{origin,  }\item[{\mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}}]{dest,  }\item[{\mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::vector}}$<$ \mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*} $>$}]{parking\+Spots }\end{DoxyParamCaption})}
-
-
-
-Finds an approximate driving-\/walking route when an exact solution isn\textquotesingle{}t available. 
-
-This function attempts to find up to two parking spots that minimize the total travel distance and generates two routes, if possible. First, it Identifies the two closest parking spots using \doxylink{RouteSearch_8h_a3304f73c4bf8c20a686149f890da954a}{drive\+Walking\+Paths()}. If there are two valid parking spots, it generates both routes using \doxylink{RouteSearch_8h_afff33a6dab7ff67a0cef2668ca3c781f}{print\+Walking\+Driving\+Route()}. If no valid parking spots are available, it returns an error message for each try.
-
-
-\begin{DoxyParams}{Parameters}
-{\em g} & Pointer to the graph representing the road network. \\
-\hline
-{\em origin} & Pointer to the origin vertex. \\
-\hline
-{\em dest} & Pointer to the destination vertex. \\
-\hline
-{\em parking\+Spots} & List of available parking spots in the graph. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-A formatted string containing the approximate driving-\/walking route(s).
-\end{DoxyReturn}
-\begin{DoxyNote}{Note}
-Time Complexity\+: O((V + E)log V) due to searching for parking spots and generating routes requires using Dijkstra\textquotesingle{}s algorithm. 
-\end{DoxyNote}
 \Hypertarget{RouteSearch_8h_ad1f59963f85e4f72071fe928cf611854}\label{RouteSearch_8h_ad1f59963f85e4f72071fe928cf611854} 
 \index{RouteSearch.h@{RouteSearch.h}!driveRestrictedRoute@{driveRestrictedRoute}}
 \index{driveRestrictedRoute@{driveRestrictedRoute}!RouteSearch.h@{RouteSearch.h}}
@@ -82,7 +41,7 @@ Time Complexity\+: O((V + E)log V) due to searching for parking spots and genera
 
 This function computes the shortest restricted driving route between two vertices using Dijkstra’s algorithm. 
 
-This function computes the best driving route from an origin to a destination origin vertex to a destination vertex, while considering an optional middle vertex. If no middle vertex is specified, it finds the shortest driving route by calling \doxylink{RouteSearch_8h_a293841dc2d91eed2e54107ac150c2fe7}{get\+Path()}. If a middle vertex is provided, it ensures that the route passes through it. The computed route and its cost are formatted into a string.
+This function computes the best driving route from an origin to a destination vertex, while considering an optional middle vertex. If no middle vertex is specified, it finds the shortest driving route by calling \doxylink{RouteSearch_8h_a293841dc2d91eed2e54107ac150c2fe7}{get\+Path()}. If a middle vertex is provided, it ensures that the route passes through it. The computed route and its cost are formatted into a string.
 
 
 \begin{DoxyParams}{Parameters}
@@ -99,7 +58,7 @@ This function computes the best driving route from an origin to a destination or
 A formatted string containing the restricted driving route and its cost. If no route is found, "{}none"{} is returned.
 \end{DoxyReturn}
 \begin{DoxyNote}{Note}
-Time Complexity\+: O((V + E)log V) due to Dijkstra’s algorithm being used within \doxylink{RouteSearch_8h_a293841dc2d91eed2e54107ac150c2fe7}{get\+Path()}. 
+Time Complexity\+: O((V + E)log V) due to Dijkstra’s algorithm being used within \doxylink{RouteSearch_8h_a293841dc2d91eed2e54107ac150c2fe7}{get\+Path()}. V is the number of vertices and E is the number of edges. 
 \end{DoxyNote}
 \Hypertarget{RouteSearch_8h_a7278b18d7065b52ffc7fa359f1a6ab72}\label{RouteSearch_8h_a7278b18d7065b52ffc7fa359f1a6ab72} 
 \index{RouteSearch.h@{RouteSearch.h}!driveRoute@{driveRoute}}
@@ -126,88 +85,7 @@ This function computes the best driving route from an origin vertex to a destina
 A formatted string containing the best and alternative routes.
 \end{DoxyReturn}
 \begin{DoxyNote}{Note}
-Time Complexity\+: O((V + E)log V) since it calls \doxylink{RouteSearch_8h_a293841dc2d91eed2e54107ac150c2fe7}{get\+Path()} which executes \doxylink{DijkstraFunctions_8h_a499e2217711f5ce50203011d3d6dbd88}{dijkstra()}. 
-\end{DoxyNote}
-\Hypertarget{RouteSearch_8h_a044ff85d251d6d671fef78cad7e04c3a}\label{RouteSearch_8h_a044ff85d251d6d671fef78cad7e04c3a} 
-\index{RouteSearch.h@{RouteSearch.h}!driveWalkingPath@{driveWalkingPath}}
-\index{driveWalkingPath@{driveWalkingPath}!RouteSearch.h@{RouteSearch.h}}
-\doxysubsubsection{\texorpdfstring{driveWalkingPath()}{driveWalkingPath()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*} drive\+Walking\+Path (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::vector}}$<$ \mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*} $>$ \&}]{parking\+Spots,  }\item[{\mbox{\hyperlink{classEdge}{int}} \&}]{distance }\end{DoxyParamCaption})}
-
-
-
-Finds the optimal parking spot based on the shortest combined driving and walking distance. 
-
-This function iterates through a list of parking spots and selects the one that minimizes the total distance, which is the sum of the driving distance (get\+Dist()) and the walking distance (get\+Forward\+Dist()). If two parking spots have the same total distance, the one with the shorter driving distance is preferred.
-
-
-\begin{DoxyParams}{Parameters}
-{\em parking\+Spots} & A vector containing pointers to potential parking spot vertices. \\
-\hline
-{\em distance} & Reference to an integer storing the minimum found total distance. It gets updated to the best-\/found distance. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-A pointer to the optimal parking vertex. If no parking spot is found, returns nullptr.
-\end{DoxyReturn}
-\begin{DoxyNote}{Note}
-Time Complexity\+: O(\+N), where N is the number of parking spots in the vector. 
-\end{DoxyNote}
-\Hypertarget{RouteSearch_8h_a3304f73c4bf8c20a686149f890da954a}\label{RouteSearch_8h_a3304f73c4bf8c20a686149f890da954a} 
-\index{RouteSearch.h@{RouteSearch.h}!driveWalkingPaths@{driveWalkingPaths}}
-\index{driveWalkingPaths@{driveWalkingPaths}!RouteSearch.h@{RouteSearch.h}}
-\doxysubsubsection{\texorpdfstring{driveWalkingPaths()}{driveWalkingPaths()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::pair}}$<$ \mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}, \mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*} $>$ drive\+Walking\+Paths (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::vector}}$<$ \mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*} $>$ \&}]{parking\+Spots,  }\item[{\mbox{\hyperlink{classEdge}{int}} \&}]{distance1,  }\item[{\mbox{\hyperlink{classEdge}{int}} \&}]{distance2 }\end{DoxyParamCaption})}
-
-
-
-Determines the two best parking spots for a drive-\/walk route based on distance and eco-\/friendliness. 
-
-This function iterates through a list of potential parking spots and selects the two best options in terms of total distance (driving + walking). If two parking spots have the same total distance, the one with the shorter driving distance is preferred (considered more eco-\/friendly). In the end, distance1 and distance2 have the total distances for the best and second-\/best parking spots, respectively.
-
-
-\begin{DoxyParams}{Parameters}
-{\em parking\+Spots} & A vector containing pointers to candidate parking vertices. \\
-\hline
-{\em distance1} & Reference to an integer storing the total distance to the best parking spot. \\
-\hline
-{\em distance2} & Reference to an integer storing the total distance to the second-\/best parking spot. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-A pair of pointers to the best and second-\/best parking vertices, respectively.
-\end{DoxyReturn}
-\begin{DoxyNote}{Note}
-Time Complexity\+: O(\+N), where N is the number of parking spots and ach vertex is checked once. 
-\end{DoxyNote}
-\Hypertarget{RouteSearch_8h_a421b3b14654cf4c556851c40260beefe}\label{RouteSearch_8h_a421b3b14654cf4c556851c40260beefe} 
-\index{RouteSearch.h@{RouteSearch.h}!driveWalkingRoute@{driveWalkingRoute}}
-\index{driveWalkingRoute@{driveWalkingRoute}!RouteSearch.h@{RouteSearch.h}}
-\doxysubsubsection{\texorpdfstring{driveWalkingRoute()}{driveWalkingRoute()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} drive\+Walking\+Route (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraph}{Graph}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}}]{g,  }\item[{\mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}}]{origin,  }\item[{\mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}}]{dest,  }\item[{\mbox{\hyperlink{classEdge}{const}} \mbox{\hyperlink{classEdge}{int}} \&}]{max }\end{DoxyParamCaption})}
-
-
-
-Finds the best driving and walking route given a maximum walking distance constraint. 
-
-This function first calls \doxylink{DijkstraFunctions_8h_a16adf7b38176d619ebf07defab951b69}{dijkstra\+Walking()} with the destination to compute the shortest walking distances from all potential parking spots. It then filters parking spots into parking\+Spots, which contains all available parking spots and requirement\+Parking\+Spots, which only contains the parking spots that are within the given max walking distance. If no parking spots are within the max walking distance, an approximate solution is returned. Otherwise, the best parking spot is selected using \doxylink{RouteSearch_8h_a044ff85d251d6d671fef78cad7e04c3a}{drive\+Walking\+Path()}.
-
-
-\begin{DoxyParams}{Parameters}
-{\em g} & Pointer to the graph representing the road network. \\
-\hline
-{\em origin} & Pointer to the starting vertex. \\
-\hline
-{\em dest} & Pointer to the destination vertex. \\
-\hline
-{\em max} & The maximum allowed walking time from the parking spot to the destination. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-A formatted string describing the best possible route.
-\end{DoxyReturn}
-\begin{DoxyNote}{Note}
-Time Complexity\+: O((V + E)log V) due to Dijkstra’s algorithm being used within \doxylink{DijkstraFunctions_8h_a16adf7b38176d619ebf07defab951b69}{dijkstra\+Walking()}. 
+Time Complexity\+: O((V + E)log V) since it calls \doxylink{RouteSearch_8h_a293841dc2d91eed2e54107ac150c2fe7}{get\+Path()} which executes \doxylink{DijkstraFunctions_8h_a499e2217711f5ce50203011d3d6dbd88}{dijkstra()}. V is the number of vertices and E is the number of edges. 
 \end{DoxyNote}
 \Hypertarget{RouteSearch_8h_aa059527e092534cc62b3c2d53f7c4be8}\label{RouteSearch_8h_aa059527e092534cc62b3c2d53f7c4be8} 
 \index{RouteSearch.h@{RouteSearch.h}!getDriveRoute@{getDriveRoute}}
@@ -219,7 +97,7 @@ Time Complexity\+: O((V + E)log V) due to Dijkstra’s algorithm being used with
 
 Constructs the driving route from the destination to the origin based on the shortest path computed. 
 
-This function traces back the shortest path from the destination to the origin using the path set by \doxylink{DijkstraFunctions_8h_a499e2217711f5ce50203011d3d6dbd88}{dijkstra()}. It stores the sequence of vertex IDs in the route vector and accumulates the total driving cost. If the function is being used for non-\/restricted driving paths (to\+Select flag is enable), it marks visited vertices as selected to prevent them from being reused in the alternative route.
+This function traces back the shortest path from the destination to the origin using the path set by \doxylink{DijkstraFunctions_8h_a499e2217711f5ce50203011d3d6dbd88}{dijkstra()}. It stores the sequence of vertex IDs in the route vector and accumulates the total driving cost. If the function is being used for non-\/restricted driving paths (to\+Select flag is enable), it marks visited vertices as selected to prevent them from being reused in the alternative route. The first\+Path is enabled when the last item shouldn\textquotesingle{}t be included, which happens when there\textquotesingle{}s an Include\+Node in the restricted route. When this function is called for the second time, it avoids adding middle vertex in the vector twice.
 
 
 \begin{DoxyParams}{Parameters}
@@ -235,7 +113,7 @@ This function traces back the shortest path from the destination to the origin u
 \hline
 {\em to\+Select} & Boolean flag indicating whether to mark the vertices and edges in the path as selected (to avoid using it in the alternative route). \\
 \hline
-{\em first\+Path} & Boolean flag indicating whether this is the first path being computed (to avoid duplicate selections when including a node).\\
+{\em first\+Path} & Boolean flag indicating whether this is the first path being computed (to avoid duplicate values in the restricted route, when including a node).\\
 \hline
 \end{DoxyParams}
 \begin{DoxyNote}{Note}
@@ -274,35 +152,7 @@ This function is responsible for retrieving the shortest path computed by Dijkst
 True if a valid path is found, false otherwise.
 \end{DoxyReturn}
 \begin{DoxyNote}{Note}
-Time Complexity\+: O((V + E)log V), since it calls \doxylink{DijkstraFunctions_8h_a499e2217711f5ce50203011d3d6dbd88}{dijkstra()}. 
-\end{DoxyNote}
-\Hypertarget{RouteSearch_8h_a0df9ebd22e14dd2e37db59cc2f760d5b}\label{RouteSearch_8h_a0df9ebd22e14dd2e37db59cc2f760d5b} 
-\index{RouteSearch.h@{RouteSearch.h}!getWalkRoute@{getWalkRoute}}
-\index{getWalkRoute@{getWalkRoute}!RouteSearch.h@{RouteSearch.h}}
-\doxysubsubsection{\texorpdfstring{getWalkRoute()}{getWalkRoute()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classEdge}{void}} get\+Walk\+Route (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraph}{Graph}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}}]{g,  }\item[{\mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}}]{middle,  }\item[{\mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}}]{dest,  }\item[{\mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::vector}}$<$ \mbox{\hyperlink{classEdge}{int}} $>$ \&}]{route,  }\item[{\mbox{\hyperlink{classEdge}{int}} \&}]{cost }\end{DoxyParamCaption})}
-
-
-
-Constructs the driving-\/walking route from the destination to the origin based on the shortest path computed. 
-
-This function traces back the shortest walking path from the middle vertex (parking\+Vertex) to the destination, using the path set by \doxylink{DijkstraFunctions_8h_a16adf7b38176d619ebf07defab951b69}{dijkstra\+Walking()}. It stores the sequence of vertex IDs in the route vector and accumulates the total driving cost.
-
-
-\begin{DoxyParams}{Parameters}
-{\em g} & Pointer to the graph. \\
-\hline
-{\em middle} & Pointer to the vertex where the walking route starts. \\
-\hline
-{\em dest} & Pointer to the destination vertex. \\
-\hline
-{\em route} & Reference to a vector storing the sequence of vertex IDs in the walking path. \\
-\hline
-{\em cost} & Reference to an integer storing the total walking cost.\\
-\hline
-\end{DoxyParams}
-\begin{DoxyNote}{Note}
-Time Complexity\+: O(\+V) since it traces back through at most all vertices in the path. 
+Time Complexity\+: O((V + E)log V), since it calls \doxylink{DijkstraFunctions_8h_a499e2217711f5ce50203011d3d6dbd88}{dijkstra()}, where V is the number of vertices and E is the number of edges. 
 \end{DoxyNote}
 \Hypertarget{RouteSearch_8h_a0711b51345ef1267d243a5fddad3bd7c}\label{RouteSearch_8h_a0711b51345ef1267d243a5fddad3bd7c} 
 \index{RouteSearch.h@{RouteSearch.h}!printRoute@{printRoute}}
@@ -320,41 +170,8 @@ This function generates a formatted string with the expected result
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-A formatted string representing the route.
+True if successful, false otherwise.
 \end{DoxyReturn}
 \begin{DoxyNote}{Note}
-Time Complexity\+: O(\+N), where N is the number of nodes in the route. 
-\end{DoxyNote}
-\Hypertarget{RouteSearch_8h_afff33a6dab7ff67a0cef2668ca3c781f}\label{RouteSearch_8h_afff33a6dab7ff67a0cef2668ca3c781f} 
-\index{RouteSearch.h@{RouteSearch.h}!printWalkingDrivingRoute@{printWalkingDrivingRoute}}
-\index{printWalkingDrivingRoute@{printWalkingDrivingRoute}!RouteSearch.h@{RouteSearch.h}}
-\doxysubsubsection{\texorpdfstring{printWalkingDrivingRoute()}{printWalkingDrivingRoute()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} print\+Walking\+Driving\+Route (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraph}{Graph}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}}]{g,  }\item[{\mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}}]{origin,  }\item[{\mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}}]{parking\+Vertex,  }\item[{\mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}}]{dest,  }\item[{\mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}}}]{num\+Route,  }\item[{\mbox{\hyperlink{classEdge}{int}}}]{distance }\end{DoxyParamCaption})}
-
-
-
-Formats a combined driving-\/walking route from origin to destination, including a parking spot. 
-
-This function first determines the driving route from the origin to the selected parking spot and then computes the walking route from the parking spot to the destination. The resulting information is formatted as a string.
-
-
-\begin{DoxyParams}{Parameters}
-{\em g} & Pointer to the graph. \\
-\hline
-{\em origin} & Pointer to the origin vertex. \\
-\hline
-{\em parking\+Vertex} & Pointer to the parking spot vertex. \\
-\hline
-{\em dest} & Pointer to the destination vertex. \\
-\hline
-{\em num\+Route} & Identifier for multiple routes. \\
-\hline
-{\em distance} & Total estimated time for the entire trip (driving + walking). \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-A formatted string describing the full route, including driving and walking segments.
-\end{DoxyReturn}
-\begin{DoxyNote}{Note}
-Time Complexity\+: O(\+V), since the function finds the driving and walking routes and reverses the walking route before adding it to the result. 
+Time Complexity\+: O(\+V), where V is the number of vertices. This is the shortest path, so the size of the route vector is at most \texorpdfstring{$\vert$}{|}\+V\texorpdfstring{$\vert$}{|} -\/ 1. 
 \end{DoxyNote}

@@ -21,83 +21,84 @@
 \DoxyCodeLine{00017\ \textcolor{preprocessor}{\#define\ TC\_GREEN\ "{}\(\backslash\)x1B[0;32m"{}}}
 \DoxyCodeLine{00018\ \textcolor{preprocessor}{\#define\ TC\_YLW\ "{}\(\backslash\)x1B[0;33m"{}}}
 \DoxyCodeLine{00019\ \textcolor{preprocessor}{\#define\ TC\_BLUE\ "{}\(\backslash\)x1B[0;34m"{}}}
-\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#define\ TC\_MAG\ "{}\(\backslash\)x1B[0;35m"{}}}
-\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#define\ TC\_CYN\ "{}\(\backslash\)x1B[0;36m"{}}}
-\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#define\ TC\_WHT\ "{}\(\backslash\)x1B[0;37m"{}}}
-\DoxyCodeLine{00023\ }
-\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#define\ TC\_BG\_NRM\ "{}\(\backslash\)x1B[40m"{}}}
-\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#define\ TC\_BG\_RED\ "{}\ \(\backslash\)x1B[41m"{}}}
-\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#define\ TC\_BG\_GRN\ "{}\(\backslash\)x1B[42m"{}}}
-\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#define\ TC\_BG\_YEL\ "{}\(\backslash\)x1B[43m"{}}}
-\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#define\ TC\_BG\_BLU\ "{}\(\backslash\)x1B[44m"{}}}
-\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#define\ TC\_BG\_MAG\ "{}\(\backslash\)x1B[45m"{}}}
-\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#define\ TC\_BG\_CYN\ "{}\(\backslash\)x1B[46m"{}}}
-\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#define\ TC\_BG\_WHT\ "{}\(\backslash\)x1B[47m"{}}}
-\DoxyCodeLine{00032\ }
-\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#define\ clear\_screen()\ write(1,\ "{}\(\backslash\)033[H\(\backslash\)033[2J\(\backslash\)033[3J"{},\ 11)}}
-\DoxyCodeLine{00034\ }
-\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#ifdef\ \_WIN64}}
-\DoxyCodeLine{00036\ }
-\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#include<windows.h>}}
-\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#include<conio.h>}}
-\DoxyCodeLine{00039\ }
-\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#define\ getchar\ \_getch}}
-\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#define\ TRAIL\_CHR\ 224}}
-\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#define\ ARROW\_UP\ 72}}
-\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#define\ ARROW\_DOWN\ 80}}
-\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#define\ ARROW\_RIGHT\ 77}}
-\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#define\ ARROW\_LEFT\ 75}}
-\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#define\ ENTR\ 13}}
-\DoxyCodeLine{00047\ }
-\DoxyCodeLine{00048\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{tc_8h_a2b2a5031db77fd44d4318ecaaa9bd0ac}{tc\_echo\_off}}()\ \{}
-\DoxyCodeLine{00049\ \ \ \ \ \mbox{\hyperlink{classEdge}{HANDLE}}\ \mbox{\hyperlink{classEdge}{hStdin}}\ =\ \mbox{\hyperlink{classEdge}{GetStdHandle}}(\mbox{\hyperlink{classEdge}{STD\_INPUT\_HANDLE}});}
-\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classEdge}{hStdin}}\ ==\ \mbox{\hyperlink{classEdge}{INVALID\_HANDLE\_VALUE}})\ \{}
-\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std::cerr}}\ <<\ \textcolor{stringliteral}{"{}Couldn't\ get\ the\ standard\ input\ handle"{}}\ <<\ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std::endl}};}
-\DoxyCodeLine{00052\ \ \ \ \ \}}
-\DoxyCodeLine{00053\ \ \ \ \ \mbox{\hyperlink{classEdge}{DWORD}}\ \mbox{\hyperlink{classEdge}{mode}};}
-\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classEdge}{GetConsoleMode}}(\mbox{\hyperlink{classEdge}{hStdin}},\ \&\mbox{\hyperlink{classEdge}{mode}}))\ \{}
-\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std::cerr}}\ <<\ \textcolor{stringliteral}{"{}Couldn't\ get\ the\ standard\ input\ handle"{}}\ <<\ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std::endl}};}
-\DoxyCodeLine{00056\ \ \ \ \ \}}
-\DoxyCodeLine{00057\ \ \ \ \ \mbox{\hyperlink{classEdge}{mode}}\ \&=\ \mbox{\hyperlink{classEdge}{\string~ENABLE\_ECHO\_INPUT}};\ \ \textcolor{comment}{//\ Disable\ echo}}
-\DoxyCodeLine{00058\ \ \ \ \ \mbox{\hyperlink{classEdge}{SetConsoleMode}}(\mbox{\hyperlink{classEdge}{hStdin}},\ \mbox{\hyperlink{classEdge}{mode}});}
-\DoxyCodeLine{00059\ \}}
-\DoxyCodeLine{00060\ }
-\DoxyCodeLine{00061\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{tc_8h_aa420f9eb2ad9d8e145abe05c8fbcf317}{tc\_echo\_on}}()\ \{}
-\DoxyCodeLine{00062\ \ \ \ \ \mbox{\hyperlink{classEdge}{HANDLE}}\ \mbox{\hyperlink{classEdge}{hStdin}}\ =\ \mbox{\hyperlink{classEdge}{GetStdHandle}}(\mbox{\hyperlink{classEdge}{STD\_INPUT\_HANDLE}});}
-\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classEdge}{hStdin}}\ ==\ \mbox{\hyperlink{classEdge}{INVALID\_HANDLE\_VALUE}})\ \{}
-\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std::cerr}}\ <<\ \textcolor{stringliteral}{"{}Couldn't\ get\ the\ standard\ input\ handle"{}}\ <<\ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std::endl}};}
-\DoxyCodeLine{00065\ \ \ \ \ \}}
-\DoxyCodeLine{00066\ \ \ \ \ \mbox{\hyperlink{classEdge}{DWORD}}\ \mbox{\hyperlink{classEdge}{mode}};}
-\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classEdge}{GetConsoleMode}}(\mbox{\hyperlink{classEdge}{hStdin}},\ \&\mbox{\hyperlink{classEdge}{mode}})\ !=\ 0)\ \{}
-\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std::cerr}}\ <<\ \textcolor{stringliteral}{"{}Failed\ to\ get\ console\ mode"{}}\ <<\ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std::endl}};}
-\DoxyCodeLine{00069\ \ \ \ \ \}}
-\DoxyCodeLine{00070\ \ \ \ \ \mbox{\hyperlink{classEdge}{mode}}\ |=\ \mbox{\hyperlink{classEdge}{ENABLE\_ECHO\_INPUT}};\ \ \textcolor{comment}{//\ Enable\ echo}}
-\DoxyCodeLine{00071\ \ \ \ \ \mbox{\hyperlink{classEdge}{SetConsoleMode}}(\mbox{\hyperlink{classEdge}{hStdin}},\ \mbox{\hyperlink{classEdge}{mode}});}
-\DoxyCodeLine{00072\ \}}
-\DoxyCodeLine{00073\ \textcolor{preprocessor}{\#else}}
-\DoxyCodeLine{00074\ \textcolor{preprocessor}{\#include\ <sys/ioctl.h>}}
-\DoxyCodeLine{00075\ \textcolor{preprocessor}{\#include\ <termios.h>}}
-\DoxyCodeLine{00076\ }
-\DoxyCodeLine{00077\ \textcolor{preprocessor}{\#define\ TRAIL\_CHR\ (c\ ==\ 27\ \&\&\ getchar()==91)}}
-\DoxyCodeLine{00078\ \textcolor{preprocessor}{\#define\ ARROW\_UP\ 65}}
-\DoxyCodeLine{00079\ \textcolor{preprocessor}{\#define\ ARROW\_DOWN\ 66}}
-\DoxyCodeLine{00080\ \textcolor{preprocessor}{\#define\ ARROW\_RIGHT\ 67}}
-\DoxyCodeLine{00081\ \textcolor{preprocessor}{\#define\ ARROW\_LEFT\ 68}}
-\DoxyCodeLine{00082\ \textcolor{preprocessor}{\#define\ ENTR\ 10}}
-\DoxyCodeLine{00083\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{tc_8h_a2b2a5031db77fd44d4318ecaaa9bd0ac}{tc\_echo\_off}}()\{}
-\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{classEdge}{termios}}\ \mbox{\hyperlink{classEdge}{term}};}
-\DoxyCodeLine{00085\ \ \ \ \ \mbox{\hyperlink{classEdge}{tcgetattr}}(1,\ \&\mbox{\hyperlink{classEdge}{term}});}
-\DoxyCodeLine{00086\ \ \ \ \ \mbox{\hyperlink{classEdge}{term}}.c\_lflag\ \&=\ \string~(\mbox{\hyperlink{classEdge}{ICANON}}|\mbox{\hyperlink{classEdge}{ECHO}});}
-\DoxyCodeLine{00087\ \ \ \ \ \mbox{\hyperlink{classEdge}{tcsetattr}}(1,\ \mbox{\hyperlink{classEdge}{TCSANOW}},\ \&\mbox{\hyperlink{classEdge}{term}});}
-\DoxyCodeLine{00088\ \}}
-\DoxyCodeLine{00089\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{tc_8h_aa420f9eb2ad9d8e145abe05c8fbcf317}{tc\_echo\_on}}()\{}
-\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{classEdge}{termios}}\ \mbox{\hyperlink{classEdge}{term}};}
-\DoxyCodeLine{00091\ \ \ \ \ \mbox{\hyperlink{classEdge}{tcgetattr}}(1,\ \&\mbox{\hyperlink{classEdge}{term}});}
-\DoxyCodeLine{00092\ \ \ \ \ \mbox{\hyperlink{classEdge}{term}}.c\_lflag\ |=\ (\mbox{\hyperlink{classEdge}{ECHO}}|\mbox{\hyperlink{classEdge}{ICANON}});}
-\DoxyCodeLine{00093\ \ \ \ \ \mbox{\hyperlink{classEdge}{tcsetattr}}(1,\ \mbox{\hyperlink{classEdge}{TCSANOW}},\ \&\mbox{\hyperlink{classEdge}{term}});}
-\DoxyCodeLine{00094\ \}}
-\DoxyCodeLine{00095\ }
-\DoxyCodeLine{00096\ \textcolor{preprocessor}{\#endif}}
-\DoxyCodeLine{00097\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//TC\_H}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#define\ TC\_B\_BLUE\ "{}\(\backslash\)x1B[1;34m"{}}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#define\ TC\_MAG\ "{}\(\backslash\)x1B[0;35m"{}}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#define\ TC\_CYN\ "{}\(\backslash\)x1B[0;36m"{}}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#define\ TC\_WHT\ "{}\(\backslash\)x1B[0;37m"{}}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#define\ TC\_BG\_NRM\ "{}\(\backslash\)x1B[40m"{}}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#define\ TC\_BG\_RED\ "{}\ \(\backslash\)x1B[41m"{}}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#define\ TC\_BG\_GRN\ "{}\(\backslash\)x1B[42m"{}}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#define\ TC\_BG\_YEL\ "{}\(\backslash\)x1B[43m"{}}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#define\ TC\_BG\_BLU\ "{}\(\backslash\)x1B[44m"{}}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#define\ TC\_BG\_MAG\ "{}\(\backslash\)x1B[45m"{}}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#define\ TC\_BG\_CYN\ "{}\(\backslash\)x1B[46m"{}}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#define\ TC\_BG\_WHT\ "{}\(\backslash\)x1B[47m"{}}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#define\ clear\_screen()\ write(1,\ "{}\(\backslash\)033[H\(\backslash\)033[2J\(\backslash\)033[3J"{},\ 11)}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#ifdef\ \_WIN64}}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#include<windows.h>}}
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#include<conio.h>}}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#define\ getchar\ \_getch}}
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#define\ TRAIL\_CHR\ 224}}
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#define\ ARROW\_UP\ 72}}
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#define\ ARROW\_DOWN\ 80}}
+\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#define\ ARROW\_RIGHT\ 77}}
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#define\ ARROW\_LEFT\ 75}}
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#define\ ENTR\ 13}}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{tc_8h_a2b2a5031db77fd44d4318ecaaa9bd0ac}{tc\_echo\_off}}()\ \{}
+\DoxyCodeLine{00050\ \ \ \ \ \mbox{\hyperlink{classEdge}{HANDLE}}\ \mbox{\hyperlink{classEdge}{hStdin}}\ =\ \mbox{\hyperlink{classEdge}{GetStdHandle}}(\mbox{\hyperlink{classEdge}{STD\_INPUT\_HANDLE}});}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classEdge}{hStdin}}\ ==\ \mbox{\hyperlink{classEdge}{INVALID\_HANDLE\_VALUE}})\ \{}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std::cerr}}\ <<\ \textcolor{stringliteral}{"{}Couldn't\ get\ the\ standard\ input\ handle"{}}\ <<\ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std::endl}};}
+\DoxyCodeLine{00053\ \ \ \ \ \}}
+\DoxyCodeLine{00054\ \ \ \ \ \mbox{\hyperlink{classEdge}{DWORD}}\ \mbox{\hyperlink{classEdge}{mode}};}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classEdge}{GetConsoleMode}}(\mbox{\hyperlink{classEdge}{hStdin}},\ \&\mbox{\hyperlink{classEdge}{mode}}))\ \{}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std::cerr}}\ <<\ \textcolor{stringliteral}{"{}Couldn't\ get\ the\ standard\ input\ handle"{}}\ <<\ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std::endl}};}
+\DoxyCodeLine{00057\ \ \ \ \ \}}
+\DoxyCodeLine{00058\ \ \ \ \ \mbox{\hyperlink{classEdge}{mode}}\ \&=\ \mbox{\hyperlink{classEdge}{\string~ENABLE\_ECHO\_INPUT}};\ \ \textcolor{comment}{//\ Disable\ echo}}
+\DoxyCodeLine{00059\ \ \ \ \ \mbox{\hyperlink{classEdge}{SetConsoleMode}}(\mbox{\hyperlink{classEdge}{hStdin}},\ \mbox{\hyperlink{classEdge}{mode}});}
+\DoxyCodeLine{00060\ \}}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{tc_8h_aa420f9eb2ad9d8e145abe05c8fbcf317}{tc\_echo\_on}}()\ \{}
+\DoxyCodeLine{00063\ \ \ \ \ \mbox{\hyperlink{classEdge}{HANDLE}}\ \mbox{\hyperlink{classEdge}{hStdin}}\ =\ \mbox{\hyperlink{classEdge}{GetStdHandle}}(\mbox{\hyperlink{classEdge}{STD\_INPUT\_HANDLE}});}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classEdge}{hStdin}}\ ==\ \mbox{\hyperlink{classEdge}{INVALID\_HANDLE\_VALUE}})\ \{}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std::cerr}}\ <<\ \textcolor{stringliteral}{"{}Couldn't\ get\ the\ standard\ input\ handle"{}}\ <<\ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std::endl}};}
+\DoxyCodeLine{00066\ \ \ \ \ \}}
+\DoxyCodeLine{00067\ \ \ \ \ \mbox{\hyperlink{classEdge}{DWORD}}\ \mbox{\hyperlink{classEdge}{mode}};}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classEdge}{GetConsoleMode}}(\mbox{\hyperlink{classEdge}{hStdin}},\ \&\mbox{\hyperlink{classEdge}{mode}})\ !=\ 0)\ \{}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std::cerr}}\ <<\ \textcolor{stringliteral}{"{}Failed\ to\ get\ console\ mode"{}}\ <<\ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std::endl}};}
+\DoxyCodeLine{00070\ \ \ \ \ \}}
+\DoxyCodeLine{00071\ \ \ \ \ \mbox{\hyperlink{classEdge}{mode}}\ |=\ \mbox{\hyperlink{classEdge}{ENABLE\_ECHO\_INPUT}};\ \ \textcolor{comment}{//\ Enable\ echo}}
+\DoxyCodeLine{00072\ \ \ \ \ \mbox{\hyperlink{classEdge}{SetConsoleMode}}(\mbox{\hyperlink{classEdge}{hStdin}},\ \mbox{\hyperlink{classEdge}{mode}});}
+\DoxyCodeLine{00073\ \}}
+\DoxyCodeLine{00074\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00075\ \textcolor{preprocessor}{\#include\ <sys/ioctl.h>}}
+\DoxyCodeLine{00076\ \textcolor{preprocessor}{\#include\ <termios.h>}}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \textcolor{preprocessor}{\#define\ TRAIL\_CHR\ (c\ ==\ 27\ \&\&\ getchar()==91)}}
+\DoxyCodeLine{00079\ \textcolor{preprocessor}{\#define\ ARROW\_UP\ 65}}
+\DoxyCodeLine{00080\ \textcolor{preprocessor}{\#define\ ARROW\_DOWN\ 66}}
+\DoxyCodeLine{00081\ \textcolor{preprocessor}{\#define\ ARROW\_RIGHT\ 67}}
+\DoxyCodeLine{00082\ \textcolor{preprocessor}{\#define\ ARROW\_LEFT\ 68}}
+\DoxyCodeLine{00083\ \textcolor{preprocessor}{\#define\ ENTR\ 10}}
+\DoxyCodeLine{00084\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{tc_8h_a2b2a5031db77fd44d4318ecaaa9bd0ac}{tc\_echo\_off}}()\{}
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{classEdge}{termios}}\ \mbox{\hyperlink{classEdge}{term}};}
+\DoxyCodeLine{00086\ \ \ \ \ \mbox{\hyperlink{classEdge}{tcgetattr}}(1,\ \&\mbox{\hyperlink{classEdge}{term}});}
+\DoxyCodeLine{00087\ \ \ \ \ \mbox{\hyperlink{classEdge}{term}}.c\_lflag\ \&=\ \string~(\mbox{\hyperlink{classEdge}{ICANON}}|\mbox{\hyperlink{classEdge}{ECHO}});}
+\DoxyCodeLine{00088\ \ \ \ \ \mbox{\hyperlink{classEdge}{tcsetattr}}(1,\ \mbox{\hyperlink{classEdge}{TCSANOW}},\ \&\mbox{\hyperlink{classEdge}{term}});}
+\DoxyCodeLine{00089\ \}}
+\DoxyCodeLine{00090\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{tc_8h_aa420f9eb2ad9d8e145abe05c8fbcf317}{tc\_echo\_on}}()\{}
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{classEdge}{termios}}\ \mbox{\hyperlink{classEdge}{term}};}
+\DoxyCodeLine{00092\ \ \ \ \ \mbox{\hyperlink{classEdge}{tcgetattr}}(1,\ \&\mbox{\hyperlink{classEdge}{term}});}
+\DoxyCodeLine{00093\ \ \ \ \ \mbox{\hyperlink{classEdge}{term}}.c\_lflag\ |=\ (\mbox{\hyperlink{classEdge}{ECHO}}|\mbox{\hyperlink{classEdge}{ICANON}});}
+\DoxyCodeLine{00094\ \ \ \ \ \mbox{\hyperlink{classEdge}{tcsetattr}}(1,\ \mbox{\hyperlink{classEdge}{TCSANOW}},\ \&\mbox{\hyperlink{classEdge}{term}});}
+\DoxyCodeLine{00095\ \}}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00098\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//TC\_H}}
 
 \end{DoxyCode}

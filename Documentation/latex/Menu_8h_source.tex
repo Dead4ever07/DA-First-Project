@@ -10,60 +10,64 @@
 \DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <iostream>}}
 \DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <map>}}
 \DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <vector>}}
-\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{GraphBuilder_8h}{libs/GraphBuilder.h}}"{}}}
-\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{RouteSearch_8h}{libs/RouteSearch.h}}"{}}}
-\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Graph_8h}{Graph.h}}"{}}}
-\DoxyCodeLine{00012\ }
-\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ LINE\_SIZE\ 20}}
-\DoxyCodeLine{00014\ }
-\DoxyCodeLine{00015\ }
-\DoxyCodeLine{00016\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{Menu_8h_abd505ece4ed03e704c3c8674188adeec}{ACTIONS}}\{\mbox{\hyperlink{Menu_8h_abd505ece4ed03e704c3c8674188adeecac157bdf0b85a40d2619cbc8bc1ae5fe2}{NONE}},\ \mbox{\hyperlink{Menu_8h_abd505ece4ed03e704c3c8674188adeecaba595d8bca8bc5e67c37c0a9d89becfa}{UP}},\ \mbox{\hyperlink{Menu_8h_abd505ece4ed03e704c3c8674188adeeca9b0b4a95b99523966e0e34ffdadac9da}{DOWN}},\ \mbox{\hyperlink{Menu_8h_abd505ece4ed03e704c3c8674188adeecadb45120aafd37a973140edee24708065}{LEFT}},\ \mbox{\hyperlink{Menu_8h_abd505ece4ed03e704c3c8674188adeecaec8379af7490bb9eaaf579cf17876f38}{RIGHT}}\ ,\mbox{\hyperlink{Menu_8h_abd505ece4ed03e704c3c8674188adeeca951ab68bb8f7daafb78951107080904e}{ENTER}}\ ,\mbox{\hyperlink{Menu_8h_abd505ece4ed03e704c3c8674188adeeca7a10b5d68d31711288e1fe0fa17dbf4f}{EXIT}}\};}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <sstream>}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{GraphBuilder_8h}{GraphBuilder.h}}"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{RouteSearch_8h}{RouteSearch.h}}"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{InputUtils_8h}{InputUtils.h}}"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Graph_8h}{Graph.h}}"{}}}
+\DoxyCodeLine{00016\ }
 \DoxyCodeLine{00017\ }
-\DoxyCodeLine{00018\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classMenu}{Menu}}\ \{}
-\DoxyCodeLine{00019\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00020\ \ \ \ \ \mbox{\hyperlink{classMenu_ad466dd83355124a6ed958430450bfe94}{Menu}}();}
-\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMenu_a342d2a526a850dbf2d1aecd830b91287}{init}}();}
-\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMenu_a35656cd130e24d69383a5c9d0a73a38c}{run}}();}
-\DoxyCodeLine{00023\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{void}\ get\_input(\mbox{\hyperlink{Menu_8h_abd505ece4ed03e704c3c8674188adeec}{ACTIONS}}\&\ \mbox{\hyperlink{classEdge}{Pressed}});}
-\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{void}\ print\_menu();}
-\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{void}\ processKey(\mbox{\hyperlink{Menu_8h_abd505ece4ed03e704c3c8674188adeec}{ACTIONS}}\ \&\mbox{\hyperlink{classEdge}{Pressed}});}
-\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{void}\ processMenu1(\mbox{\hyperlink{Menu_8h_abd505ece4ed03e704c3c8674188adeec}{ACTIONS}}\ \&\mbox{\hyperlink{classEdge}{Pressed}});}
-\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{void}\ processMenu2(\mbox{\hyperlink{Menu_8h_abd505ece4ed03e704c3c8674188adeec}{ACTIONS}}\ \&\mbox{\hyperlink{classEdge}{Pressed}});}
-\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{void}\ processMenu3(\mbox{\hyperlink{Menu_8h_abd505ece4ed03e704c3c8674188adeec}{ACTIONS}}\ \&\mbox{\hyperlink{classEdge}{Pressed}});\textcolor{comment}{//Not\ implemented}}
-\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{void}\ processMenu4(\mbox{\hyperlink{Menu_8h_abd505ece4ed03e704c3c8674188adeec}{ACTIONS}}\ \&\mbox{\hyperlink{classEdge}{Pressed}});\textcolor{comment}{//Not\ implemented;}}
-\DoxyCodeLine{00042\ \ \ \ \ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std::string}}\ getUserInput(\mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std::string}});}
-\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{void}\ processArrowInMenu(\textcolor{keyword}{const}\ \mbox{\hyperlink{Menu_8h_abd505ece4ed03e704c3c8674188adeec}{ACTIONS}}\ \&\ \mbox{\hyperlink{classEdge}{Pressed}});}
-\DoxyCodeLine{00044\ \ \ \ \ std::pmr::vector<std::string>\ mainOptions\ =}
-\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}Large\ Data\ Set"{}}}
-\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ ,\textcolor{stringliteral}{"{}Small\ Data\ Set"{}}}
-\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ ,\textcolor{stringliteral}{"{}Custom\ Data\ Set"{}}}
-\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ ,\textcolor{stringliteral}{"{}Quit(Q)"{}}}
-\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \};}
-\DoxyCodeLine{00050\ \ \ \ \ std::pmr::vector<std::string>\ secOptions\ =}
-\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}Find\ Driving\ Distance\ Between\ Two\ Places"{}}}
-\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ ,\textcolor{stringliteral}{"{}Execute\ Input.txt"{}}}
-\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ ,\ \textcolor{stringliteral}{"{}Show\ Vertices"{}}}
-\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ ,\textcolor{stringliteral}{"{}Return"{}}}
-\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ ,\textcolor{stringliteral}{"{}Quit(Q)"{}}}
-\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \};}
-\DoxyCodeLine{00057\ \ \ \ \ std::pmr::vector<std::string>\ thirdOptions\ =}
-\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \};}
-\DoxyCodeLine{00060\ \ \ \ \ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std::map<int,\ std::pmr::vector<std::string>}}>\ menus;}
-\DoxyCodeLine{00061\ \ \ \ \ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std::map<int,\ std::string>}}\ titles\ =\ \{\{0,\ \textcolor{stringliteral}{"{}Choose\ Your\ Data\ Set"{}}\}\};}
-\DoxyCodeLine{00062\ \ \ \ \ \mbox{\hyperlink{classEdge}{Graph<std::string>}}*\ g;}
-\DoxyCodeLine{00063\ }
-\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{int}\ current\_menu\ =\ 0;}
-\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{int}\ selected\_line\ =\ 0;}
-\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordtype}{int}\ vertex\_page\ =\ 0;}
-\DoxyCodeLine{00067\ \};}
-\DoxyCodeLine{00068\ }
-\DoxyCodeLine{00069\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{Menu_8h_ae23e73051c0dba0b7d4fd1448d611ccd}{print\_vertex}}(\textcolor{keywordtype}{int}\ \mbox{\hyperlink{classEdge}{pos}},\ \mbox{\hyperlink{classEdge}{Graph<std::string>}}*\ g);}
-\DoxyCodeLine{00070\ }
-\DoxyCodeLine{00071\ }
-\DoxyCodeLine{00072\ }
-\DoxyCodeLine{00073\ }
-\DoxyCodeLine{00074\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//MENU\_H}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{Menu_8h_abd505ece4ed03e704c3c8674188adeec}{ACTIONS}}\{\mbox{\hyperlink{Menu_8h_abd505ece4ed03e704c3c8674188adeecac157bdf0b85a40d2619cbc8bc1ae5fe2}{NONE}},\ \mbox{\hyperlink{Menu_8h_abd505ece4ed03e704c3c8674188adeecaba595d8bca8bc5e67c37c0a9d89becfa}{UP}},\ \mbox{\hyperlink{Menu_8h_abd505ece4ed03e704c3c8674188adeeca9b0b4a95b99523966e0e34ffdadac9da}{DOWN}},\ \mbox{\hyperlink{Menu_8h_abd505ece4ed03e704c3c8674188adeecadb45120aafd37a973140edee24708065}{LEFT}},\ \mbox{\hyperlink{Menu_8h_abd505ece4ed03e704c3c8674188adeecaec8379af7490bb9eaaf579cf17876f38}{RIGHT}}\ ,\mbox{\hyperlink{Menu_8h_abd505ece4ed03e704c3c8674188adeeca951ab68bb8f7daafb78951107080904e}{ENTER}}\ ,\mbox{\hyperlink{Menu_8h_abd505ece4ed03e704c3c8674188adeeca7a10b5d68d31711288e1fe0fa17dbf4f}{EXIT}}\};}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classMenu}{Menu}}\ \{}
+\DoxyCodeLine{00022\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00023\ \ \ \ \ \mbox{\hyperlink{classMenu_ad466dd83355124a6ed958430450bfe94}{Menu}}();}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMenu_a342d2a526a850dbf2d1aecd830b91287}{init}}();}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classMenu_a35656cd130e24d69383a5c9d0a73a38c}{run}}();}
+\DoxyCodeLine{00026\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{void}\ get\_input(\mbox{\hyperlink{Menu_8h_abd505ece4ed03e704c3c8674188adeec}{ACTIONS}}\&\ \mbox{\hyperlink{classEdge}{Pressed}});}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{void}\ print\_menu();}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{void}\ processKey(\mbox{\hyperlink{Menu_8h_abd505ece4ed03e704c3c8674188adeec}{ACTIONS}}\ \&\mbox{\hyperlink{classEdge}{Pressed}});}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{void}\ processMenu1(\mbox{\hyperlink{Menu_8h_abd505ece4ed03e704c3c8674188adeec}{ACTIONS}}\ \&\mbox{\hyperlink{classEdge}{Pressed}});}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{void}\ processMenu2(\mbox{\hyperlink{Menu_8h_abd505ece4ed03e704c3c8674188adeec}{ACTIONS}}\ \&\mbox{\hyperlink{classEdge}{Pressed}});}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{void}\ processMenu3(\mbox{\hyperlink{Menu_8h_abd505ece4ed03e704c3c8674188adeec}{ACTIONS}}\ \&\mbox{\hyperlink{classEdge}{Pressed}});}
+\DoxyCodeLine{00063\ \ \ \ \ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std::string}}\ getUserInput(\mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std::string}});}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{void}\ processArrowInMenu(\textcolor{keyword}{const}\ \mbox{\hyperlink{Menu_8h_abd505ece4ed03e704c3c8674188adeec}{ACTIONS}}\ \&\ \mbox{\hyperlink{classEdge}{Pressed}});}
+\DoxyCodeLine{00065\ \ \ \ \ std::pmr::vector<std::string>\ mainOptions\ =}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}Large\ Data\ Set"{}}}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ ,\textcolor{stringliteral}{"{}Small\ Data\ Set"{}}}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ ,\textcolor{stringliteral}{"{}Custom\ Data\ Set"{}}}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ ,\textcolor{stringliteral}{"{}Quit(Q)"{}}}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00071\ \ \ \ \ std::pmr::vector<std::string>\ secOptions\ =}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}Find\ Driving\ Distance\ Between\ Two\ Places"{}}}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ ,\textcolor{stringliteral}{"{}Execute\ Input.txt"{}}}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ ,\ \textcolor{stringliteral}{"{}Show\ Vertices"{}}}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ ,\textcolor{stringliteral}{"{}Return"{}}}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ ,\textcolor{stringliteral}{"{}Quit(Q)"{}}}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00078\ \ \ \ \ std::pmr::vector<std::string>\ thirdOptions\ =}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00081\ \ \ \ \ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std::map<int,\ std::pmr::vector<std::string>}}>\ menus;}
+\DoxyCodeLine{00082\ \ \ \ \ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std::map<int,\ std::string>}}\ titles\ =\ \{\{0,\ \textcolor{stringliteral}{"{}Choose\ Your\ Data\ Set"{}}\}\};}
+\DoxyCodeLine{00083\ \ \ \ \ \mbox{\hyperlink{classEdge}{Graph<std::string>}}*\ g;}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keywordtype}{int}\ current\_menu\ =\ 0;}
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keywordtype}{int}\ selected\_line\ =\ 0;}
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keywordtype}{int}\ vertex\_page\ =\ 0;}
+\DoxyCodeLine{00088\ \};}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00095\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{Menu_8h_ae23e73051c0dba0b7d4fd1448d611ccd}{print\_vertex}}(\textcolor{keywordtype}{int}\ \mbox{\hyperlink{classEdge}{pos}},\ \mbox{\hyperlink{classEdge}{Graph<std::string>}}*\ g);}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//MENU\_H}}
 
 \end{DoxyCode}

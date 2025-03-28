@@ -6,11 +6,14 @@
 #include <iostream>
 #include <map>
 #include <vector>
-#include "libs/GraphBuilder.h"
-#include "libs/RouteSearch.h"
+#include <fstream>
+#include <sstream>
+
+#include "GraphBuilder.h"
+#include "RouteSearch.h"
+#include "InputUtils.h"
 #include "Graph.h"
 
-#define LINE_SIZE 20
 
 
 enum ACTIONS{NONE, UP, DOWN, LEFT, RIGHT ,ENTER ,EXIT};
