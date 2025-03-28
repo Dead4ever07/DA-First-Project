@@ -17,6 +17,7 @@
 #define TC_GREEN "\x1B[0;32m"
 #define TC_YLW "\x1B[0;33m"
 #define TC_BLUE "\x1B[0;34m"
+#define TC_B_BLUE "\x1B[1;34m"
 #define TC_MAG "\x1B[0;35m"
 #define TC_CYN "\x1B[0;36m"
 #define TC_WHT "\x1B[0;37m"
@@ -44,13 +45,13 @@
 #define ARROW_RIGHT 77
 #define ARROW_LEFT 75
 #define ENTR 13
-DWORD mode;
 
 void tc_echo_off() {
     HANDLE hStdin = GetStdHandle(STD_INPUT_HANDLE);
     if (hStdin == INVALID_HANDLE_VALUE) {
         std::cerr << "Couldn't get the standard input handle" << std::endl;
     }
+    DWORD mode;
     if (GetConsoleMode(hStdin, &mode)) {
         std::cerr << "Couldn't get the standard input handle" << std::endl;
     }
@@ -62,6 +63,10 @@ void tc_echo_on() {
     HANDLE hStdin = GetStdHandle(STD_INPUT_HANDLE);
     if (hStdin == INVALID_HANDLE_VALUE) {
         std::cerr << "Couldn't get the standard input handle" << std::endl;
+    }
+    DWORD mode;
+    if (GetConsoleMode(hStdin, &mode) != 0) {
+        std::cerr << "Failed to get console mode" << std::endl;
     }
     mode |= ENABLE_ECHO_INPUT;  // Enable echo
     SetConsoleMode(hStdin, mode);

@@ -1,0 +1,132 @@
+\doxysection{src/libs/\+Dijkstra\+Functions.h File Reference}
+\hypertarget{DijkstraFunctions_8h}{}\label{DijkstraFunctions_8h}\index{src/libs/DijkstraFunctions.h@{src/libs/DijkstraFunctions.h}}
+{\ttfamily \#include "{}Graph.\+h"{}}\newline
+Include dependency graph for Dijkstra\+Functions.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{DijkstraFunctions_8h__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classEdge}{bool}} \mbox{\hyperlink{DijkstraFunctions_8h_a09f7e29391b2a566ddc0a42e89c963d0}{relax\+Car}} (\mbox{\hyperlink{classEdge}{Edge}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classEdge}{edge}})
+\begin{DoxyCompactList}\small\item\em Relaxes an edge in the graph for driving mode. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classEdge}{bool}} \mbox{\hyperlink{DijkstraFunctions_8h_ad04ffb7a51a5d80b0e9831eea6ae8f2c}{relax\+Walking}} (\mbox{\hyperlink{classEdge}{Edge}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classEdge}{edge}})
+\begin{DoxyCompactList}\small\item\em Relaxes an edge based on walking distance. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classEdge}{void}} \mbox{\hyperlink{DijkstraFunctions_8h_a16adf7b38176d619ebf07defab951b69}{dijkstra\+Walking}} (\mbox{\hyperlink{classGraph}{Graph}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}g, \mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classEdge}{origin}})
+\begin{DoxyCompactList}\small\item\em Implements Dijkstra\textquotesingle{}s algorithm to find the shortest path, but uses the \doxylink{DijkstraFunctions_8h_ad04ffb7a51a5d80b0e9831eea6ae8f2c}{relax\+Walking()} function to update distances to use walking paths. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classEdge}{void}} \mbox{\hyperlink{DijkstraFunctions_8h_a499e2217711f5ce50203011d3d6dbd88}{dijkstra}} (\mbox{\hyperlink{classGraph}{Graph}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}g, \mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classEdge}{origin}}, \mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}dest)
+\begin{DoxyCompactList}\small\item\em Implements Dijkstra\textquotesingle{}s algorithm to find the shortest path. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{DijkstraFunctions_8h_a499e2217711f5ce50203011d3d6dbd88}\label{DijkstraFunctions_8h_a499e2217711f5ce50203011d3d6dbd88} 
+\index{DijkstraFunctions.h@{DijkstraFunctions.h}!dijkstra@{dijkstra}}
+\index{dijkstra@{dijkstra}!DijkstraFunctions.h@{DijkstraFunctions.h}}
+\doxysubsubsection{\texorpdfstring{dijkstra()}{dijkstra()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classEdge}{void}} dijkstra (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraph}{Graph}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}}]{g,  }\item[{\mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}}]{origin,  }\item[{\mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}}]{dest }\end{DoxyParamCaption})}
+
+
+
+Implements Dijkstra\textquotesingle{}s algorithm to find the shortest path. 
+
+This function implements Dijkstra’s algorithm to find the shortest path from a starting vertex to a destination vertex. It initializes all vertices by setting their distances to infinity and marking them as unvisited. The starting vertex is given a distance of zero and added to a priority queue. The algorithm then repeatedly extracts the vertex with the smallest distance from the queue and relaxes all its adjacent edges. If relaxing an edge improves the known distance to a neighboring vertex, that vertex is either added to the queue or updated if it is already in the queue. The process continues until all reachable vertices have been processed or the destination vertex is reached. If the destination is unreachable, its node has no path and its distance remains infinity.
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & Pointer to the graph. \\
+\hline
+{\em origin} & Pointer to the source vertex. \\
+\hline
+{\em dest} & Pointer to the destination vertex.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Time Complexity\+: O((V + E)log V), where\+:
+\begin{DoxyItemize}
+\item V is the number of vertices.
+\item E is the number of edges.
+\item Extracting the minimum and updating keys in Priority Queue cost O(log V)
+\item Extracting the minimum is executed O(\+V) times
+\item Keys are updated O(\+E) times
+\item Therefore the overall complexity is O((V + E)log V) 
+\end{DoxyItemize}
+\end{DoxyNote}
+\Hypertarget{DijkstraFunctions_8h_a16adf7b38176d619ebf07defab951b69}\label{DijkstraFunctions_8h_a16adf7b38176d619ebf07defab951b69} 
+\index{DijkstraFunctions.h@{DijkstraFunctions.h}!dijkstraWalking@{dijkstraWalking}}
+\index{dijkstraWalking@{dijkstraWalking}!DijkstraFunctions.h@{DijkstraFunctions.h}}
+\doxysubsubsection{\texorpdfstring{dijkstraWalking()}{dijkstraWalking()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classEdge}{void}} dijkstra\+Walking (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraph}{Graph}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}}]{g,  }\item[{\mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}}]{origin }\end{DoxyParamCaption})}
+
+
+
+Implements Dijkstra\textquotesingle{}s algorithm to find the shortest path, but uses the \doxylink{DijkstraFunctions_8h_ad04ffb7a51a5d80b0e9831eea6ae8f2c}{relax\+Walking()} function to update distances to use walking paths. 
+
+This function implements Dijkstra’s algorithm to find the shortest path from a starting vertex to a destination vertex, using walking paths. It initializes all vertices by setting their distances to infinity and marking them as unvisited. The starting vertex is given a distance of zero and added to a priority queue. The algorithm then repeatedly extracts the vertex with the smallest distance from the queue and relaxes all its adjacent edges. If relaxing an edge improves the known distance to a neighboring vertex, that vertex is either added to the queue or updated if it is already in the queue. The process continues until all reachable vertices have been processed or the destination vertex is reached. If the destination is unreachable, its node has no path and its distance remains infinity.
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & Pointer to the graph. \\
+\hline
+{\em origin} & Pointer to the starting vertex for the shortest path computation.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Time Complexity\+: O((V + E)log V), where\+:
+\begin{DoxyItemize}
+\item V is the number of vertices.
+\item E is the number of edges.
+\item Extracting the minimum and updating keys in Priority Queue cost O(log V)
+\item Extracting the minimum is executed O(\+V) times
+\item Keys are updated O(\+E) times
+\item Therefore the overall complexity is O((V + E)log V) 
+\end{DoxyItemize}
+\end{DoxyNote}
+\Hypertarget{DijkstraFunctions_8h_a09f7e29391b2a566ddc0a42e89c963d0}\label{DijkstraFunctions_8h_a09f7e29391b2a566ddc0a42e89c963d0} 
+\index{DijkstraFunctions.h@{DijkstraFunctions.h}!relaxCar@{relaxCar}}
+\index{relaxCar@{relaxCar}!DijkstraFunctions.h@{DijkstraFunctions.h}}
+\doxysubsubsection{\texorpdfstring{relaxCar()}{relaxCar()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classEdge}{bool}} relax\+Car (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classEdge}{Edge}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}}]{edge }\end{DoxyParamCaption})}
+
+
+
+Relaxes an edge in the graph for driving mode. 
+
+This function checks whether an edge can provide a shorter path to its destination vertex, without taking walking path into consideration. It compares the current shortest known distance to the destination with the potential new distance by going through the considered edge. If the new distance is smaller, it updates the destination vertex with the new distance and sets the path to come from the considered edge. The function returns true if an update was made and false otherwise.
+
+
+\begin{DoxyParams}{Parameters}
+{\em edge} & Pointer to the edge being considered for relaxation. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the edge was relaxed, false otherwise.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Time Complexity\+: O(1), since it performs a constant number of operations. 
+\end{DoxyNote}
+\Hypertarget{DijkstraFunctions_8h_ad04ffb7a51a5d80b0e9831eea6ae8f2c}\label{DijkstraFunctions_8h_ad04ffb7a51a5d80b0e9831eea6ae8f2c} 
+\index{DijkstraFunctions.h@{DijkstraFunctions.h}!relaxWalking@{relaxWalking}}
+\index{relaxWalking@{relaxWalking}!DijkstraFunctions.h@{DijkstraFunctions.h}}
+\doxysubsubsection{\texorpdfstring{relaxWalking()}{relaxWalking()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classEdge}{bool}} relax\+Walking (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classEdge}{Edge}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}}]{edge }\end{DoxyParamCaption})}
+
+
+
+Relaxes an edge based on walking distance. 
+
+This function checks if the walking distance through the given edge provides a shorter path to the destination vertex. It compares the current shortest known distance to the destination with the potential new distance by going through the considered edge. If the new distance is smaller, it updates the destination vertex with the new distance and sets the path to come from the considered edge. The function returns true if an update was made and false otherwise.
+
+
+\begin{DoxyParams}{Parameters}
+{\em edge} & Pointer to the edge being considered for relaxation. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the edge was relaxed, false otherwise.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Time Complexity\+: O(1), since it performs a constant number of operations. 
+\end{DoxyNote}

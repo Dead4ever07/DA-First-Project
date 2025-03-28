@@ -1,25 +1,7 @@
-
 #ifndef ROUTESEARCH_H
 #define ROUTESEARCH_H
 #include "Graph.h"
 
-
-/**
- * @brief Constructs the driving-walking route from the destination to the origin based on the shortest path computed.
- *
- * This function traces back the shortest walking path from the middle vertex (parkingVertex) to the destination, using
- * the path set by dijkstraWalking().
- * It stores the sequence of vertex IDs in the route vector and accumulates the total driving cost.
- *
- * @param g Pointer to the graph.
- * @param middle Pointer to the vertex where the walking route starts.
- * @param dest Pointer to the destination vertex.
- * @param route Reference to a vector storing the sequence of vertex IDs in the walking path.
- * @param cost Reference to an integer storing the total walking cost.
- *
- * @note Time Complexity: O(V) since it traces back through at most all vertices in the path.
- */
-void getWalkRoute(Graph<std::string> *g, Vertex<std::string>* middle, Vertex<std::string>* dest,std::vector<int> &route, int &cost);
 
 /**
  * @brief Constructs the driving route from the destination to the origin based on the shortest path computed.
@@ -137,7 +119,7 @@ Vertex<std::string>* driveWalkingPath(std::vector<Vertex<std::string>*> &parking
  * @param distance2 Reference to an integer storing the total distance to the second-best parking spot.
  * @return A pair of pointers to the best and second-best parking vertices, respectively.
  *
- * @note Time Complexity: O(N), where N is the number of parking spots and ach vertex is checked once.
+ * @note Time Complexity: O(N), where N is the number of parking spots and each vertex is checked once.
  */
 std::pair<Vertex<std::string>*,Vertex<std::string> *> driveWalkingPaths(std::vector<Vertex<std::string>*> &parkingSpots, int &distance1, int &distance2);
 

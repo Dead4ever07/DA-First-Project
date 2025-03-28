@@ -1,3 +1,6 @@
+//
+// Created by luis-santos on 3/9/25.
+//
 #ifndef MENU_H
 #define MENU_H
 #include <iostream>
@@ -10,7 +13,7 @@
 #define LINE_SIZE 20
 
 
-enum ACTIONS{NONE, UP, DOWN, ENTER ,EXIT};
+enum ACTIONS{NONE, UP, DOWN, LEFT, RIGHT ,ENTER ,EXIT};
 
 class Menu {
 public:
@@ -18,13 +21,24 @@ public:
     void init();
     void run();
 private:
+    ///
+    /// @brief Captures user input and updates the associated action.
+    /// @param[out] Pressed A reference to an `ACTIONS` object where the user's input
+    ///
     void get_input(ACTIONS& Pressed);
+    ///
+    /// @brief Displays the menu interface to the user.
+    ///
     void print_menu();
     void processKey(ACTIONS &Pressed);
     void processMenu1(ACTIONS &Pressed);
     void processMenu2(ACTIONS &Pressed);
     void processMenu3(ACTIONS &Pressed);//Not implemented
     void processMenu4(ACTIONS &Pressed);//Not implemented;
+    /**
+     * @brief Simple function that reads the user input, allowing the user to see what it is typing in the process
+     * @param Attribute Sentence to be printed
+     */
     std::string getUserInput(std::string);
     void processArrowInMenu(const ACTIONS & Pressed);
     std::pmr::vector<std::string> mainOptions =
@@ -49,9 +63,10 @@ private:
 
     int current_menu = 0;
     int selected_line = 0;
+    int vertex_page = 0;
 };
 
-void to_int(const char c, int&n);
+void print_vertex(int pos, Graph<std::string>* g);
 
 
 

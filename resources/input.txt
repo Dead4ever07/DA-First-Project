@@ -5,6 +5,3 @@ MaxWalkTime:5
 AvoidNodes:
 AvoidSegments:
 
-
-
-
