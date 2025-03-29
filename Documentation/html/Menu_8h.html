@@ -75,7 +75,6 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
-<a href="#define-members">Macros</a> &#124;
 <a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">Menu.h File Reference</div></div>
@@ -84,40 +83,50 @@ $(function() {
 <div class="textblock"><code>#include &lt;iostream&gt;</code><br />
 <code>#include &lt;map&gt;</code><br />
 <code>#include &lt;vector&gt;</code><br />
-<code>#include &quot;<a class="el" href="GraphBuilder_8h_source.html">libs/GraphBuilder.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="RouteSearch_8h_source.html">libs/RouteSearch.h</a>&quot;</code><br />
+<code>#include &lt;fstream&gt;</code><br />
+<code>#include &lt;sstream&gt;</code><br />
+<code>#include &quot;<a class="el" href="GraphBuilder_8h_source.html">GraphBuilder.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="RouteSearch_8h_source.html">RouteSearch.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="InputUtils_8h_source.html">InputUtils.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="Graph_8h_source.html">Graph.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for Menu.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="Menu_8h__incl.png" border="0" usemap="#asrc_2libs_2Menu_8h" alt=""/></div>
 <map name="asrc_2libs_2Menu_8h" id="asrc_2libs_2Menu_8h">
-<area shape="rect" title=" " alt="" coords="272,5,392,31"/>
-<area shape="rect" title=" " alt="" coords="5,225,85,251"/>
-<area shape="poly" title=" " alt="" coords="272,30,167,50,121,64,91,81,69,111,56,146,50,182,48,212,42,212,44,181,51,145,65,108,88,77,119,59,166,44,271,24"/>
-<area shape="rect" title=" " alt="" coords="101,79,152,104"/>
-<area shape="poly" title=" " alt="" coords="300,33,166,79,164,74,298,28"/>
-<area shape="rect" title=" " alt="" coords="483,299,546,324"/>
-<area shape="poly" title=" " alt="" coords="393,26,458,44,492,58,523,76,564,109,592,139,612,176,631,225,634,238,630,252,616,269,599,283,560,301,558,297,596,279,613,265,626,249,629,238,625,226,608,178,588,142,560,113,520,81,489,63,456,49,392,31"/>
-<area shape="rect" href="GraphBuilder_8h.html" title=" " alt="" coords="343,79,489,104"/>
-<area shape="poly" title=" " alt="" coords="347,29,393,67,390,72,344,33"/>
-<area shape="rect" href="Graph_8h.html" title=" " alt="" coords="379,152,453,177"/>
-<area shape="poly" title=" " alt="" coords="393,21,423,27,453,38,481,54,504,77,508,88,509,98,499,118,480,134,457,148,454,144,476,130,495,114,504,97,503,89,499,80,478,58,451,43,421,32,392,26"/>
-<area shape="rect" href="RouteSearch_8h.html" title=" " alt="" coords="177,79,319,104"/>
-<area shape="poly" title=" " alt="" coords="320,33,274,72,271,67,317,29"/>
-<area shape="poly" title=" " alt="" coords="419,104,419,138,413,138,413,104"/>
-<area shape="poly" title=" " alt="" coords="380,175,99,228,98,222,379,170"/>
-<area shape="poly" title=" " alt="" coords="438,175,466,196,492,224,506,254,514,284,509,285,501,256,487,227,462,200,435,180"/>
-<area shape="rect" title=" " alt="" coords="553,225,615,251"/>
-<area shape="poly" title=" " alt="" coords="444,175,545,217,543,222,442,180"/>
-<area shape="rect" title=" " alt="" coords="309,225,368,251"/>
-<area shape="poly" title=" " alt="" coords="405,179,363,218,360,214,402,175"/>
-<area shape="rect" title=" " alt="" coords="392,225,477,251"/>
-<area shape="poly" title=" " alt="" coords="422,177,431,212,426,213,417,178"/>
-<area shape="rect" href="MutablePriorityQueue_8h.html" title=" " alt="" coords="109,225,285,251"/>
-<area shape="poly" title=" " alt="" coords="382,180,247,224,245,218,380,175"/>
-<area shape="poly" title=" " alt="" coords="249,248,471,297,469,303,248,253"/>
-<area shape="poly" title=" " alt="" coords="276,102,377,144,375,149,274,106"/>
+<area shape="rect" title=" " alt="" coords="323,5,443,31"/>
+<area shape="rect" title=" " alt="" coords="61,225,141,251"/>
+<area shape="poly" title=" " alt="" coords="323,23,241,27,150,36,69,53,39,66,19,80,10,97,8,114,13,132,22,151,49,186,78,215,74,218,45,189,17,153,8,134,3,114,5,95,15,77,36,61,67,48,149,31,241,21,322,17"/>
+<area shape="rect" title=" " alt="" coords="29,79,80,104"/>
+<area shape="poly" title=" " alt="" coords="323,33,220,53,94,81,93,76,219,47,322,27"/>
+<area shape="rect" title=" " alt="" coords="577,299,639,324"/>
+<area shape="poly" title=" " alt="" coords="443,17,524,21,615,31,696,48,727,61,747,77,759,86,773,91,787,97,796,107,797,125,787,152,764,193,723,252,709,268,691,282,654,300,651,295,688,277,705,264,719,249,759,191,783,150,792,124,791,109,784,102,771,96,757,90,744,81,724,66,694,54,614,36,524,27,443,23"/>
+<area shape="rect" title=" " alt="" coords="247,79,321,104"/>
+<area shape="poly" title=" " alt="" coords="368,33,313,73,310,68,365,29"/>
+<area shape="rect" title=" " alt="" coords="345,79,420,104"/>
+<area shape="poly" title=" " alt="" coords="385,31,385,65,380,65,380,31"/>
+<area shape="rect" href="GraphBuilder_8h.html" title=" " alt="" coords="105,79,223,104"/>
+<area shape="poly" title=" " alt="" coords="348,33,213,77,212,72,347,28"/>
+<area shape="rect" href="Graph_8h.html" title=" " alt="" coords="445,152,518,177"/>
+<area shape="poly" title=" " alt="" coords="395,29,434,77,471,138,467,141,430,80,391,32"/>
+<area shape="rect" href="RouteSearch_8h.html" title=" " alt="" coords="495,79,611,104"/>
+<area shape="poly" title=" " alt="" coords="411,28,514,71,512,76,409,33"/>
+<area shape="rect" href="InputUtils_8h.html" title=" " alt="" coords="635,79,733,104"/>
+<area shape="poly" title=" " alt="" coords="432,28,623,73,622,78,430,33"/>
+<area shape="poly" title=" " alt="" coords="216,101,432,150,431,155,214,107"/>
+<area shape="poly" title=" " alt="" coords="445,175,155,229,154,224,444,170"/>
+<area shape="poly" title=" " alt="" coords="515,175,551,194,585,224,600,254,608,284,603,285,595,256,581,227,548,199,512,180"/>
+<area shape="rect" title=" " alt="" coords="646,225,709,251"/>
+<area shape="poly" title=" " alt="" coords="514,175,634,218,632,223,512,180"/>
+<area shape="rect" title=" " alt="" coords="403,225,461,251"/>
+<area shape="poly" title=" " alt="" coords="475,179,450,216,446,213,471,176"/>
+<area shape="rect" title=" " alt="" coords="485,225,571,251"/>
+<area shape="poly" title=" " alt="" coords="491,176,515,212,511,215,487,179"/>
+<area shape="rect" href="MutablePriorityQueue_8h.html" title=" " alt="" coords="203,225,379,251"/>
+<area shape="poly" title=" " alt="" coords="452,180,336,223,334,218,450,175"/>
+<area shape="poly" title=" " alt="" coords="342,248,564,297,563,303,341,253"/>
+<area shape="poly" title=" " alt="" coords="543,106,505,144,501,140,540,102"/>
+<area shape="poly" title=" " alt="" coords="652,107,528,150,526,145,651,102"/>
 </map>
 </div>
 </div>
@@ -127,11 +136,6 @@ Include dependency graph for Menu.h:</div>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMenu.html">Menu</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
-Macros</h2></td></tr>
-<tr class="memitem:aba889888734a8b272a51d444d70ad2fa" id="r_aba889888734a8b272a51d444d70ad2fa"><td class="memItemLeft" align="right" valign="top">#<a class="el" href="classEdge.html">define</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Menu_8h.html#aba889888734a8b272a51d444d70ad2fa">LINE_SIZE</a>&#160;&#160;&#160;20</td></tr>
-<tr class="separator:aba889888734a8b272a51d444d70ad2fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
@@ -151,23 +155,9 @@ Enumerations</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ae23e73051c0dba0b7d4fd1448d611ccd" id="r_ae23e73051c0dba0b7d4fd1448d611ccd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classEdge.html">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Menu_8h.html#ae23e73051c0dba0b7d4fd1448d611ccd">print_vertex</a> (<a class="el" href="classEdge.html">int</a> <a class="el" href="classEdge.html">pos</a>, <a class="el" href="classGraph.html">Graph</a>&lt; <a class="el" href="classEdge.html#a5263d3883fe8a56539e371f79ff09efb">std::string</a> &gt; *g)</td></tr>
+<tr class="memdesc:ae23e73051c0dba0b7d4fd1448d611ccd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function responsible for printing the 10 vertices of the selected page.  <br /></td></tr>
 <tr class="separator:ae23e73051c0dba0b7d4fd1448d611ccd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Macro Definition Documentation</h2>
-<a id="aba889888734a8b272a51d444d70ad2fa" name="aba889888734a8b272a51d444d70ad2fa"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aba889888734a8b272a51d444d70ad2fa">&#9670;&#160;</a></span>LINE_SIZE</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#<a class="el" href="classEdge.html">define</a> LINE_SIZE&#160;&#160;&#160;20</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <h2 class="groupheader">Enumeration Type Documentation</h2>
 <a id="abd505ece4ed03e704c3c8674188adeec" name="abd505ece4ed03e704c3c8674188adeec"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#abd505ece4ed03e704c3c8674188adeec">&#9670;&#160;</a></span>ACTIONS</h2>
@@ -218,6 +208,15 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Function responsible for printing the 10 vertices of the selected page. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pos</td><td>Page selected </td></tr>
+    <tr><td class="paramname">g</td><td><a class="el" href="classGraph.html">Graph</a> from which the nodes are being printed </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

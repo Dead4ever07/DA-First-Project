@@ -21,7 +21,7 @@ var searchData=
   ['getreverse_18',['getReverse',['../classEdge.html#af0a900f3006e47b9f363df7429298eeb',1,'Edge']]],
   ['getvertexset_19',['getVertexSet',['../classGraph.html#a41624b03fcb6bd29e4df574a1ec58541',1,'Graph']]],
   ['getwalking_20',['getWalking',['../classEdge.html#a96efe15d2807fa6a48f0effd5460f302',1,'Edge']]],
-  ['getwalkroute_21',['getWalkRoute',['../RouteSearch_8h.html#a0df9ebd22e14dd2e37db59cc2f760d5b',1,'RouteSearch.h']]],
+  ['getwalkroute_21',['getWalkRoute',['../EcologicalRouteSearch_8h.html#a0df9ebd22e14dd2e37db59cc2f760d5b',1,'EcologicalRouteSearch.h']]],
   ['getweight_22',['getWeight',['../classEdge.html#a3df378e283d6c8be5be4170ac8d7f4e8',1,'Edge']]],
   ['graph_23',['Graph',['../classGraph.html',1,'']]],
   ['graph_2eh_24',['Graph.h',['../Graph_8h.html',1,'']]],

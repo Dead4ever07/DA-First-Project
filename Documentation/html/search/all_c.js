@@ -6,6 +6,8 @@ var searchData=
   ['pathmatrix_3',['pathMatrix',['../classGraph.html#afb9524726f8f3cda3115a0d03e3f6e09',1,'Graph']]],
   ['print_5fvertex_4',['print_vertex',['../Menu_8h.html#ae23e73051c0dba0b7d4fd1448d611ccd',1,'Menu.h']]],
   ['printroute_5',['printRoute',['../RouteSearch_8h.html#a0711b51345ef1267d243a5fddad3bd7c',1,'RouteSearch.h']]],
-  ['printwalkingdrivingroute_6',['printWalkingDrivingRoute',['../RouteSearch_8h.html#afff33a6dab7ff67a0cef2668ca3c781f',1,'RouteSearch.h']]],
-  ['processing_7',['processing',['../classVertex.html#ae575d4b9a6b1ada3f9626c458c060f54',1,'Vertex']]]
+  ['printwalkingdrivingroute_6',['printWalkingDrivingRoute',['../EcologicalRouteSearch_8h.html#afff33a6dab7ff67a0cef2668ca3c781f',1,'EcologicalRouteSearch.h']]],
+  ['processing_7',['processing',['../classVertex.html#ae575d4b9a6b1ada3f9626c458c060f54',1,'Vertex']]],
+  ['project_8',['Project',['../index.html',1,'']]],
+  ['project_3a_9',['Executing the project:',['../index.html#autotoc_md0',1,'']]]
 ];

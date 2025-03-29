@@ -1,0 +1,25 @@
+\doxysection{Ecological\+Route\+Search.\+h}
+\hypertarget{EcologicalRouteSearch_8h_source}{}\label{EcologicalRouteSearch_8h_source}\index{src/libs/EcologicalRouteSearch.h@{src/libs/EcologicalRouteSearch.h}}
+\mbox{\hyperlink{EcologicalRouteSearch_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ ECOLOGICALROUTESEARCH\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ ECOLOGICALROUTESEARCH\_H}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Graph_8h}{Graph.h}}"{}}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00021\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{EcologicalRouteSearch_8h_a0df9ebd22e14dd2e37db59cc2f760d5b}{getWalkRoute}}(\mbox{\hyperlink{classGraph}{Graph<std::string>}}\ *g,\ \mbox{\hyperlink{classVertex}{Vertex<std::string>}}*\ middle,\ \mbox{\hyperlink{classVertex}{Vertex<std::string>}}*\ dest,std::vector<int>\ \&route,\ \textcolor{keywordtype}{int}\ \&cost);}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00037\ \mbox{\hyperlink{classVertex}{Vertex<std::string>}}*\ \mbox{\hyperlink{EcologicalRouteSearch_8h_a044ff85d251d6d671fef78cad7e04c3a}{driveWalkingPath}}(std::vector<\mbox{\hyperlink{classVertex}{Vertex<std::string>}}*>\ \&parkingSpots,\textcolor{keywordtype}{int}\ \&distance);}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00054\ std::pair<Vertex<std::string>*,\mbox{\hyperlink{classVertex}{Vertex<std::string>}}\ *>\ \mbox{\hyperlink{EcologicalRouteSearch_8h_a3304f73c4bf8c20a686149f890da954a}{driveWalkingPaths}}(std::vector<\mbox{\hyperlink{classVertex}{Vertex<std::string>}}*>\ \&parkingSpots,\ \textcolor{keywordtype}{int}\ \&distance1,\ \textcolor{keywordtype}{int}\ \&distance2);}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00073\ std::string\ \mbox{\hyperlink{EcologicalRouteSearch_8h_afff33a6dab7ff67a0cef2668ca3c781f}{printWalkingDrivingRoute}}(\mbox{\hyperlink{classGraph}{Graph<std::string>}}\ *\ g,\mbox{\hyperlink{classVertex}{Vertex<std::string>}}*\ origin,\ \mbox{\hyperlink{classVertex}{Vertex<std::string>}}*\ parkingVertex,\mbox{\hyperlink{classVertex}{Vertex<std::string>}}*\ dest,\ std::string\ numRoute,\ \textcolor{keywordtype}{int}\ distance);}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00092\ std::string\ \mbox{\hyperlink{EcologicalRouteSearch_8h_ae9c7c4d0c7a36cdd5df1c6006c1184c6}{approximateSolution}}(\mbox{\hyperlink{classGraph}{Graph<std::string>}}\ *\ g,\mbox{\hyperlink{classVertex}{Vertex<std::string>}}*\ origin,\mbox{\hyperlink{classVertex}{Vertex<std::string>}}*\ dest,\ std::vector<\mbox{\hyperlink{classVertex}{Vertex<std::string>}}*>\ parkingSpots);}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00111\ std::string\ \mbox{\hyperlink{EcologicalRouteSearch_8h_a421b3b14654cf4c556851c40260beefe}{driveWalkingRoute}}(\mbox{\hyperlink{classGraph}{Graph<std::string>}}\ *\ g,\mbox{\hyperlink{classVertex}{Vertex<std::string>}}*\ origin,\ \mbox{\hyperlink{classVertex}{Vertex<std::string>}}*\ dest,\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ max);}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00114\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//ECOLOGICALROUTESEARCH\_H}}
+
+\end{DoxyCode}

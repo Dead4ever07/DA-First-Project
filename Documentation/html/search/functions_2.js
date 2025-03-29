@@ -8,7 +8,7 @@ var searchData=
   ['dijkstrawalking_5',['dijkstraWalking',['../DijkstraFunctions_8h.html#a16adf7b38176d619ebf07defab951b69',1,'DijkstraFunctions.h']]],
   ['driverestrictedroute_6',['driveRestrictedRoute',['../RouteSearch_8h.html#ad1f59963f85e4f72071fe928cf611854',1,'RouteSearch.h']]],
   ['driveroute_7',['driveRoute',['../RouteSearch_8h.html#a7278b18d7065b52ffc7fa359f1a6ab72',1,'RouteSearch.h']]],
-  ['drivewalkingpath_8',['driveWalkingPath',['../RouteSearch_8h.html#a044ff85d251d6d671fef78cad7e04c3a',1,'RouteSearch.h']]],
-  ['drivewalkingpaths_9',['driveWalkingPaths',['../RouteSearch_8h.html#a3304f73c4bf8c20a686149f890da954a',1,'RouteSearch.h']]],
-  ['drivewalkingroute_10',['driveWalkingRoute',['../RouteSearch_8h.html#a421b3b14654cf4c556851c40260beefe',1,'RouteSearch.h']]]
+  ['drivewalkingpath_8',['driveWalkingPath',['../EcologicalRouteSearch_8h.html#a044ff85d251d6d671fef78cad7e04c3a',1,'EcologicalRouteSearch.h']]],
+  ['drivewalkingpaths_9',['driveWalkingPaths',['../EcologicalRouteSearch_8h.html#a3304f73c4bf8c20a686149f890da954a',1,'EcologicalRouteSearch.h']]],
+  ['drivewalkingroute_10',['driveWalkingRoute',['../EcologicalRouteSearch_8h.html#a421b3b14654cf4c556851c40260beefe',1,'EcologicalRouteSearch.h']]]
 ];

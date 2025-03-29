@@ -3,10 +3,14 @@
 {\ttfamily \#include $<$iostream$>$}\newline
 {\ttfamily \#include $<$map$>$}\newline
 {\ttfamily \#include $<$vector$>$}\newline
-{\ttfamily \#include "{}libs/\+Graph\+Builder.\+h"{}}\newline
-{\ttfamily \#include "{}libs/\+Route\+Search.\+h"{}}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$sstream$>$}\newline
+{\ttfamily \#include "{}Graph\+Builder.\+h"{}}\newline
+{\ttfamily \#include "{}Route\+Search.\+h"{}}\newline
+{\ttfamily \#include "{}Input\+Utils.\+h"{}}\newline
 {\ttfamily \#include "{}Graph.\+h"{}}\newline
-Include dependency graph for Menu.\+h\+:\nopagebreak
+Include dependency graph for Menu.\+h\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -17,11 +21,6 @@ Include dependency graph for Menu.\+h\+:\nopagebreak
 \begin{DoxyCompactItemize}
 \item 
 class \mbox{\hyperlink{classMenu}{Menu}}
-\end{DoxyCompactItemize}
-\doxysubsubsection*{Macros}
-\begin{DoxyCompactItemize}
-\item 
-\#\mbox{\hyperlink{classEdge}{define}} \mbox{\hyperlink{Menu_8h_aba889888734a8b272a51d444d70ad2fa}{LINE\+\_\+\+SIZE}}~20
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Enumerations}
 \begin{DoxyCompactItemize}
@@ -41,16 +40,7 @@ enum \mbox{\hyperlink{Menu_8h_abd505ece4ed03e704c3c8674188adeec}{ACTIONS}} \{ \n
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{classEdge}{void}} \mbox{\hyperlink{Menu_8h_ae23e73051c0dba0b7d4fd1448d611ccd}{print\+\_\+vertex}} (\mbox{\hyperlink{classEdge}{int}} \mbox{\hyperlink{classEdge}{pos}}, \mbox{\hyperlink{classGraph}{Graph}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}g)
-\end{DoxyCompactItemize}
-
-
-\doxysubsection{Macro Definition Documentation}
-\Hypertarget{Menu_8h_aba889888734a8b272a51d444d70ad2fa}\label{Menu_8h_aba889888734a8b272a51d444d70ad2fa} 
-\index{Menu.h@{Menu.h}!LINE\_SIZE@{LINE\_SIZE}}
-\index{LINE\_SIZE@{LINE\_SIZE}!Menu.h@{Menu.h}}
-\doxysubsubsection{\texorpdfstring{LINE\_SIZE}{LINE\_SIZE}}
-{\footnotesize\ttfamily \#\mbox{\hyperlink{classEdge}{define}} LINE\+\_\+\+SIZE~20}
-
+\begin{DoxyCompactList}\small\item\em Function responsible for printing the 10 vertices of the selected page. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Enumeration Type Documentation}
@@ -99,3 +89,14 @@ EXIT&\\
 \doxysubsubsection{\texorpdfstring{print\_vertex()}{print\_vertex()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{classEdge}{void}} print\+\_\+vertex (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classEdge}{int}}}]{pos,  }\item[{\mbox{\hyperlink{classGraph}{Graph}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}}]{g }\end{DoxyParamCaption})}
 
+
+
+Function responsible for printing the 10 vertices of the selected page. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & Page selected \\
+\hline
+{\em g} & \doxylink{classGraph}{Graph} from which the nodes are being printed \\
+\hline
+\end{DoxyParams}
