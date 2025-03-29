@@ -1,10 +1,7 @@
-#include "libs/RouteSearch.h"
 #include "libs/DijkstraFunctions.h"
-#include <stdint.h>
-#include <limits.h>
 
 
-bool relaxCar(Edge<std::string> *edge) { // d[u] + driv(u,v) < d[v]
+bool relaxCar(Edge<std::string> *edge) {
     Vertex<std::string> *src = edge->getOrig();
     Vertex<std::string> *dst = edge->getDest();
 

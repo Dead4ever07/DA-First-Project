@@ -132,8 +132,6 @@ std::string driveWalkingRoute(Graph<std::string> * g,Vertex<std::string>* origin
     dijkstra(g,origin,nullptr);
 
     if (requirementParkingSpots.empty()) {
-        //ver com a prof!!!
-        //result.append("DrivingRoute:none\nParkingNode:none\nWalkingRoute:none\nTotalTime:\nMessage:No possible route with max. walking time of "+std::to_string(max) + " minutes.\n");
 
         result.append(approximateSolution(g,origin,dest,parkingSpots));
 
@@ -141,7 +139,6 @@ std::string driveWalkingRoute(Graph<std::string> * g,Vertex<std::string>* origin
 
         return result;
     }
-
 
     int distance = INT_MAX;
     Vertex<std::string> *parkingVertex = driveWalkingPath(requirementParkingSpots,distance);

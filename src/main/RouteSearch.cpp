@@ -2,7 +2,9 @@
 #include "libs/DijkstraFunctions.h"
 
 
-void getDriveRoute(Graph<std::string> *g, Vertex<std::string>* origin, Vertex<std::string>* dest,std::vector<int> &route, int &cost, bool toSelect, bool firstPath) {
+void getDriveRoute(Graph<std::string> *g, Vertex<std::string>* origin,
+    Vertex<std::string>* dest,std::vector<int> &route, int &cost,
+    bool toSelect, bool firstPath) {
     if (!firstPath) {
         route.push_back(dest->getId());
     }

@@ -12,7 +12,7 @@ void graphDistance(Graph<std::string>* g, std::string distances){
         return;
     }
     std::string line;
-    getline(inD, line); //ignorar primeira linha
+    getline(inD, line);
 
     while (getline(inD, line)) {
         std::istringstream iss(line);
