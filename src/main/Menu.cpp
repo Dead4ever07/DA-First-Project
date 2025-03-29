@@ -17,7 +17,6 @@ void Menu::init() {
 }
 
 void Menu::run() {
-
     ACTIONS Pressed = NONE;
     while (Pressed != ACTIONS::EXIT)
         {
@@ -61,9 +60,7 @@ void Menu::get_input(ACTIONS& Pressed) {
        }
 
 }
-///
-/// @brief Displays the menu interface to the user.
-///
+
 void Menu::print_menu() {
     if (current_menu == 2) return;
     clear_screen();
@@ -201,7 +198,6 @@ void Menu::processMenu2(ACTIONS & Pressed) {
                     getchar();
                 break;
                 case(2):
-                    //Call menu that reads all the vertex
                     current_menu++;
                     titles[current_menu] = "Vertex:";
                     clear_screen();
@@ -225,7 +221,6 @@ void Menu::processMenu2(ACTIONS & Pressed) {
 }
 
 void Menu::processMenu3(ACTIONS &Pressed) {
-    //char c;
     clear_screen();
     switch (Pressed) {
         case(RIGHT):
@@ -233,7 +228,7 @@ void Menu::processMenu3(ACTIONS &Pressed) {
                 this->vertex_page++;
             }
             std::cout<<titles[current_menu]<<'\n';
-            print_vertex(this->vertex_page, this->g);
+            print_vertex(this->vertex_page);
             std::cout<<'\t'<<'<'<<this->vertex_page+1<<'/'<<this->g->getNumVertex()/10 + (this->g->getNumVertex()%10>0)<<'>'<<'\n';
             break;
         case(LEFT):
@@ -241,7 +236,7 @@ void Menu::processMenu3(ACTIONS &Pressed) {
                 this->vertex_page--;
             }
             std::cout<<titles[current_menu]<<'\n';
-            print_vertex(this->vertex_page, this->g);
+            print_vertex(this->vertex_page);
             std::cout<<'\t'<<'<'<<this->vertex_page+1<<'/'<<this->g->getNumVertex()/10 + (this->g->getNumVertex()%10>0)<<'>'<<'\n';
             break;
         case(ENTER):
@@ -249,16 +244,12 @@ void Menu::processMenu3(ACTIONS &Pressed) {
             break;
         default:
             std::cout<<titles[current_menu]<<'\n';
-            print_vertex(this->vertex_page, this->g);
+            print_vertex(this->vertex_page);
             std::cout<<'\t'<<'<'<<this->vertex_page+1<<'/'<<this->g->getNumVertex()/10 + (this->g->getNumVertex()%10>0)<<'>'<<'\n';
             break;
     }
     std::cout<<"Press ENTER to return\n";
 }
-
-
-
-
 
 void Menu::processArrowInMenu(const ACTIONS & Pressed) {
     switch (Pressed) {
@@ -276,16 +267,11 @@ void Menu::processArrowInMenu(const ACTIONS & Pressed) {
     }
 }
 
-/**
- * @brief Simple function that reads the user input, allowing the user to see what it is typing in the process
- * @param Attribute Sentence to be printed
- */
-std::string Menu::getUserInput(std::string Attribute) {
+std::string Menu::getUserInput(std::string attribute) {
     clear_screen();
     std::cout<<TC_BOLD<<titles[current_menu]<<TC_NRM<<'\n';
-    std::cout<<Attribute;
+    std::cout<<attribute;
     std::cout<<SHOW_CURSOR;
-    //tc_echo_on();
     std::string result;
     char c;
     do {
@@ -303,12 +289,10 @@ std::string Menu::getUserInput(std::string Attribute) {
     }
     while (c != ENTR);
     std::cout<<HIDE_CURSOR;
-    //tc_echo_off();
     return result;
 }
 
-
-void print_vertex(int pos, Graph<std::string> *g) {
+void Menu::print_vertex(int pos) {
     if (pos < 0) pos = 0;
     for (int i = 0; i<10 && i+pos*10<g->getNumVertex(); i++) {
         if (g->getVertexSet()[pos*10+i] == nullptr) continue;

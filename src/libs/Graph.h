@@ -110,20 +110,15 @@ public:
     Vertex<T> * getOrig() const;
     Edge<T> *getReverse() const;
     double getFlow() const;
-    //!!!!
     int getWalking();
     int getDriving() const;
-    //!!!!
-
 
 
     void setSelected(bool selected);
     void setReverse(Edge<T> *reverse);
     void setFlow(double flow);
-    //!!!!!
     void setWalking(int walking);
     void setDriving(int driving);
-    //!!!!!
 
 protected:
     Vertex<T> *orig;
@@ -139,10 +134,8 @@ protected:
 
     double flow; // for flow-related problems
 
-    //!!!!
     int driving;
     int walking;
-    //!!!!
 };
 
 /********************** Graph  ****************************/
@@ -538,7 +531,6 @@ Vertex<T> * Graph<T>::idFindVertex(int id) const {
     return nullptr;
 }
 
-//!!!
 template <class T>
 int Graph<T>::findVertexIdx(const T &in) const {
     for (unsigned i = 0; i < vertexSet.size(); i++)
