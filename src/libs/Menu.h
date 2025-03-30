@@ -21,7 +21,15 @@ enum ACTIONS{NONE, UP, DOWN, LEFT, RIGHT ,ENTER ,EXIT};
 class Menu {
 public:
     Menu();
+
+    /**
+     * @brief Function that initializes the menu class
+     */
     void init();
+
+    /**
+     * @brief Function responsible for the business logic
+     */
     void run();
 private:
     /**
