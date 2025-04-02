@@ -1,0 +1,116 @@
+\doxysection{src/libs/\+Input\+Utils.h File Reference}
+\hypertarget{InputUtils_8h}{}\label{InputUtils_8h}\index{src/libs/InputUtils.h@{src/libs/InputUtils.h}}
+{\ttfamily \#include "{}Graph.\+h"{}}\newline
+Include dependency graph for Input\+Utils.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{InputUtils_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=190pt]{InputUtils_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classEdge}{void}} \mbox{\hyperlink{InputUtils_8h_a301ddf621a703f03661e3f7ebcb81f58}{read\+Input\+From\+File}} (\mbox{\hyperlink{classGraph}{Graph}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}g, \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} \mbox{\hyperlink{classEdge}{file\+Name}}, \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} \&\mbox{\hyperlink{classEdge}{output}})
+\item 
+\mbox{\hyperlink{classEdge}{void}} \mbox{\hyperlink{InputUtils_8h_ada01290da3c8eb70d8e88028896b43a9}{read\+Input\+From\+String}} (\mbox{\hyperlink{classGraph}{Graph}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}g, \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} \mbox{\hyperlink{classEdge}{input}}, \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} \&\mbox{\hyperlink{classEdge}{output}})
+\item 
+\mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} \mbox{\hyperlink{InputUtils_8h_ad09e2f4f5b9830e0a6194ffce0550612}{check\+Input}} (\mbox{\hyperlink{classGraph}{Graph}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}g, \mbox{\hyperlink{classEdge}{const}} \mbox{\hyperlink{classEdge}{int}} \&\mbox{\hyperlink{classEdge}{origin}}, \mbox{\hyperlink{classEdge}{const}} \mbox{\hyperlink{classEdge}{int}} \&dest, \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::vector}}$<$ \mbox{\hyperlink{classEdge}{int}} $>$ \&\mbox{\hyperlink{classEdge}{vertex}}, \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::vector}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::pair}}$<$ \mbox{\hyperlink{classEdge}{int}}, \mbox{\hyperlink{classEdge}{int}} $>$ $>$ \&\mbox{\hyperlink{classEdge}{edges}}, \mbox{\hyperlink{classEdge}{int}} \&\mbox{\hyperlink{classEdge}{middle}}, \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} \mbox{\hyperlink{classEdge}{mode}}, \mbox{\hyperlink{classEdge}{int}} \mbox{\hyperlink{classEdge}{max\+Walk\+Time}})
+\begin{DoxyCompactList}\small\item\em Validates user input and computes the appropriate route. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{InputUtils_8h_ad09e2f4f5b9830e0a6194ffce0550612}\label{InputUtils_8h_ad09e2f4f5b9830e0a6194ffce0550612} 
+\index{InputUtils.h@{InputUtils.h}!checkInput@{checkInput}}
+\index{checkInput@{checkInput}!InputUtils.h@{InputUtils.h}}
+\doxysubsubsection{\texorpdfstring{checkInput()}{checkInput()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} check\+Input (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraph}{Graph}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}}]{g,  }\item[{\mbox{\hyperlink{classEdge}{const}} \mbox{\hyperlink{classEdge}{int}} \&}]{origin,  }\item[{\mbox{\hyperlink{classEdge}{const}} \mbox{\hyperlink{classEdge}{int}} \&}]{dest,  }\item[{\mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::vector}}$<$ \mbox{\hyperlink{classEdge}{int}} $>$ \&}]{vertex,  }\item[{\mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::vector}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::pair}}$<$ \mbox{\hyperlink{classEdge}{int}}, \mbox{\hyperlink{classEdge}{int}} $>$ $>$ \&}]{edges,  }\item[{\mbox{\hyperlink{classEdge}{int}} \&}]{middle,  }\item[{\mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}}}]{mode,  }\item[{\mbox{\hyperlink{classEdge}{int}}}]{max\+Walk\+Time }\end{DoxyParamCaption})}
+
+
+
+Validates user input and computes the appropriate route. 
+
+This function checks if the given inputs exist in the graph. Then, it determines the appropriate route computation based on the provided parameters. If the mode is "{}driving"{} with no constraints, it computes the best and alternative driving routes. Otherwise, it calculates a restricted or a driving-\/walking route.
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & Pointer to the graph. \\
+\hline
+{\em origin} & The ID of the source vertex. \\
+\hline
+{\em dest} & The ID of the destination vertex. \\
+\hline
+{\em vertex} & A vector of node IDs that should be avoided. \\
+\hline
+{\em edges} & A vector of pairs representing edges to be avoided. \\
+\hline
+{\em middle} & The ID of a mandatory intermediate vertex (-\/1 if not required). \\
+\hline
+{\em mode} & The selected travel mode ("{}driving"{} or "{}driving-\/walking"{}). \\
+\hline
+{\em max\+Walk\+Time} & The maximum allowed walking time for mixed routes. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A formatted string containing the computed route or an error message if the input is invalid.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Time Complexity\+: O((V + E) log V). The function may call \doxylink{RouteSearch_8h_a7278b18d7065b52ffc7fa359f1a6ab72}{drive\+Route()}, \doxylink{RouteSearch_8h_ad1f59963f85e4f72071fe928cf611854}{drive\+Restricted\+Route()}, or \doxylink{EcologicalRouteSearch_8h_a421b3b14654cf4c556851c40260beefe}{drive\+Walking\+Route()}, each executing Dijkstra’s algorithm. V is the number of vertices and E is the number of edges. 
+\end{DoxyNote}
+\Hypertarget{InputUtils_8h_a301ddf621a703f03661e3f7ebcb81f58}\label{InputUtils_8h_a301ddf621a703f03661e3f7ebcb81f58} 
+\index{InputUtils.h@{InputUtils.h}!readInputFromFile@{readInputFromFile}}
+\index{readInputFromFile@{readInputFromFile}!InputUtils.h@{InputUtils.h}}
+\doxysubsubsection{\texorpdfstring{readInputFromFile()}{readInputFromFile()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classEdge}{void}} read\+Input\+From\+File (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraph}{Graph}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}}]{g,  }\item[{\mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}}}]{file\+Name,  }\item[{\mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} \&}]{output }\end{DoxyParamCaption})}
+
+This function opens the specified file, reads its contents into a string, and then calls \doxylink{InputUtils_8h_ada01290da3c8eb70d8e88028896b43a9}{read\+Input\+From\+String()} to process the data.
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & Pointer to the graph object. \\
+\hline
+{\em file\+Name} & Name of the file containing input data. \\
+\hline
+{\em output} & Reference to a string where the output result will be stored.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Time Complexity\+: O(C + (V+E)log(\+V)), where\+:
+\begin{DoxyItemize}
+\item C is the number of characters in the input file.
+\item V is the number of vertices and E is the number of edges.
+\item (V+E)log(\+V) is the complexity of \doxylink{InputUtils_8h_ad09e2f4f5b9830e0a6194ffce0550612}{check\+Input()}, called by \doxylink{InputUtils_8h_ada01290da3c8eb70d8e88028896b43a9}{read\+Input\+From\+String()}. 
+\end{DoxyItemize}
+\end{DoxyNote}
+\Hypertarget{InputUtils_8h_ada01290da3c8eb70d8e88028896b43a9}\label{InputUtils_8h_ada01290da3c8eb70d8e88028896b43a9} 
+\index{InputUtils.h@{InputUtils.h}!readInputFromString@{readInputFromString}}
+\index{readInputFromString@{readInputFromString}!InputUtils.h@{InputUtils.h}}
+\doxysubsubsection{\texorpdfstring{readInputFromString()}{readInputFromString()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classEdge}{void}} read\+Input\+From\+String (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraph}{Graph}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}}]{g,  }\item[{\mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}}}]{input,  }\item[{\mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} \&}]{output }\end{DoxyParamCaption})}
+
+This function reads an input string containing route parameters and processes them. After extracting the information, it calls \doxylink{InputUtils_8h_ad09e2f4f5b9830e0a6194ffce0550612}{check\+Input()} to validate the processed data.
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & Pointer to the graph object. \\
+\hline
+{\em input} & The input string containing route configuration. \\
+\hline
+{\em output} & Reference to a string where the output result will be stored.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Time Complexity\+: O(C + (V+E)log(\+V)), where\+:
+\begin{DoxyItemize}
+\item C is the number of characters in the input string.
+\item V is the number of vertices and E is the number of edges.
+\item (V+E)log(\+V) is the complexity of \doxylink{InputUtils_8h_ad09e2f4f5b9830e0a6194ffce0550612}{check\+Input()}. 
+\end{DoxyItemize}
+\end{DoxyNote}

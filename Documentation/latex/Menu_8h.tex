@@ -1,0 +1,76 @@
+\doxysection{src/libs/\+Menu.h File Reference}
+\hypertarget{Menu_8h}{}\label{Menu_8h}\index{src/libs/Menu.h@{src/libs/Menu.h}}
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$map$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$sstream$>$}\newline
+{\ttfamily \#include "{}Graph\+Builder.\+h"{}}\newline
+{\ttfamily \#include "{}Route\+Search.\+h"{}}\newline
+{\ttfamily \#include "{}Input\+Utils.\+h"{}}\newline
+{\ttfamily \#include "{}Graph.\+h"{}}\newline
+Include dependency graph for Menu.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{Menu_8h__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classMenu}{Menu}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{Menu_8h_abd505ece4ed03e704c3c8674188adeec}{ACTIONS}} \{ \newline
+\mbox{\hyperlink{Menu_8h_abd505ece4ed03e704c3c8674188adeecac157bdf0b85a40d2619cbc8bc1ae5fe2}{NONE}}
+, \mbox{\hyperlink{Menu_8h_abd505ece4ed03e704c3c8674188adeecaba595d8bca8bc5e67c37c0a9d89becfa}{UP}}
+, \mbox{\hyperlink{Menu_8h_abd505ece4ed03e704c3c8674188adeeca9b0b4a95b99523966e0e34ffdadac9da}{DOWN}}
+, \mbox{\hyperlink{Menu_8h_abd505ece4ed03e704c3c8674188adeecadb45120aafd37a973140edee24708065}{LEFT}}
+, \newline
+\mbox{\hyperlink{Menu_8h_abd505ece4ed03e704c3c8674188adeecaec8379af7490bb9eaaf579cf17876f38}{RIGHT}}
+, \mbox{\hyperlink{Menu_8h_abd505ece4ed03e704c3c8674188adeeca951ab68bb8f7daafb78951107080904e}{ENTER}}
+, \mbox{\hyperlink{Menu_8h_abd505ece4ed03e704c3c8674188adeeca7a10b5d68d31711288e1fe0fa17dbf4f}{EXIT}}
+ \}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{Menu_8h_abd505ece4ed03e704c3c8674188adeec}\label{Menu_8h_abd505ece4ed03e704c3c8674188adeec} 
+\index{Menu.h@{Menu.h}!ACTIONS@{ACTIONS}}
+\index{ACTIONS@{ACTIONS}!Menu.h@{Menu.h}}
+\doxysubsubsection{\texorpdfstring{ACTIONS}{ACTIONS}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classEdge}{enum}} \mbox{\hyperlink{Menu_8h_abd505ece4ed03e704c3c8674188adeec}{ACTIONS}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NONE@{NONE}!Menu.h@{Menu.h}}\index{Menu.h@{Menu.h}!NONE@{NONE}}}\Hypertarget{Menu_8h_abd505ece4ed03e704c3c8674188adeecac157bdf0b85a40d2619cbc8bc1ae5fe2}\label{Menu_8h_abd505ece4ed03e704c3c8674188adeecac157bdf0b85a40d2619cbc8bc1ae5fe2} 
+NONE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{UP@{UP}!Menu.h@{Menu.h}}\index{Menu.h@{Menu.h}!UP@{UP}}}\Hypertarget{Menu_8h_abd505ece4ed03e704c3c8674188adeecaba595d8bca8bc5e67c37c0a9d89becfa}\label{Menu_8h_abd505ece4ed03e704c3c8674188adeecaba595d8bca8bc5e67c37c0a9d89becfa} 
+UP&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DOWN@{DOWN}!Menu.h@{Menu.h}}\index{Menu.h@{Menu.h}!DOWN@{DOWN}}}\Hypertarget{Menu_8h_abd505ece4ed03e704c3c8674188adeeca9b0b4a95b99523966e0e34ffdadac9da}\label{Menu_8h_abd505ece4ed03e704c3c8674188adeeca9b0b4a95b99523966e0e34ffdadac9da} 
+DOWN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LEFT@{LEFT}!Menu.h@{Menu.h}}\index{Menu.h@{Menu.h}!LEFT@{LEFT}}}\Hypertarget{Menu_8h_abd505ece4ed03e704c3c8674188adeecadb45120aafd37a973140edee24708065}\label{Menu_8h_abd505ece4ed03e704c3c8674188adeecadb45120aafd37a973140edee24708065} 
+LEFT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{RIGHT@{RIGHT}!Menu.h@{Menu.h}}\index{Menu.h@{Menu.h}!RIGHT@{RIGHT}}}\Hypertarget{Menu_8h_abd505ece4ed03e704c3c8674188adeecaec8379af7490bb9eaaf579cf17876f38}\label{Menu_8h_abd505ece4ed03e704c3c8674188adeecaec8379af7490bb9eaaf579cf17876f38} 
+RIGHT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ENTER@{ENTER}!Menu.h@{Menu.h}}\index{Menu.h@{Menu.h}!ENTER@{ENTER}}}\Hypertarget{Menu_8h_abd505ece4ed03e704c3c8674188adeeca951ab68bb8f7daafb78951107080904e}\label{Menu_8h_abd505ece4ed03e704c3c8674188adeeca951ab68bb8f7daafb78951107080904e} 
+ENTER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EXIT@{EXIT}!Menu.h@{Menu.h}}\index{Menu.h@{Menu.h}!EXIT@{EXIT}}}\Hypertarget{Menu_8h_abd505ece4ed03e704c3c8674188adeeca7a10b5d68d31711288e1fe0fa17dbf4f}\label{Menu_8h_abd505ece4ed03e704c3c8674188adeeca7a10b5d68d31711288e1fe0fa17dbf4f} 
+EXIT&\\
+\hline
+
+\end{DoxyEnumFields}

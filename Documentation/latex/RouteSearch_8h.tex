@@ -1,0 +1,177 @@
+\doxysection{src/libs/\+Route\+Search.h File Reference}
+\hypertarget{RouteSearch_8h}{}\label{RouteSearch_8h}\index{src/libs/RouteSearch.h@{src/libs/RouteSearch.h}}
+{\ttfamily \#include "{}Graph.\+h"{}}\newline
+Include dependency graph for Route\+Search.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{RouteSearch_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=205pt]{RouteSearch_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classEdge}{void}} \mbox{\hyperlink{RouteSearch_8h_aa059527e092534cc62b3c2d53f7c4be8}{get\+Drive\+Route}} (\mbox{\hyperlink{classGraph}{Graph}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}g, \mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classEdge}{origin}}, \mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}dest, \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::vector}}$<$ \mbox{\hyperlink{classEdge}{int}} $>$ \&\mbox{\hyperlink{classEdge}{route}}, \mbox{\hyperlink{classEdge}{int}} \&\mbox{\hyperlink{classEdge}{cost}}, \mbox{\hyperlink{classEdge}{bool}} \mbox{\hyperlink{classEdge}{to\+Select}}, \mbox{\hyperlink{classEdge}{bool}} \mbox{\hyperlink{classEdge}{first\+Path}})
+\begin{DoxyCompactList}\small\item\em Constructs the driving route from the destination to the origin based on the shortest path computed. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classEdge}{bool}} \mbox{\hyperlink{RouteSearch_8h_a293841dc2d91eed2e54107ac150c2fe7}{get\+Path}} (\mbox{\hyperlink{classGraph}{Graph}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}g, \mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classEdge}{origin}}, \mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}dest, \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::vector}}$<$ \mbox{\hyperlink{classEdge}{int}} $>$ \&\mbox{\hyperlink{classEdge}{route}}, \mbox{\hyperlink{classEdge}{int}} \&\mbox{\hyperlink{classEdge}{cost}}, \mbox{\hyperlink{classEdge}{bool}} \mbox{\hyperlink{classEdge}{to\+Select}}, \mbox{\hyperlink{classEdge}{bool}} \mbox{\hyperlink{classEdge}{first\+Path}})
+\begin{DoxyCompactList}\small\item\em Retrieves the shortest path from origin to destination using Dijkstra\textquotesingle{}s algorithm. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} \mbox{\hyperlink{RouteSearch_8h_a0711b51345ef1267d243a5fddad3bd7c}{print\+Route}} (\mbox{\hyperlink{classEdge}{const}} \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::vector}}$<$ \mbox{\hyperlink{classEdge}{int}} $>$ \&\mbox{\hyperlink{classEdge}{route}}, \mbox{\hyperlink{classEdge}{int}} \mbox{\hyperlink{classEdge}{route\+Cost}})
+\item 
+\mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} \mbox{\hyperlink{RouteSearch_8h_a7278b18d7065b52ffc7fa359f1a6ab72}{drive\+Route}} (\mbox{\hyperlink{classGraph}{Graph}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}g, \mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classEdge}{origin}}, \mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}dest)
+\begin{DoxyCompactList}\small\item\em This function computes the shortest driving route between two vertices using Dijkstra’s algorithm. It also attempts to find an alternative route, if possible. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} \mbox{\hyperlink{RouteSearch_8h_ad1f59963f85e4f72071fe928cf611854}{drive\+Restricted\+Route}} (\mbox{\hyperlink{classGraph}{Graph}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}g, \mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{classEdge}{origin}}, \mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}dest, \mbox{\hyperlink{classEdge}{const}} \mbox{\hyperlink{classEdge}{int}} \&\mbox{\hyperlink{classEdge}{middle}})
+\begin{DoxyCompactList}\small\item\em This function computes the shortest restricted driving route between two vertices using Dijkstra’s algorithm. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{RouteSearch_8h_ad1f59963f85e4f72071fe928cf611854}\label{RouteSearch_8h_ad1f59963f85e4f72071fe928cf611854} 
+\index{RouteSearch.h@{RouteSearch.h}!driveRestrictedRoute@{driveRestrictedRoute}}
+\index{driveRestrictedRoute@{driveRestrictedRoute}!RouteSearch.h@{RouteSearch.h}}
+\doxysubsubsection{\texorpdfstring{driveRestrictedRoute()}{driveRestrictedRoute()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} drive\+Restricted\+Route (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraph}{Graph}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}}]{g,  }\item[{\mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}}]{origin,  }\item[{\mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}}]{dest,  }\item[{\mbox{\hyperlink{classEdge}{const}} \mbox{\hyperlink{classEdge}{int}} \&}]{middle }\end{DoxyParamCaption})}
+
+
+
+This function computes the shortest restricted driving route between two vertices using Dijkstra’s algorithm. 
+
+This function computes the best driving route from an origin to a destination vertex, while considering an optional middle vertex. If no middle vertex is specified, it finds the shortest driving route by calling \doxylink{RouteSearch_8h_a293841dc2d91eed2e54107ac150c2fe7}{get\+Path()}. If a middle vertex is provided, it ensures that the route passes through it. The computed route and its cost are formatted into a string.
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & Pointer to the graph. \\
+\hline
+{\em origin} & Pointer to the starting vertex. \\
+\hline
+{\em dest} & Pointer to the destination vertex. \\
+\hline
+{\em middle} & The ID of the middle vertex that must be included in the route (-\/1 if not required). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A formatted string containing the restricted driving route and its cost. If no route is found, "{}none"{} is returned.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Time Complexity\+: O((V + E)log V) due to Dijkstra’s algorithm being used within \doxylink{RouteSearch_8h_a293841dc2d91eed2e54107ac150c2fe7}{get\+Path()}. V is the number of vertices and E is the number of edges. 
+\end{DoxyNote}
+\Hypertarget{RouteSearch_8h_a7278b18d7065b52ffc7fa359f1a6ab72}\label{RouteSearch_8h_a7278b18d7065b52ffc7fa359f1a6ab72} 
+\index{RouteSearch.h@{RouteSearch.h}!driveRoute@{driveRoute}}
+\index{driveRoute@{driveRoute}!RouteSearch.h@{RouteSearch.h}}
+\doxysubsubsection{\texorpdfstring{driveRoute()}{driveRoute()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} drive\+Route (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraph}{Graph}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}}]{g,  }\item[{\mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}}]{origin,  }\item[{\mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}}]{dest }\end{DoxyParamCaption})}
+
+
+
+This function computes the shortest driving route between two vertices using Dijkstra’s algorithm. It also attempts to find an alternative route, if possible. 
+
+This function computes the best driving route from an origin vertex to a destination vertex. It first calls \doxylink{RouteSearch_8h_a293841dc2d91eed2e54107ac150c2fe7}{get\+Path()} to determine the shortest path. If a path is found the function attempts to find an alternative route by calling \doxylink{RouteSearch_8h_a293841dc2d91eed2e54107ac150c2fe7}{get\+Path()} again. If no alternative route is found, it appends "{}none"{} to the result. Otherwise, it formats and adds the alternative route.
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & Pointer to the graph. \\
+\hline
+{\em origin} & Pointer to the source vertex. \\
+\hline
+{\em dest} & Pointer to the destination vertex. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A formatted string containing the best and alternative routes.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Time Complexity\+: O((V + E)log V) since it calls \doxylink{RouteSearch_8h_a293841dc2d91eed2e54107ac150c2fe7}{get\+Path()} which executes \doxylink{DijkstraFunctions_8h_a499e2217711f5ce50203011d3d6dbd88}{dijkstra()}. V is the number of vertices and E is the number of edges. 
+\end{DoxyNote}
+\Hypertarget{RouteSearch_8h_aa059527e092534cc62b3c2d53f7c4be8}\label{RouteSearch_8h_aa059527e092534cc62b3c2d53f7c4be8} 
+\index{RouteSearch.h@{RouteSearch.h}!getDriveRoute@{getDriveRoute}}
+\index{getDriveRoute@{getDriveRoute}!RouteSearch.h@{RouteSearch.h}}
+\doxysubsubsection{\texorpdfstring{getDriveRoute()}{getDriveRoute()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classEdge}{void}} get\+Drive\+Route (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraph}{Graph}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}}]{g,  }\item[{\mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}}]{origin,  }\item[{\mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}}]{dest,  }\item[{\mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::vector}}$<$ \mbox{\hyperlink{classEdge}{int}} $>$ \&}]{route,  }\item[{\mbox{\hyperlink{classEdge}{int}} \&}]{cost,  }\item[{\mbox{\hyperlink{classEdge}{bool}}}]{to\+Select,  }\item[{\mbox{\hyperlink{classEdge}{bool}}}]{first\+Path }\end{DoxyParamCaption})}
+
+
+
+Constructs the driving route from the destination to the origin based on the shortest path computed. 
+
+This function traces back the shortest path from the destination to the origin using the path set by \doxylink{DijkstraFunctions_8h_a499e2217711f5ce50203011d3d6dbd88}{dijkstra()}. It stores the sequence of vertex IDs in the route vector and accumulates the total driving cost. If the function is being used for non-\/restricted driving paths (to\+Select flag is enable), it marks visited vertices as selected to prevent them from being reused in the alternative route. The first\+Path is enabled when the last item shouldn\textquotesingle{}t be included, which happens when there\textquotesingle{}s an Include\+Node in the restricted route. When this function is called for the second time, it avoids adding middle vertex in the vector twice.
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & Pointer to the graph. \\
+\hline
+{\em origin} & Pointer to the starting vertex. \\
+\hline
+{\em dest} & Pointer to the destination vertex. \\
+\hline
+{\em route} & Reference to a vector that will store the sequence of vertex IDs in the computed path. \\
+\hline
+{\em cost} & Reference to an integer that will store the total cost of the computed path. \\
+\hline
+{\em to\+Select} & Boolean flag indicating whether to mark the vertices and edges in the path as selected (to avoid using it in the alternative route). \\
+\hline
+{\em first\+Path} & Boolean flag indicating whether this is the first path being computed (to avoid duplicate values in the restricted route, when including a node).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Time Complexity\+: O(\+V) since it traces back through at most all vertices in the path. 
+\end{DoxyNote}
+\Hypertarget{RouteSearch_8h_a293841dc2d91eed2e54107ac150c2fe7}\label{RouteSearch_8h_a293841dc2d91eed2e54107ac150c2fe7} 
+\index{RouteSearch.h@{RouteSearch.h}!getPath@{getPath}}
+\index{getPath@{getPath}!RouteSearch.h@{RouteSearch.h}}
+\doxysubsubsection{\texorpdfstring{getPath()}{getPath()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classEdge}{bool}} get\+Path (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGraph}{Graph}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}}]{g,  }\item[{\mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}}]{origin,  }\item[{\mbox{\hyperlink{classVertex}{Vertex}}$<$ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} $>$ \texorpdfstring{$\ast$}{*}}]{dest,  }\item[{\mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::vector}}$<$ \mbox{\hyperlink{classEdge}{int}} $>$ \&}]{route,  }\item[{\mbox{\hyperlink{classEdge}{int}} \&}]{cost,  }\item[{\mbox{\hyperlink{classEdge}{bool}}}]{to\+Select,  }\item[{\mbox{\hyperlink{classEdge}{bool}}}]{first\+Path }\end{DoxyParamCaption})}
+
+
+
+Retrieves the shortest path from origin to destination using Dijkstra\textquotesingle{}s algorithm. 
+
+This function is responsible for retrieving the shortest path computed by Dijkstra’s algorithm. It first calls \doxylink{DijkstraFunctions_8h_a499e2217711f5ce50203011d3d6dbd88}{dijkstra()} to check if there are paths are available, from the origin to the destination. If no path exists it returns false, otherwise, it retrieves the computed route and cost using \doxylink{RouteSearch_8h_aa059527e092534cc62b3c2d53f7c4be8}{get\+Drive\+Route()}
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & Pointer to the graph. \\
+\hline
+{\em origin} & Pointer to the starting vertex. \\
+\hline
+{\em dest} & Pointer to the destination vertex. \\
+\hline
+{\em route} & Reference to a vector that will store the sequence of vertex IDs in the computed path. \\
+\hline
+{\em cost} & Reference to an integer that will store the total cost of the computed path. \\
+\hline
+{\em to\+Select} & Boolean flag indicating whether to mark the vertices and edges as selected (to avoid using it in the alternative route). \\
+\hline
+{\em first\+Path} & Boolean flag indicating whether this is the first path being computed (to avoid duplicate selections when including a node). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if a valid path is found, false otherwise.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Time Complexity\+: O((V + E)log V), since it calls \doxylink{DijkstraFunctions_8h_a499e2217711f5ce50203011d3d6dbd88}{dijkstra()}, where V is the number of vertices and E is the number of edges. 
+\end{DoxyNote}
+\Hypertarget{RouteSearch_8h_a0711b51345ef1267d243a5fddad3bd7c}\label{RouteSearch_8h_a0711b51345ef1267d243a5fddad3bd7c} 
+\index{RouteSearch.h@{RouteSearch.h}!printRoute@{printRoute}}
+\index{printRoute@{printRoute}!RouteSearch.h@{RouteSearch.h}}
+\doxysubsubsection{\texorpdfstring{printRoute()}{printRoute()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::string}} print\+Route (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classEdge}{const}} \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std\+::vector}}$<$ \mbox{\hyperlink{classEdge}{int}} $>$ \&}]{route,  }\item[{\mbox{\hyperlink{classEdge}{int}}}]{route\+Cost }\end{DoxyParamCaption})}
+
+This function generates a formatted string with the expected result
+
+
+\begin{DoxyParams}{Parameters}
+{\em route} & Vector of vertex IDs representing the computed route. \\
+\hline
+{\em route\+Cost} & The total cost of the computed route. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if successful, false otherwise.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Time Complexity\+: O(\+V), where V is the number of vertices. This is the shortest path, so the size of the route vector is at most \texorpdfstring{$\vert$}{|}\+V\texorpdfstring{$\vert$}{|} -\/ 1. 
+\end{DoxyNote}

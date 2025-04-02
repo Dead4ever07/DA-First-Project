@@ -1,0 +1,22 @@
+\doxysection{Route\+Search.\+h}
+\hypertarget{RouteSearch_8h_source}{}\label{RouteSearch_8h_source}\index{src/libs/RouteSearch.h@{src/libs/RouteSearch.h}}
+\mbox{\hyperlink{RouteSearch_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ ROUTESEARCH\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ ROUTESEARCH\_H}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Graph_8h}{Graph.h}}"{}}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00026\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{RouteSearch_8h_aa059527e092534cc62b3c2d53f7c4be8}{getDriveRoute}}(\mbox{\hyperlink{classEdge}{Graph<std::string>}}\ *g,\ \mbox{\hyperlink{classEdge}{Vertex<std::string>}}*\ \mbox{\hyperlink{classEdge}{origin}},\ \mbox{\hyperlink{classEdge}{Vertex<std::string>}}*\ dest,\mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std::vector<int>}}\ \&\mbox{\hyperlink{classEdge}{route}},\ \textcolor{keywordtype}{int}\ \&\mbox{\hyperlink{classEdge}{cost}},\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classEdge}{toSelect}},\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classEdge}{firstPath}});}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00046\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{RouteSearch_8h_a293841dc2d91eed2e54107ac150c2fe7}{getPath}}(\mbox{\hyperlink{classEdge}{Graph<std::string>}}\ *g,\ \mbox{\hyperlink{classEdge}{Vertex<std::string>}}*\ \mbox{\hyperlink{classEdge}{origin}},\ \mbox{\hyperlink{classEdge}{Vertex<std::string>}}*\ dest,\mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std::vector<int>}}\ \&\mbox{\hyperlink{classEdge}{route}},\ \textcolor{keywordtype}{int}\ \&\mbox{\hyperlink{classEdge}{cost}},\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classEdge}{toSelect}},\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classEdge}{firstPath}});}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00057\ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std::string}}\ \mbox{\hyperlink{RouteSearch_8h_a0711b51345ef1267d243a5fddad3bd7c}{printRoute}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std::vector<int>}}\ \&\mbox{\hyperlink{classEdge}{route}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classEdge}{routeCost}});}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00075\ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std::string}}\ \mbox{\hyperlink{RouteSearch_8h_a7278b18d7065b52ffc7fa359f1a6ab72}{driveRoute}}(\mbox{\hyperlink{classEdge}{Graph<std::string>}}\ *\ g,\ \mbox{\hyperlink{classEdge}{Vertex<std::string>}}*\ \mbox{\hyperlink{classEdge}{origin}},\ \mbox{\hyperlink{classEdge}{Vertex<std::string>}}*\ dest);}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00093\ \mbox{\hyperlink{classEdge_a5263d3883fe8a56539e371f79ff09efb}{std::string}}\ \mbox{\hyperlink{RouteSearch_8h_ad1f59963f85e4f72071fe928cf611854}{driveRestrictedRoute}}(\mbox{\hyperlink{classEdge}{Graph<std::string>}}\ *\ g,\mbox{\hyperlink{classEdge}{Vertex<std::string>}}*\ \mbox{\hyperlink{classEdge}{origin}},\ \mbox{\hyperlink{classEdge}{Vertex<std::string>}}*\ dest,\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\&\ \mbox{\hyperlink{classEdge}{middle}});}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//ROUTESEARCH\_H}}
+
+\end{DoxyCode}
